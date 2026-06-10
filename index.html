@@ -58,6 +58,7 @@ nav {
   height: auto;
 }
 
+
 nav .nav-right {
   display: flex;
   justify-content: flex-end;
@@ -77,7 +78,7 @@ nav .nav-right a:hover {
 
   /* HERO */
   .hero {
-    min-height: 100vh;
+    min-height: 85vh;
     padding: 120px 48px 80px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -152,6 +153,8 @@ nav .nav-right a:hover {
   .red-stop {
   color: var(--red);
 }
+
+
 
   /* SECTIONS */
   section {
@@ -296,7 +299,7 @@ nav .nav-right a:hover {
   }
 
   .cs-link a {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--yellow);
     text-decoration: none;
     letter-spacing: 0.02em;
@@ -437,12 +440,12 @@ nav .nav-right a:hover {
 
   .output-item {
     background: var(--bg);
-    padding: 28px 24px;
+    padding: 34px 28px;
   }
 
   .output-item h3 {
     font-family: var(--serif);
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 400;
     margin-bottom: 10px;
     color: var(--text);
@@ -540,6 +543,51 @@ nav .nav-right a:hover {
   footer .logo { font-size: 14px; }
   footer .footer-mid { text-align: center; font-size: 12px; color: var(--muted); }
   footer .footer-right { text-align: right; font-size: 12px; color: var(--muted); }
+
+  .service-item p,
+.case-studies-intro p,
+.output-item p,
+.cs-descriptor,
+.hero-sub {
+  font-size: 16px;
+}
+
+.pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+
+.pdf-link-icon {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--red);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 24px;
+  line-height: 1;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pdf-link:hover {
+  color: var(--red);
+}
+
+.pdf-link:hover .pdf-link-icon {
+  background: var(--red);
+  color: var(--bg);
+}
+
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
@@ -661,9 +709,16 @@ nav .nav-right a:hover {
         <div class="service-rule"></div>
       </div>
     </div>
-    <div class="about-right">
-      <p>We help organisations understand complex situations, develop clear narratives and create communication that supports decisions.</p>
-    </div>
+<div class="about-right">
+  <p>
+    We help organisations understand complex situations, develop clear narratives and create communication that supports decisions.
+  </p>
+
+  <a href="img/pdf/visual_sense_making.pdf" class="pdf-link" target="_blank" rel="noopener">
+    <span class="pdf-link-icon">›</span>
+    <span>Download PDF portfolio</span>
+  </a>
+</div>
   </div>
 </section>
 
@@ -689,7 +744,7 @@ nav .nav-right a:hover {
         <span class="cs-tag">Decision mapping</span>
       </div>
       <div class="cs-link">
-        <a href="YOUR-LINEA-PDF-URL" target="_blank">View case study ›</a>
+        <a href="YOUR-LINEA-PDF-URL" target="_blank">Download case study (PDF)</a>
       </div>
     </div>
 
@@ -764,7 +819,7 @@ nav .nav-right a:hover {
         <span class="cs-tag">Strategic narratives</span>
       </div>
       <div class="cs-link">
-        <a href="YOUR-THRESHOLD-PDF-URL" target="_blank">View case study ›</a>
+        <a href="YOUR-THRESHOLD-PDF-URL" target="_blank">Download case study (PDF) ›</a>
       </div>
     </div>
 
@@ -853,7 +908,7 @@ the wrong places, for the wrong people">
         <span class="cs-tag">Impact communication</span>
       </div>
       <div class="cs-link">
-        <a href="YOUR-DAAG-PDF-URL" target="_blank">View case study ›</a>
+        <a href="YOUR-DAAG-PDF-URL" target="_blank">Download case study (PDF)</a>
       </div>
     </div>
 
