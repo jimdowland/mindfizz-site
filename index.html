@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mindfizz. — Visual sense-making</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0e0c;
+    --bg2: #141412;
+    --text: #f0ede6;
+    --muted: #7a7870;
+    --rule: #2a2a26;
+    --yellow: #cff000;
+    --red: #e8322a;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 18px 48px;
+  }
+
+  nav .nav-left { font-size: 13px; color: var(--muted); }
+  nav .nav-mid { font-size: 13px; color: var(--muted); text-align: center; }
+  nav .nav-right { font-size: 13px; color: var(--muted); text-align: right; }
+
+  .logo {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--red); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-text { position: relative; z-index: 2; }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 400;
+    line-height: 1.0;
+    color: var(--yellow);
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--muted);
+    letter-spacing: 0.01em;
+  }
+
+  .hero-wave {
+    position: absolute;
+    top: 0; right: -5%;
+    width: 70%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.9;
+  }
+
+  /* THREE-COL HEADER BAR */
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    padding: 0 48px;
+    margin-bottom: 64px;
+  }
+
+  .section-header-col {
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+  }
+
+  .section-header-col .label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: none;
+    letter-spacing: 0.03em;
+    margin-bottom: 4px;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 96px 48px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* WHAT WE DO */
+  .about-headline {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 64px;
+    max-width: 780px;
+  }
+
+  .about-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+
+  .about-right {
+    padding-left: 48px;
+    border-left: 1px solid var(--rule);
+  }
+
+  .about-right p {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.8vw, 22px);
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .about-services {
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+  }
+
+  .service-item {
+    padding-bottom: 40px;
+    margin-bottom: 8px;
+  }
+
+  .service-item h3 {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2vw, 28px);
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .service-item h3::before {
+    content: '›';
+    color: var(--red);
+    margin-right: 6px;
+    font-style: normal;
+  }
+
+  .service-item p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 320px;
+  }
+
+  .service-item .service-rule {
+    width: 32px;
+    height: 2px;
+    background: var(--red);
+    margin-top: 20px;
+  }
+
+  /* CASE STUDIES */
+  .case-studies-intro {
+    margin-bottom: 64px;
+  }
+
+  .case-studies-intro h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .case-studies-intro p {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 480px;
+  }
+
+  .case-study-block {
+    margin-bottom: 80px;
+  }
+
+  .case-study-block:last-child { margin-bottom: 0; }
+
+  .case-study-meta {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 32px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+    align-items: end;
+  }
+
+  .cs-name {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .cs-descriptor {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .cs-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .cs-tag {
+    font-size: 11px;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 3px 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .cs-link {
+    text-align: right;
+  }
+
+  .cs-link a {
+    font-size: 13px;
+    color: var(--yellow);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s;
+  }
+
+  .cs-link a:hover { opacity: 0.7; }
+
+  /* SLIDER */
+  .slider-wrap {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg2);
+    border: 1px solid var(--rule);
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .slide-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--bg2);
+  }
+
+  .slide-placeholder .ph-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .slide-placeholder .ph-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    color: var(--rule);
+    line-height: 1;
+  }
+
+  .slide-placeholder .ph-title {
+    font-size: 13px;
+    color: #3a3a36;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  .slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .slider-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .dot {
+    width: 20px;
+    height: 2px;
+    background: var(--rule);
+    cursor: pointer;
+    transition: background 0.2s, width 0.2s;
+  }
+
+  .dot.active {
+    background: var(--yellow);
+    width: 32px;
+  }
+
+  .slider-btns {
+    display: flex;
+    gap: 8px;
+  }
+
+  .slider-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--rule);
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, color 0.2s;
+    font-family: var(--sans);
+  }
+
+  .slider-btn:hover {
+    border-color: var(--yellow);
+    color: var(--yellow);
+  }
+
+  .slide-counter {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* OUTPUTS */
+  .outputs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 48px;
+  }
+
+  .output-item {
+    background: var(--bg);
+    padding: 28px 24px;
+  }
+
+  .output-item h3 {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .output-item p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 96px;
+    align-items: start;
+  }
+
+  .contact-left h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+
+  .contact-left p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    max-width: 420px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .contact-links a {
+    font-size: 15px;
+    color: var(--text);
+    text-decoration: none;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s;
+  }
+
+  .contact-links a:first-child {
+    border-top: 1px solid var(--rule);
+  }
+
+  .contact-links a:hover { color: var(--yellow); }
+  .contact-links a span { color: var(--muted); font-size: 13px; }
+
+  .clients-list {
+    padding-top: 8px;
+  }
+
+  .clients-list h3 {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 20px;
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+  }
+
+  .clients-list ul {
+    list-style: none;
+    columns: 2;
+    gap: 0;
+  }
+
+  .clients-list ul li {
+    font-size: 14px;
+    color: var(--muted);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 48px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+  }
+
+  footer .logo { font-size: 14px; }
+  footer .footer-mid { text-align: center; font-size: 12px; color: var(--muted); }
+  footer .footer-right { text-align: right; font-size: 12px; color: var(--muted); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav .nav-mid { display: none; }
+
+    .hero { 
+      grid-template-columns: 1fr; 
+      padding: 100px 24px 64px;
+      min-height: auto;
+    }
+    .hero-wave { width: 100%; opacity: 0.3; top: 50%; }
+
+    .section-header { 
+      grid-template-columns: 1fr; 
+      padding: 0 24px;
+      gap: 16px;
+    }
+
+    section { padding: 64px 24px; }
+
+    .about-body { grid-template-columns: 1fr; gap: 48px; }
+    .about-services { grid-column: 1; grid-template-columns: 1fr; }
+    .about-right { padding-left: 0; border-left: none; border-top: 1px solid var(--rule); padding-top: 32px; }
+
+    .case-study-meta { 
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .cs-tags { display: none; }
+
+    .outputs-grid { grid-template-columns: 1fr 1fr; }
+
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+
+    footer { 
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    footer .footer-mid { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 44px; }
+    .outputs-grid { grid-template-columns: 1fr; }
+    .case-study-meta { grid-template-columns: 1fr; }
+    .cs-link { text-align: left; }
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <span class="logo">mindfizz<span>.</span></span>
+  </div>
+  <div class="nav-mid">Clarity for better decisions.</div>
+  <div class="nav-right">mindfizz.com</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="border-top: none; padding-top: 120px;">
+  <div class="hero-text">
+    <h1>Visual<br>sense&#8209;making.</h1>
+    <p class="hero-sub">Selected work 2026</p>
+  </div>
+
+  <!-- SVG Wave motif -->
+  <svg class="hero-wave" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="wg1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#6b6bcc" stop-opacity="0.3"/>
+        <stop offset="50%" stop-color="#cc3355" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#7744cc" stop-opacity="0.4"/>
+      </linearGradient>
+      <linearGradient id="wg2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#aaaadd" stop-opacity="0.15"/>
+        <stop offset="60%" stop-color="#dd4466" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#9966dd" stop-opacity="0.3"/>
+      </linearGradient>
+    </defs>
+    <path d="M-50,300 C50,260 120,340 200,300 C280,260 320,200 400,180 C480,160 520,240 600,220 C680,200 740,260 850,240" stroke="url(#wg1)" stroke-width="2.5" opacity="1"/>
+    <path d="M-50,320 C60,275 130,355 210,315 C290,275 330,215 410,195 C490,175 530,255 610,235 C690,215 750,275 860,255" stroke="url(#wg2)" stroke-width="1.5" opacity="0.9"/>
+    <path d="M-50,340 C70,290 140,370 220,330 C300,290 340,230 420,210 C500,190 540,270 620,250 C700,230 760,290 870,270" stroke="url(#wg2)" stroke-width="1" opacity="0.7"/>
+    <path d="M-50,360 C80,305 150,385 230,345 C310,305 350,245 430,225 C510,205 550,285 630,265 C710,245 770,305 880,285" stroke="url(#wg1)" stroke-width="1" opacity="0.5"/>
+    <path d="M-50,380 C90,320 160,400 240,360 C320,320 360,260 440,240 C520,220 560,300 640,280 C720,260 780,320 890,300" stroke="url(#wg2)" stroke-width="0.8" opacity="0.4"/>
+    <path d="M-50,400 C100,335 170,415 250,375 C330,335 370,275 450,255 C530,235 570,315 650,295 C730,275 790,335 900,315" stroke="url(#wg2)" stroke-width="0.8" opacity="0.3"/>
+    <path d="M-50,420 C110,350 180,430 260,390 C340,350 380,290 460,270 C540,250 580,330 660,310 C740,290 800,350 910,330" stroke="url(#wg2)" stroke-width="0.6" opacity="0.25"/>
+    <path d="M-50,280 C40,245 110,325 190,285 C270,245 310,185 390,165 C470,145 510,225 590,205 C670,185 730,245 840,225" stroke="url(#wg1)" stroke-width="1.8" opacity="0.6"/>
+    <path d="M-50,260 C30,230 100,310 180,270 C260,230 300,170 380,150 C460,130 500,210 580,190 C660,170 720,230 830,210" stroke="url(#wg1)" stroke-width="1.2" opacity="0.4"/>
+    <path d="M-50,240 C20,215 90,295 170,255 C250,215 290,155 370,135 C450,115 490,195 570,175 C650,155 710,215 820,195" stroke="url(#wg2)" stroke-width="0.9" opacity="0.3"/>
+    <path d="M-50,440 C120,365 190,445 270,405 C350,365 390,305 470,285 C550,265 590,345 670,325 C750,305 810,365 920,345" stroke="url(#wg2)" stroke-width="0.5" opacity="0.2"/>
+    <path d="M-50,460 C130,380 200,460 280,420 C360,380 400,320 480,300 C560,280 600,360 680,340 C760,320 820,380 930,360" stroke="url(#wg2)" stroke-width="0.5" opacity="0.15"/>
+    <!-- Accent line (highlighted) -->
+    <path d="M-50,310 C55,268 125,348 205,308 C285,268 325,208 405,188 C485,168 525,248 605,228 C685,208 745,268 855,248" stroke="#cc3355" stroke-width="3" opacity="0.8"/>
+  </svg>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="about">
+  <div class="section-header fade-in">
+    <div class="section-header-col">
+      <div class="label">What we do</div>
+    </div>
+    <div class="section-header-col">
+      <div class="label">Clarity for better decisions.</div>
+    </div>
+    <div class="section-header-col">
+      <div class="label">mindfizz.com</div>
+    </div>
+  </div>
+
+  <p class="about-headline fade-in">We help teams make sense of complexity and communicate it clearly.</p>
+
+  <div class="about-body fade-in">
+    <div class="about-services">
+      <div class="service-item">
+        <h3>communication strategy</h3>
+        <p>Clarifying purpose, audience, format, timeframe, and delivery context.</p>
+        <div class="service-rule"></div>
+      </div>
+      <div class="service-item">
+        <h3>structure and flow</h3>
+        <p>Reviewing existing material and shaping the sequence of the document, deck, or resource.</p>
+        <div class="service-rule"></div>
+      </div>
+      <div class="service-item">
+        <h3>messaging and clarity</h3>
+        <p>Identifying key messages and editing content for conciseness, hierarchy, and impact.</p>
+        <div class="service-rule"></div>
+      </div>
+      <div class="service-item">
+        <h3>visual explanation</h3>
+        <p>Designing diagrams, charts, maps, timelines, systems visuals, logic models, and bespoke graphics that make complexity easier to understand.</p>
+        <div class="service-rule"></div>
+      </div>
+    </div>
+    <div class="about-right">
+      <p>We help organisations understand complex situations, develop clear narratives and create communication that supports decisions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="case-studies-intro fade-in">
+    <h2>Case studies</h2>
+    <p>Each case study is available to view in full. Click the link on each to open the PDF.</p>
+  </div>
+
+  <!-- LINEA -->
+  <div class="case-study-block fade-in">
+    <div class="case-study-meta">
+      <div>
+        <div class="cs-name">LINEA</div>
+        <div class="cs-descriptor" style="margin-top:6px;">Explaining a service crisis using systems thinking and visual tools</div>
+      </div>
+      <div class="cs-tags">
+        <span class="cs-tag">Systems mapping</span>
+        <span class="cs-tag">Causal loops</span>
+        <span class="cs-tag">Timeline design</span>
+        <span class="cs-tag">Decision mapping</span>
+      </div>
+      <div class="cs-link">
+        <a href="YOUR-LINEA-PDF-URL" target="_blank">View case study ›</a>
+      </div>
+    </div>
+
+    <div class="slider-wrap" data-slider="linea">
+      <div class="slider-track">
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">01</div>
+            <div class="ph-label">LINEA — Slide 1</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">02</div>
+            <div class="ph-label">LINEA — Slide 2</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">03</div>
+            <div class="ph-label">LINEA — Slide 3</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">04</div>
+            <div class="ph-label">LINEA — Slide 4</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">05</div>
+            <div class="ph-label">LINEA — Slide 5</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-controls">
+        <div class="slider-dots"></div>
+        <div class="slide-counter"></div>
+        <div class="slider-btns">
+          <button class="slider-btn prev" aria-label="Previous slide">←</button>
+          <button class="slider-btn next" aria-label="Next slide">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THRESHOLD -->
+  <div class="case-study-block fade-in">
+    <div class="case-study-meta">
+      <div>
+        <div class="cs-name">Threshold</div>
+        <div class="cs-descriptor" style="margin-top:6px;">Turning a complex policy argument into a visual model</div>
+      </div>
+      <div class="cs-tags">
+        <span class="cs-tag">Process modelling</span>
+        <span class="cs-tag">Policy communication</span>
+        <span class="cs-tag">Value-flow diagrams</span>
+        <span class="cs-tag">Strategic narratives</span>
+      </div>
+      <div class="cs-link">
+        <a href="YOUR-THRESHOLD-PDF-URL" target="_blank">View case study ›</a>
+      </div>
+    </div>
+
+    <div class="slider-wrap" data-slider="threshold">
+      <div class="slider-track">
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">01</div>
+            <div class="ph-label">Threshold — Slide 1</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">02</div>
+            <div class="ph-label">Threshold — Slide 2</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">03</div>
+            <div class="ph-label">Threshold — Slide 3</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">04</div>
+            <div class="ph-label">Threshold — Slide 4</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">05</div>
+            <div class="ph-label">Threshold — Slide 5</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-controls">
+        <div class="slider-dots"></div>
+        <div class="slide-counter"></div>
+        <div class="slider-btns">
+          <button class="slider-btn prev" aria-label="Previous slide">←</button>
+          <button class="slider-btn next" aria-label="Next slide">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAAG -->
+  <div class="case-study-block fade-in">
+    <div class="case-study-meta">
+      <div>
+        <div class="cs-name">DAAG</div>
+        <div class="cs-descriptor" style="margin-top:6px;">Helping audiences prioritise — risk mapping and framework design</div>
+      </div>
+      <div class="cs-tags">
+        <span class="cs-tag">Risk mapping</span>
+        <span class="cs-tag">Decision tools</span>
+        <span class="cs-tag">Framework design</span>
+        <span class="cs-tag">Impact communication</span>
+      </div>
+      <div class="cs-link">
+        <a href="YOUR-DAAG-PDF-URL" target="_blank">View case study ›</a>
+      </div>
+    </div>
+
+    <div class="slider-wrap" data-slider="daag">
+      <div class="slider-track">
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">01</div>
+            <div class="ph-label">DAAG — Slide 1</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">02</div>
+            <div class="ph-label">DAAG — Slide 2</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">03</div>
+            <div class="ph-label">DAAG — Slide 3</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">04</div>
+            <div class="ph-label">DAAG — Slide 4</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-placeholder">
+            <div class="ph-num">05</div>
+            <div class="ph-label">DAAG — Slide 5</div>
+            <div class="ph-title">Replace with exported slide image</div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-controls">
+        <div class="slider-dots"></div>
+        <div class="slide-counter"></div>
+        <div class="slider-btns">
+          <button class="slider-btn prev" aria-label="Previous slide">←</button>
+          <button class="slider-btn next" aria-label="Next slide">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTPUTS -->
+<section id="outputs">
+  <div class="section-header fade-in">
+    <div class="section-header-col">
+      <div class="label">The output depends on the communication need.</div>
+    </div>
+    <div class="section-header-col"></div>
+    <div class="section-header-col"></div>
+  </div>
+
+  <div class="outputs-grid fade-in">
+    <div class="output-item">
+      <h3>Presentations &amp; briefings</h3>
+      <p>Board and leadership presentations. Policy and research briefings. Funder and partner decks.</p>
+    </div>
+    <div class="output-item">
+      <h3>Visual tools &amp; models</h3>
+      <p>Process diagrams. Logic models. Systems maps. Decision maps. Causal loops.</p>
+    </div>
+    <div class="output-item">
+      <h3>Reports &amp; summaries</h3>
+      <p>Impact and evaluation reports. Data-led reports. Visual summaries and explainers.</p>
+    </div>
+    <div class="output-item">
+      <h3>Digital resources</h3>
+      <p>Animated or interactive resources. Digital documents.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner fade-in">
+    <div class="contact-left">
+      <h2>Bring us in before the material becomes a last-minute design problem.</h2>
+      <p>We can help review existing material, clarify the structure, sharpen the message, design the visuals, and produce the final presentation, report, or resource.</p>
+      <div class="contact-links">
+        <a href="tel:+441962840362">
+          Telephone
+          <span>(+44) 1962 840362</span>
+        </a>
+        <a href="mailto:studio@mindfizz.com">
+          Email
+          <span>studio@mindfizz.com</span>
+        </a>
+        <a href="https://mindfizz.com" target="_blank">
+          Web
+          <span>mindfizz.com</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="clients-list">
+      <h3>Selected clients</h3>
+      <ul>
+        <li>AON</li>
+        <li>BASF</li>
+        <li>Cardinal Health</li>
+        <li>Dentons</li>
+        <li>FAIST</li>
+        <li>Nationwide</li>
+        <li>NHS</li>
+        <li>John Lewis</li>
+        <li>Summix</li>
+        <li>Selex</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div><span class="logo">mindfizz<span>.</span></span></div>
+  <div class="footer-mid">Clarity for better decisions.</div>
+  <div class="footer-right">© 2026 mindfizz</div>
+</footer>
+
+<script>
+  // SLIDERS
+  document.querySelectorAll('.slider-wrap').forEach(wrap => {
+    const track = wrap.querySelector('.slider-track');
+    const slides = wrap.querySelectorAll('.slide');
+    const dotsEl = wrap.querySelector('.slider-dots');
+    const counter = wrap.querySelector('.slide-counter');
+    const prev = wrap.querySelector('.prev');
+    const next = wrap.querySelector('.next');
+    let current = 0;
+    const total = slides.length;
+
+    // Build dots
+    slides.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(d);
+    });
+
+    function goTo(n) {
+      current = (n + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      wrap.querySelectorAll('.dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+      counter.textContent = `${current + 1} / ${total}`;
+    }
+
+    prev.addEventListener('click', () => goTo(current - 1));
+    next.addEventListener('click', () => goTo(current + 1));
+
+    // Keyboard
+    wrap.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    // Touch swipe
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+    });
+
+    goTo(0);
+  });
+
+  // FADE IN ON SCROLL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
