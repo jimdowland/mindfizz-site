@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -32,1182 +31,933 @@
   "@type": "ProfessionalService",
   "name": "Mindfizz",
   "url": "https://mindfizz.com/",
-  "logo": "https://mindfizz.com/img/brand/mindfizz-wordmark.png",
   "description": "Mindfizz helps organisations turn complex material into clear presentations, visual reports and decision tools.",
   "email": "studio@mindfizz.com",
   "telephone": "+44 1962 840362",
-  "areaServed": "GB",
-  "serviceType": [
-    "Presentation design",
-    "Visual sense-making",
-    "Communication strategy",
-    "Visual reports",
-    "Decision tools",
-    "Information design"
-  ]
+  "areaServed": "GB"
 }
 </script>
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #0e0e0c;
-      --bg2: #141412;
-      --text: #f0ede6;
-      --muted: #7a7870;
-      --rule: #2a2a26;
-      --yellow: #FFAA19;
-      ;
-      --red: #e8322a;
-      --serif: 'Playfair Display', Georgia, serif;
-      --sans: 'DM Sans', system-ui, sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-weight: 300;
-      font-size: 16px;
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid var(--rule);
-      display: grid;
-      grid-template-columns: auto 1fr;
-      padding: 14px 48px;
-      align-items: center;
-    }
-
-    .logo-link {
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .wordmark {
-      display: block;
-      width: 160px;
-      height: auto;
-    }
-
-
-    nav .nav-right {
-      display: flex;
-      justify-content: flex-end;
-      gap: 18px;
-    }
-
-    nav .nav-right a {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    nav .nav-right a:hover {
-      color: var(--orange);
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 85vh;
-      padding: 120px 48px 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: end;
-      gap: 48px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-text {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(52px, 7vw, 96px);
-      font-weight: 400;
-      line-height: 1.0;
-      color: var(--text);
-      letter-spacing: -0.02em;
-      margin-bottom: 28px;
-    }
-
-    .hero-sub {
-      font-size: 15px;
-      color: var(--muted);
-      letter-spacing: 0.01em;
-    }
-
-    .hero-wave {
-      position: absolute;
-      top: 0;
-      right: -5%;
-      width: 70%;
-      height: 100%;
-      z-index: 1;
-      opacity: 0.9;
-    }
-
-    /* THREE-COL HEADER BAR */
-    .section-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 32px;
-      padding: 0 48px;
-      margin-bottom: 64px;
-    }
-
-    .section-header-col {
-      border-top: 1px solid var(--rule);
-      padding-top: 16px;
-    }
-
-    .outputs-header {
-      max-width: 720px;
-      margin-bottom: 48px;
-    }
-
-    .section-heading {
-      font-family: var(--serif);
-      font-size: clamp(32px, 4vw, 56px);
-      font-weight: 400;
-      line-height: 1.08;
-      color: var(--text);
-      margin: 0;
-    }
-
-    .section-header-col .label {
-      font-size: 12px;
-      color: var(--muted);
-      text-transform: none;
-      letter-spacing: 0.03em;
-      margin-bottom: 4px;
-    }
-
-    .red-stop {
-      color: var(--red);
-    }
-
-
-
-    /* SECTIONS */
-    section {
-      padding: 96px 48px;
-      border-top: 1px solid var(--rule);
-    }
-
-    /* WHAT WE DO */
-    .about-headline {
-      font-family: var(--serif);
-      font-size: clamp(28px, 4vw, 52px);
-      font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: 64px;
-      max-width: 900px;
-    }
-
-    .about-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0;
-    }
-
-    .about-right {
-      padding-left: 48px;
-      border-left: 1px solid var(--rule);
-    }
-
-    .about-right p {
-      font-family: var(--serif);
-      font-size: clamp(17px, 1.8vw, 22px);
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    .about-services {
-      grid-column: 1 / 3;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 48px;
-    }
-
-    .service-item {
-      padding-bottom: 40px;
-      margin-bottom: 8px;
-    }
-
-    .service-item h3 {
-      font-family: var(--serif);
-      font-size: clamp(20px, 2vw, 28px);
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .service-item h3::before {
-      content: '›';
-      color: var(--red);
-      margin-right: 6px;
-      font-style: normal;
-    }
-
-    .service-item p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.65;
-      max-width: 320px;
-    }
-
-    .service-item .service-rule {
-      width: 32px;
-      height: 2px;
-      background: var(--red);
-      margin-top: 20px;
-    }
-
-    /* CASE STUDIES */
-    .case-studies-intro {
-      margin-bottom: 64px;
-    }
-
-    .case-studies-intro h2 {
-      font-family: var(--serif);
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    .case-studies-intro p {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 480px;
-    }
-
-    .case-study-block {
-      margin-bottom: 80px;
-    }
-
-    .case-study-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .case-study-meta {
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
-      gap: 32px;
-      margin-bottom: 28px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--rule);
-      align-items: end;
-    }
-
-    .cs-name {
-      font-family: var(--serif);
-      font-size: clamp(22px, 2.5vw, 32px);
-      font-weight: 400;
-      line-height: 1.1;
-    }
-
-    .cs-descriptor {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .cs-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .cs-tag {
-      font-size: 11px;
-      color: var(--muted);
-      border: 1px solid var(--rule);
-      padding: 3px 8px;
-      letter-spacing: 0.04em;
-    }
-
-    .cs-link {
-      text-align: right;
-    }
-
-    .cs-link a {
-      font-size: 14px;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: opacity 0.2s;
-    }
-
-    .cs-link a:hover {
-      opacity: 0.7;
-      color: var(--red);
-    }
-
-    /* SLIDER */
-    .slider-wrap {
-      position: relative;
-      overflow: hidden;
-      background: var(--bg2);
-      border: 1px solid var(--rule);
-    }
-
-    .slider-track {
-      display: flex;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .slide {
-      flex: 0 0 100%;
-      aspect-ratio: 16/9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .slide-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: var(--bg2);
-    }
-
-    .slide-placeholder .ph-label {
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .slide-placeholder .ph-num {
-      font-family: var(--serif);
-      font-size: 48px;
-      color: var(--rule);
-      line-height: 1;
-    }
-
-    .slide-placeholder .ph-title {
-      font-size: 13px;
-      color: #3a3a36;
-      max-width: 300px;
-      text-align: center;
-    }
-
-    .slider-controls {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px;
-      border-top: 1px solid var(--rule);
-    }
-
-    .slider-dots {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .dot {
-      width: 20px;
-      height: 2px;
-      background: var(--rule);
-      cursor: pointer;
-      transition: background 0.2s, width 0.2s;
-    }
-
-    .dot.active {
-      background: var(--yellow);
-      width: 32px;
-    }
-
-    .slider-btns {
-      display: flex;
-      gap: 8px;
-    }
-
-    .slider-btn {
-      width: 32px;
-      height: 32px;
-      border: 1px solid var(--rule);
-      background: none;
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: border-color 0.2s, color 0.2s;
-      font-family: var(--sans);
-    }
-
-    .slider-btn:hover {
-      border-color: var(--yellow);
-      color: var(--yellow);
-    }
-
-    .slide-counter {
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-    }
-
-    /* OUTPUTS */
-    .outputs-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-      margin-top: 48px;
-    }
-
-    .output-item {
-      background: var(--bg);
-      padding: 34px 28px;
-    }
-
-    .output-item h3 {
-      font-family: var(--serif);
-      font-size: 18px;
-      font-weight: 400;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .output-item p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* CONTACT */
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 96px;
-      align-items: start;
-    }
-
-    .contact-left h2 {
-      font-family: var(--serif);
-      font-size: clamp(28px, 3.5vw, 48px);
-      font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: 28px;
-    }
-
-    .contact-left p {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 32px;
-      max-width: 420px;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .contact-links a {
-      font-size: 15px;
-      color: var(--text);
-      text-decoration: none;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--rule);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: color 0.2s;
-    }
-
-    .contact-links a:first-child {
-      border-top: 1px solid var(--rule);
-    }
-
-    .contact-links a:hover {
-      color: var(--yellow);
-    }
-
-    .contact-links a span {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .clients-list {
-      padding-top: 8px;
-    }
-
-    .clients-list h3 {
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      margin-bottom: 20px;
-      border-top: 1px solid var(--rule);
-      padding-top: 16px;
-    }
-
-    .clients-list ul {
-      list-style: none;
-      columns: 2;
-      gap: 0;
-    }
-
-    .clients-list ul li {
-      font-size: 14px;
-      color: var(--muted);
-      padding: 6px 0;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 32px 48px;
-      border-top: 1px solid var(--rule);
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: center;
-    }
-
-    footer .logo {
-      font-size: 14px;
-    }
-
-    footer .footer-mid {
-      text-align: center;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    footer .footer-right {
-      text-align: right;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .service-item p,
-    .case-studies-intro p,
-    .output-item p,
-    .cs-descriptor,
-    .hero-sub {
-      font-size: 16px;
-    }
-
-    .pdf-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 28px;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 0.01em;
-      transition: color 0.2s;
-    }
-
-    .pdf-link-icon {
-      width: 34px;
-      height: 34px;
-      border: 1px solid var(--red);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-size: 24px;
-      line-height: 1;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .pdf-link:hover {
-      color: var(--red);
-    }
-
-    .pdf-link:hover .pdf-link-icon {
-      background: var(--red);
-      color: var(--bg);
-    }
-
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      nav {
-        padding: 16px 24px;
-      }
-
-      nav .nav-mid {
-        display: none;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 100px 24px 64px;
-        min-height: auto;
-      }
-
-      .hero-wave {
-        width: 100%;
-        opacity: 0.3;
-        top: 50%;
-      }
-
-      .section-header {
-        grid-template-columns: 1fr;
-        padding: 0 24px;
-        gap: 16px;
-      }
-
-      section {
-        padding: 64px 24px;
-      }
-
-      .about-body {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .about-services {
-        grid-column: 1;
-        grid-template-columns: 1fr;
-      }
-
-      .about-right {
-        padding-left: 0;
-        border-left: none;
-        border-top: 1px solid var(--rule);
-        padding-top: 32px;
-      }
-
-      .case-study-meta {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-
-      .cs-tags {
-        display: none;
-      }
-
-      .outputs-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .contact-inner {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      footer {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-      }
-
-      footer .footer-mid {
-        display: none;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 44px;
-      }
-
-      .outputs-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .case-study-meta {
-        grid-template-columns: 1fr;
-      }
-
-      .cs-link {
-        text-align: left;
-      }
-    }
-
-    /* ANIMATIONS */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0e0c;
+    --bg2: #141412;
+    --text: #f0ede6;
+    --muted: #7a7870;
+    --rule: #2a2a26;
+    --yellow: #FFAA19;
+    --red: #e8322a;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 14px 48px;
+    align-items: center;
+  }
+
+  .logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .wordmark { display: block; width: 160px; height: auto; }
+
+  nav .nav-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 18px;
+  }
+
+  nav .nav-right a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  nav .nav-right a:hover { color: var(--red); }
+
+  /* HERO */
+  .hero {
+    min-height: 85vh;
+    padding: 120px 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-text { position: relative; z-index: 2; }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 400;
+    line-height: 1.0;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+
+  .hero-sub { font-size: 16px; color: var(--muted); letter-spacing: 0.01em; }
+
+  .hero-wave {
+    position: absolute;
+    top: 0; right: -5%;
+    width: 70%; height: 100%;
+    z-index: 1; opacity: 0.9;
+  }
+
+  .red-stop { color: var(--red); }
+
+  /* SECTION HEADER BAR */
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    padding: 0 48px;
+    margin-bottom: 64px;
+  }
+
+  .section-header-col {
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+  }
+
+  .section-header-col .label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 400;
+    line-height: 1.08;
+    color: var(--text);
+    margin: 0;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 96px 48px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ABOUT */
+  .about-headline {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 64px;
+    max-width: 900px;
+  }
+
+  .about-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+
+  .about-right {
+    padding-left: 48px;
+    border-left: 1px solid var(--rule);
+  }
+
+  .about-right p {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.8vw, 22px);
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .about-services {
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+  }
+
+  .service-item { padding-bottom: 40px; margin-bottom: 8px; }
+
+  .service-item h3 {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2vw, 28px);
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .service-item h3::before {
+    content: '›';
+    color: var(--red);
+    margin-right: 6px;
+  }
+
+  .service-item p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 320px;
+  }
+
+  .service-item .service-rule {
+    width: 32px; height: 2px;
+    background: var(--red);
+    margin-top: 20px;
+  }
+
+  .pdf-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .pdf-link-icon {
+    width: 34px; height: 34px;
+    border: 1px solid var(--red);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 1;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .pdf-link:hover { color: var(--red); }
+  .pdf-link:hover .pdf-link-icon { background: var(--red); color: var(--bg); }
+
+  /* CASE STUDIES */
+  .case-studies-intro { margin-bottom: 64px; }
+
+  .case-studies-intro h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .case-studies-intro p { font-size: 16px; color: var(--muted); max-width: 480px; }
+
+  .case-study-block { margin-bottom: 80px; }
+  .case-study-block:last-child { margin-bottom: 0; }
+
+  .case-study-meta {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 32px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+    align-items: end;
+  }
+
+  .cs-name {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .cs-descriptor { font-size: 15px; color: var(--muted); }
+
+  .cs-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .cs-tag {
+    font-size: 11px;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 3px 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .cs-link { text-align: right; }
+
+  .cs-link a {
+    font-size: 14px;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .cs-link a:hover { color: var(--red); }
+
+  /* SLIDER */
+  .slider-wrap {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg2);
+    border: 1px solid var(--rule);
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .slider-dots { display: flex; gap: 8px; align-items: center; }
+
+  .dot {
+    width: 20px; height: 2px;
+    background: var(--rule);
+    cursor: pointer;
+    transition: background 0.2s, width 0.2s;
+  }
+
+  .dot.active { background: var(--yellow); width: 32px; }
+
+  .slider-btns { display: flex; gap: 8px; }
+
+  .slider-btn {
+    width: 32px; height: 32px;
+    border: 1px solid var(--rule);
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, color 0.2s;
+    font-family: var(--sans);
+  }
+
+  .slider-btn:hover { border-color: var(--yellow); color: var(--yellow); }
+
+  .slide-counter { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+
+  /* OUTPUTS */
+  .outputs-header { max-width: 720px; margin-bottom: 48px; }
+
+  .outputs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .output-item { background: var(--bg); padding: 34px 28px; }
+
+  .output-item h3 {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .output-item p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ── ENGAGEMENTS SECTION ── */
+  .engagements-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: end;
+    margin-bottom: 56px;
+  }
+
+  .engagements-intro h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .engagements-intro p {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 400px;
+    align-self: end;
+  }
+
+  .engagements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .engagement-card {
+    background: var(--bg);
+    padding: 32px 28px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: background 0.25s;
+  }
+
+  .engagement-card:hover { background: var(--bg2); }
+
+  .engagement-sector {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+
+  .engagement-title {
+    font-family: var(--serif);
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .engagement-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .engagement-rule {
+    width: 24px; height: 1px;
+    background: var(--rule);
+    margin-top: 24px;
+    transition: background 0.25s, width 0.25s;
+  }
+
+  .engagement-card:hover .engagement-rule {
+    background: var(--red);
+    width: 40px;
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 96px;
+    align-items: start;
+  }
+
+  .contact-left h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+
+  .contact-left p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    max-width: 420px;
+  }
+
+  .contact-links { display: flex; flex-direction: column; }
+
+  .contact-links a {
+    font-size: 15px;
+    color: var(--text);
+    text-decoration: none;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s;
+  }
+
+  .contact-links a:first-child { border-top: 1px solid var(--rule); }
+  .contact-links a:hover { color: var(--yellow); }
+  .contact-links a span { color: var(--muted); font-size: 13px; }
+
+  .clients-list { padding-top: 8px; }
+
+  .clients-list h3 {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 20px;
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+  }
+
+  .clients-list ul { list-style: none; columns: 2; }
+
+  .clients-list ul li {
+    font-size: 14px;
+    color: var(--muted);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 48px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+  }
+
+  footer .logo { font-size: 14px; }
+  footer .footer-mid { text-align: center; font-size: 12px; color: var(--muted); }
+  footer .footer-right { text-align: right; font-size: 12px; color: var(--muted); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 64px; min-height: auto; }
+    .hero-wave { width: 100%; opacity: 0.3; top: 50%; }
+    .section-header { grid-template-columns: 1fr; padding: 0 24px; gap: 16px; }
+    section { padding: 64px 24px; }
+    .about-body { grid-template-columns: 1fr; gap: 48px; }
+    .about-services { grid-column: 1; grid-template-columns: 1fr; }
+    .about-right { padding-left: 0; border-left: none; border-top: 1px solid var(--rule); padding-top: 32px; }
+    .case-study-meta { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .cs-tags { display: none; }
+    .outputs-grid { grid-template-columns: 1fr 1fr; }
+    .engagements-intro { grid-template-columns: 1fr; gap: 16px; }
+    .engagements-grid { grid-template-columns: 1fr 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    footer { grid-template-columns: 1fr 1fr; gap: 8px; }
+    footer .footer-mid { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 44px; }
+    .outputs-grid { grid-template-columns: 1fr; }
+    .engagements-grid { grid-template-columns: 1fr; }
+    .case-study-meta { grid-template-columns: 1fr; }
+    .cs-link { text-align: left; }
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
 </head>
-
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-left">
-      <a href="#top" class="logo-link" aria-label="Mindfizz home">
-        <img src="img/brand/mindfizz-wordmark.png" alt="Mindfizz" class="wordmark">
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="#top" class="logo-link" aria-label="Mindfizz home">
+      <img src="img/brand/mindfizz-wordmark.png" alt="Mindfizz" class="wordmark">
+    </a>
+  </div>
+  <div class="nav-right">
+    <a href="#about">What we do</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="border-top: none; padding-top: 120px;">
+  <div class="hero-text">
+    <h1>Visual<br>sense&#8209;making<span class="red-stop">.</span></h1>
+    <p class="hero-sub">We turn ideas, evidence and insight into clear presentations, visual reports and decision tools.</p>
+  </div>
+
+
+</section>
+
+<!-- WHAT WE DO -->
+<section id="about">
+  <p class="about-headline fade-in">We help teams turn what they know into communication that others can understand and use.</p>
+
+  <div class="about-body fade-in">
+    <div class="about-services">
+      <div class="service-item">
+        <h3>Purpose and audience</h3>
+        <p>We define what the communication needs to do, who it is for and what form it should take.</p>
+        <div class="service-rule"></div>
+      </div>
+      <div class="service-item">
+        <h3>Structure and flow</h3>
+        <p>We organise the content and plan the sequence of your presentation, report or resource.</p>
+        <div class="service-rule"></div>
+      </div>
+      <div class="service-item">
+        <h3>Message and hierarchy</h3>
+        <p>We identify what matters most and create a clear order of information.</p>
+        <div class="service-rule"></div>
+      </div>
+      <div class="service-item">
+        <h3>Visual explanation</h3>
+        <p>We create diagrams, charts, maps, timelines, logic models and bespoke graphics that make information easier to understand.</p>
+        <div class="service-rule"></div>
+      </div>
+    </div>
+    <div class="about-right">
+      <p>See examples of how we structure information, design visuals and create decision-ready materials.</p>
+      <a href="img/pdf/visual_sense_making.pdf" class="pdf-link" target="_blank" rel="noopener">
+        <span class="pdf-link-icon">›</span>
+        <span>Download our PDF portfolio</span>
       </a>
     </div>
+  </div>
+</section>
 
-    <div class="nav-right">
-      <a href="#about">What we do</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="case-studies-intro fade-in">
+    <h2>Selected work</h2>
+    <p>Examples of how we turn unclear or unstructured content into presentations, visual reports and decision tools.</p>
+  </div>
 
-  <!-- HERO -->
-  <section class="hero" style="border-top: none; padding-top: 120px;">
-    <div class="hero-text">
-      <h1>Visual<br>sense&#8209;making<span class="red-stop">.</span></h1>
-      <p class="hero-sub">
-        We turn ideas, evidence and insight into clear presentations, visual reports and decision tools.
-      </p>
-    </div>
-  </section>
-
-  <!-- WHAT WE DO -->
-  <section id="about">
-
-    <p class="about-headline fade-in">We help teams turn what they know into communication that others can understand and use.</p>
-
-    <div class="about-body fade-in">
-      <div class="about-services">
-        <div class="service-item">
-          <h3>Purpose and audience</h3>
-          <p>We define what the communication needs to do, who it is for and what form it should take.</p>
-          <div class="service-rule"></div>
-        </div>
-        <div class="service-item">
-          <h3>Structure and flow</h3>
-          <p>We organise the content and plan the sequence of your presentation, report or resource.</p>
-          <div class="service-rule"></div>
-        </div>
-        <div class="service-item">
-          <h3>Message and hierarchy</h3>
-          <p>We identify what matters most and create a clear order of information.</p>
-          <div class="service-rule"></div>
-        </div>
-        <div class="service-item">
-          <h3>Visual explanation</h3>
-          <p>We create diagrams, charts, maps, timelines, logic models and bespoke graphics that make information easier to understand.</p>
-          <div class="service-rule"></div>
-        </div>
+  <!-- LINEA -->
+  <div class="case-study-block fade-in">
+    <div class="case-study-meta">
+      <div>
+        <div class="cs-name">LINEA</div>
+        <div class="cs-descriptor" style="margin-top:6px;">Turning a service crisis into an executive visual report. Systems thinking tools adapted into a clear report for senior decision-makers.</div>
       </div>
-      <div class="about-right">
-        <p>
-          See examples of how we structure information, design visuals and create decision-ready materials.
-        </p>
-
-        <a href="img/pdf/visual_sense_making.pdf" class="pdf-link" target="_blank" rel="noopener">
-          <span class="pdf-link-icon">›</span>
-          <span>Download our PDF portfolio</span>
-        </a>
+      <div class="cs-tags">
+        <span class="cs-tag">Systems mapping</span>
+        <span class="cs-tag">Causal loops</span>
+        <span class="cs-tag">Timeline design</span>
+        <span class="cs-tag">Decision mapping</span>
+      </div>
+      <div class="cs-link">
+        <a href="img/pdf/linea.pdf" target="_blank">Download case study (PDF)</a>
       </div>
     </div>
-  </section>
-
-  <!-- CASE STUDIES -->
-  <section id="work">
-    <div class="case-studies-intro fade-in">
-      <h2>Selected work</h2>
-      <p>Examples of how we turn unclear or unstructured content into presentations, visual reports and decision tools.</p>
-    </div>
-
-    <!-- LINEA -->
-    <div class="case-study-block fade-in">
-      <div class="case-study-meta">
-        <div>
-          <div class="cs-name">LINEA</div>
-          <div class="cs-descriptor" style="margin-top:6px;">Turning a service crisis into an executive visual report. Systems thinking tools adapted into a clear report for senior decision-makers.</div>
-        </div>
-        <div class="cs-tags">
-          <span class="cs-tag">Systems mapping</span>
-          <span class="cs-tag">Causal loops</span>
-          <span class="cs-tag">Timeline design</span>
-          <span class="cs-tag">Decision mapping</span>
-        </div>
-        <div class="cs-link">
-          <a href="img/pdf/linea.pdf" target="_blank">Download case study (PDF)</a>
-
-        </div>
+    <div class="slider-wrap" data-slider="linea">
+      <div class="slider-track">
+        <div class="slide"><img src="img/Linea/linea_slide1.png" width="1920" height="1080" loading="lazy" alt="LINEA case study title slide"></div>
+        <div class="slide"><img src="img/Linea/linea_slide2.png" width="1920" height="1080" loading="lazy" alt="Understanding the system through visual artefacts"></div>
+        <div class="slide"><img src="img/Linea/linea_slide3.png" width="1920" height="1080" loading="lazy" alt="Context: Understanding the scenario"></div>
+        <div class="slide"><img src="img/Linea/linea_slide4.png" width="1920" height="1080" loading="lazy" alt="Performance: Tracking CSAT over time"></div>
+        <div class="slide"><img src="img/Linea/linea_slide5.png" width="1920" height="1080" loading="lazy" alt="Contextual weave chart"></div>
+        <div class="slide"><img src="img/Linea/linea_slide6.png" width="1920" height="1080" loading="lazy" alt="Decision and Action Timeline"></div>
+        <div class="slide"><img src="img/Linea/linea_slide7.png" width="1920" height="1080" loading="lazy" alt="System Evidence table"></div>
+        <div class="slide"><img src="img/Linea/linea_slide8.png" width="1920" height="1080" loading="lazy" alt="Causal loop diagram"></div>
       </div>
-
-      <div class="slider-wrap" data-slider="linea">
-        <div class="slider-track">
-          <div class="slide">
-            <img src="img/Linea/linea_slide1.png" width="1920" height="1080" loading="lazy"
-              alt="LINEA Case study title slide. Understanding a systemic crisis">
-          </div>
-          <div class="slide">
-            <img src="img/Linea/linea_slide2.png" width="1920" height="1080" loading="lazy" alt="Linea systems presentation: Understanding the system through visual artefacts">
-          </div>
-          <div class="slide">
-            <img src="img/Linea/linea_slide3.png" width="1920" height="1080" loading="lazy" alt="Linea systems presentation: Context: Understanding the scenario">
-          </div>
-          <div class="slide">
-            <img src="img/Linea/linea_slide4.png" width="1920" height="1080" loading="lazy"
-              alt="Linea systems presentation: Performance: Tracking CSAT over time - a behaviour over time chart">
-          </div>
-          <div class="slide">
-            <img src="img/Linea/linea_slide5.png" width="1920" height="1080" loading="lazy" alt="Linea systems presentation: Contextual weave chart (Pressures and accumulation)">
-          </div>
-          <div class="slide">
-            <img src="img/Linea/linea_slide6.png" width="1920" height="1080" loading="lazy" alt="Linea systems presentation: Decision and Action Timeline">
-          </div>
-          <div class="slide">
-            <img src="img/Linea/linea_slide7.png" width="1920" height="1080" loading="lazy" alt="Linea systems presentation: System Evidence table">
-          </div>
-          <div class="slide">
-            <img src="img/Linea/linea_slide8.png" width="1920" height="1080" loading="lazy" alt="Linea systems presentation: Causal loop diagram">
-          </div>
-
-
-
-        </div>
-        <div class="slider-controls">
-          <div class="slider-dots"></div>
-          <div class="slide-counter"></div>
-          <div class="slider-btns">
-            <button class="slider-btn prev" aria-label="Previous slide">←</button>
-            <button class="slider-btn next" aria-label="Next slide">→</button>
-          </div>
+      <div class="slider-controls">
+        <div class="slider-dots"></div>
+        <div class="slide-counter"></div>
+        <div class="slider-btns">
+          <button class="slider-btn prev" aria-label="Previous slide">←</button>
+          <button class="slider-btn next" aria-label="Next slide">→</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- THRESHOLD -->
-    <div class="case-study-block fade-in">
-      <div class="case-study-meta">
-        <div>
-          <div class="cs-name">Threshold</div>
-          <div class="cs-descriptor" style="margin-top:6px;">Structuring a housing policy argument as a visual report</div>
-        </div>
-        <div class="cs-tags">
-          <span class="cs-tag">Process modelling</span>
-          <span class="cs-tag">Policy communication</span>
-          <span class="cs-tag">Value-flow diagrams</span>
-          <span class="cs-tag">Strategic narratives</span>
-        </div>
-        <div class="cs-link">
-          <a href="img/pdf/threshold.pdf" target="_blank">Download case study (PDF)</a>
-        </div>
+  <!-- THRESHOLD -->
+  <div class="case-study-block fade-in">
+    <div class="case-study-meta">
+      <div>
+        <div class="cs-name">Threshold</div>
+        <div class="cs-descriptor" style="margin-top:6px;">Structuring a housing policy argument as a visual report</div>
       </div>
-
-      <div class="slider-wrap" data-slider="threshold">
-        <div class="slider-track">
-
-          <div class="slide">
-            <img src="img/Threshold/threshold_slide1.png" width="1920" height="1080" loading="lazy" alt="Threshold presentation: The Housing Failure: Why Britain builds the wrong homes, in 
-the wrong places, for the wrong people">
-          </div>
-
-          <div class="slide">
-            <img src="img/Threshold/threshold_slide2.png" width="1920" height="1080" loading="lazy"
-              alt="UK HOUSING presentation: The problem we need to solve. The incentive is to wait, not to build.">
-          </div>
-
-          <div class="slide">
-            <img src="img/Threshold/threshold_slide3.png" width="1920" height="1080" loading="lazy"
-              alt="UK HOUSING presentation: Quote slide: Dame Kate Barker Review of Housing Supply, 2004">
-          </div>
-
-          <div class="slide">
-            <img src="img/Threshold/threshold_slide4.png" width="1920" height="1080" loading="lazy"
-              alt="UK Housing presentation: 4.2 million. households estimated to need social housing">
-          </div>
-
-          <div class="slide">
-            <img src="img/Threshold/threshold_slide5.png" width="1920" height="1080" loading="lazy"
-              alt="UK Housing presentation: The three things that would change everything.">
-          </div>
-
-          <div class="slide">
-            <img src="img/Threshold/threshold_slide6.png" width="1920" height="1080" loading="lazy" alt="UK Housing presentation: Who is affected and where.">
-          </div>
-
-          <div class="slide">
-            <img src="img/Threshold/threshold_slide7.png" width="1920" height="1080" loading="lazy"
-              alt="UK housing presentation: Permissions granted vs home completed">
-          </div>
-
-          <div class="slide">
-            <img src="img/Threshold/threshold_slide8.png" width="1920" height="1080" loading="lazy"
-              alt="UK Housing presentation: An alternative development method.">
-          </div>
-
-          <div class="slide">
-            <img src="img/Threshold/threshold_slide9.png" width="1920" height="1080" loading="lazy" alt="UK Housing presentation: back cover slide">
-          </div>
-
-
-        </div>
-        <div class="slider-controls">
-          <div class="slider-dots"></div>
-          <div class="slide-counter"></div>
-          <div class="slider-btns">
-            <button class="slider-btn prev" aria-label="Previous slide">←</button>
-            <button class="slider-btn next" aria-label="Next slide">→</button>
-          </div>
+      <div class="cs-tags">
+        <span class="cs-tag">Process modelling</span>
+        <span class="cs-tag">Policy communication</span>
+        <span class="cs-tag">Value-flow diagrams</span>
+        <span class="cs-tag">Strategic narratives</span>
+      </div>
+      <div class="cs-link">
+        <a href="img/pdf/threshold.pdf" target="_blank">Download case study (PDF)</a>
+      </div>
+    </div>
+    <div class="slider-wrap" data-slider="threshold">
+      <div class="slider-track">
+        <div class="slide"><img src="img/Threshold/threshold_slide1.png" width="1920" height="1080" loading="lazy" alt="The Housing Failure title slide"></div>
+        <div class="slide"><img src="img/Threshold/threshold_slide2.png" width="1920" height="1080" loading="lazy" alt="The problem we need to solve"></div>
+        <div class="slide"><img src="img/Threshold/threshold_slide3.png" width="1920" height="1080" loading="lazy" alt="Dame Kate Barker quote slide"></div>
+        <div class="slide"><img src="img/Threshold/threshold_slide4.png" width="1920" height="1080" loading="lazy" alt="4.2 million households need social housing"></div>
+        <div class="slide"><img src="img/Threshold/threshold_slide5.png" width="1920" height="1080" loading="lazy" alt="Three things that would change everything"></div>
+        <div class="slide"><img src="img/Threshold/threshold_slide6.png" width="1920" height="1080" loading="lazy" alt="Who is affected and where"></div>
+        <div class="slide"><img src="img/Threshold/threshold_slide7.png" width="1920" height="1080" loading="lazy" alt="Permissions granted vs homes completed"></div>
+        <div class="slide"><img src="img/Threshold/threshold_slide8.png" width="1920" height="1080" loading="lazy" alt="An alternative development model"></div>
+        <div class="slide"><img src="img/Threshold/threshold_slide9.png" width="1920" height="1080" loading="lazy" alt="Back cover slide"></div>
+      </div>
+      <div class="slider-controls">
+        <div class="slider-dots"></div>
+        <div class="slide-counter"></div>
+        <div class="slider-btns">
+          <button class="slider-btn prev" aria-label="Previous slide">←</button>
+          <button class="slider-btn next" aria-label="Next slide">→</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- DAAG -->
-    <div class="case-study-block fade-in">
-      <div class="case-study-meta">
-        <div>
-          <div class="cs-name">Digital Access Advisory Group</div>
-          <div class="cs-descriptor" style="margin-top:6px;">Turning access risks into clear frameworks for discussion and action</div>
-        </div>
-        <div class="cs-tags">
-          <span class="cs-tag">Risk mapping</span>
-          <span class="cs-tag">Decision tools</span>
-          <span class="cs-tag">Framework design</span>
-          <span class="cs-tag">Impact communication</span>
-        </div>
-        <div class="cs-link">
-          <a href="img/pdf/daag.pdf" target="_blank">Download case study (PDF)</a>
-        </div>
+  <!-- DAAG -->
+  <div class="case-study-block fade-in">
+    <div class="case-study-meta">
+      <div>
+        <div class="cs-name">Digital Access Advisory Group</div>
+        <div class="cs-descriptor" style="margin-top:6px;">Turning access risks into clear frameworks for discussion and action</div>
       </div>
-
-      <div class="slider-wrap" data-slider="daag">
-        <div class="slider-track">
-
-          <div class="slide">
-            <img src="img/DAAG/daag_slide1.png" width="1920" height="1080" loading="lazy"
-              alt="Digital Access Advisory Group: Case study title slide. Understanding a systemic crisis">
-          </div>
-
-          <div class="slide">
-            <img src="img/DAAG/daag_slide2.png" width="1920" height="1080" loading="lazy" alt="Section slide: Orientation slide.">
-          </div>
-
-          <div class="slide">
-            <img src="img/DAAG/daag_slide3.png" width="1920" height="1080" loading="lazy"
-              alt="Digital Access Advisory Group presentation: Section slide: Access is determined at the design stage — not at delivery.">
-          </div>
-
-          <div class="slide">
-            <img src="img/DAAG/daag_slide4.png" width="1920" height="1080" loading="lazy"
-              alt="Digital Access Advisory Group presentation: Small design assumptions can create large access gaps.">
-          </div>
-
-          <div class="slide">
-            <img src="img/DAAG/daag_slide5.png" width="1920" height="1080" loading="lazy"
-              alt="Digital Access Advisory Group presentation: Risk matrix slide: Not all access risks carry the same weight.">
-          </div>
-
-          <div class="slide">
-            <img src="img/DAAG/daag_slide6.png" width="1920" height="1080" loading="lazy"
-              alt="Digital Access Advisory Group presentation: Where we contribute section break slide">
-          </div>
-
-          <div class="slide">
-            <img src="img/DAAG/daag_slide7.png" width="1920" height="1080" loading="lazy"
-              alt="Digital Access Advisory Group presentation: Programme lifecycle slide: Where we contribute across the programme lifecycle.">
-          </div>
-
-          <div class="slide">
-            <img src="img/DAAG/daag_slide8.png" width="1920" height="1080" loading="lazy"
-              alt="Digital Access Advisory Group presentation: Structural risks can be addressed before implementation.">
-          </div>
-
-          <div class="slide">
-            <img src="img/DAAG/daag_slide9.png" width="1920" height="1080" loading="lazy"
-              alt="Digital Access Advisory Group presentation: Small structural shifts can prevent large access gaps.">
-          </div>
-
-          <div class="slide">
-            <img src="img/DAAG/daag_slide12.png" width="1920" height="1080" loading="lazy"
-              alt="Digital Access Advisory Group presentation: Our work spans multiple national contexts.">
-          </div>
-
-        </div>
-        <div class="slider-controls">
-          <div class="slider-dots"></div>
-          <div class="slide-counter"></div>
-          <div class="slider-btns">
-            <button class="slider-btn prev" aria-label="Previous slide">←</button>
-            <button class="slider-btn next" aria-label="Next slide">→</button>
-          </div>
+      <div class="cs-tags">
+        <span class="cs-tag">Risk mapping</span>
+        <span class="cs-tag">Decision tools</span>
+        <span class="cs-tag">Framework design</span>
+        <span class="cs-tag">Impact communication</span>
+      </div>
+      <div class="cs-link">
+        <a href="img/pdf/daag.pdf" target="_blank">Download case study (PDF)</a>
+      </div>
+    </div>
+    <div class="slider-wrap" data-slider="daag">
+      <div class="slider-track">
+        <div class="slide"><img src="img/DAAG/daag_slide1.png" width="1920" height="1080" loading="lazy" alt="DAAG case study title slide"></div>
+        <div class="slide"><img src="img/DAAG/daag_slide2.png" width="1920" height="1080" loading="lazy" alt="Orientation slide"></div>
+        <div class="slide"><img src="img/DAAG/daag_slide3.png" width="1920" height="1080" loading="lazy" alt="Access is determined at the design stage"></div>
+        <div class="slide"><img src="img/DAAG/daag_slide4.png" width="1920" height="1080" loading="lazy" alt="Small design assumptions can create large access gaps"></div>
+        <div class="slide"><img src="img/DAAG/daag_slide5.png" width="1920" height="1080" loading="lazy" alt="Risk matrix: Not all access risks carry the same weight"></div>
+        <div class="slide"><img src="img/DAAG/daag_slide6.png" width="1920" height="1080" loading="lazy" alt="Where we contribute section break"></div>
+        <div class="slide"><img src="img/DAAG/daag_slide7.png" width="1920" height="1080" loading="lazy" alt="Programme lifecycle slide"></div>
+        <div class="slide"><img src="img/DAAG/daag_slide8.png" width="1920" height="1080" loading="lazy" alt="Structural risks can be addressed before implementation"></div>
+        <div class="slide"><img src="img/DAAG/daag_slide9.png" width="1920" height="1080" loading="lazy" alt="Small structural shifts can prevent large access gaps"></div>
+        <div class="slide"><img src="img/DAAG/daag_slide12.png" width="1920" height="1080" loading="lazy" alt="Our work spans multiple national contexts"></div>
+      </div>
+      <div class="slider-controls">
+        <div class="slider-dots"></div>
+        <div class="slide-counter"></div>
+        <div class="slider-btns">
+          <button class="slider-btn prev" aria-label="Previous slide">←</button>
+          <button class="slider-btn next" aria-label="Next slide">→</button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- OUTPUTS -->
-  <section id="outputs">
-    <div class="outputs-header fade-in">
-      <h2 class="section-heading">We shape the output around what you need to explain.</h2>
+<!-- OUTPUTS -->
+<section id="outputs">
+  <div class="outputs-header fade-in">
+    <h2 class="section-heading">We shape the output around what you need to explain.</h2>
+  </div>
+  <div class="outputs-grid fade-in">
+    <div class="output-item">
+      <h3>Presentations and briefings</h3>
+      <p>Board and leadership presentations. Policy, research, funder and partner briefings.</p>
+    </div>
+    <div class="output-item">
+      <h3>Visual reports and summaries</h3>
+      <p>Impact reports. Evaluation reports. Data-led reports. Visual summaries and explainers.</p>
+    </div>
+    <div class="output-item">
+      <h3>Visual tools and frameworks</h3>
+      <p>Process diagrams. Logic models. Systems maps. Decision maps. Causal loops.</p>
+    </div>
+    <div class="output-item">
+      <h3>Digital resources</h3>
+      <p>Interactive resources. Animated explainers. Digital documents.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENTS -->
+<section id="engagements">
+  <div class="engagements-intro fade-in">
+    <h2>Examples of how we have helped</h2>
+    <p>A selection of projects where we were brought in early to shape the structure and narrative.</p>
+  </div>
+
+  <div class="engagements-grid fade-in">
+
+    <div class="engagement-card">
+      <div class="engagement-sector">Charity / Third sector</div>
+      <div class="engagement-title">Board-level transformation plan</div>
+      <p class="engagement-desc">Turned a few pages of consultant notes into a structured review and actionable transformation plan for the board of a major UK charity.</p>
+      <div class="engagement-rule"></div>
     </div>
 
-    <div class="outputs-grid fade-in">
-      <div class="output-item">
-        <h3>Presentations and briefings</h3>
-        <p>Board and leadership presentations. Policy, research, funder and partner briefings.</p>
-      </div>
-      <div class="output-item">
-        <h3>Visual reports and summaries</h3>
-        <p>Impact reports. Evaluation reports. Data-led reports. Visual summaries and explainers.</p>
-      </div>
-      <div class="output-item">
-        <h3>Visual tools and frameworks</h3>
-        <p>Process diagrams. Logic models. Systems maps. Decision maps. Causal loops.</p>
-      </div>
-      <div class="output-item">
-        <h3>Digital resources</h3>
-        <p>Interactive resources. Animated explainers. Digital documents.</p>
+    <div class="engagement-card">
+      <div class="engagement-sector">Energy / Technical</div>
+      <div class="engagement-title">Technical pitch for a global energy audience</div>
+      <p class="engagement-desc">Reshaped a highly technical presentation about seabed data analysis into a clear value story for senior decision-makers, while retaining enough technical depth for specialists in the room.</p>
+      <div class="engagement-rule"></div>
+    </div>
+
+    <div class="engagement-card">
+      <div class="engagement-sector">Legal / Professional services</div>
+      <div class="engagement-title">Transformation presentation</div>
+      <p class="engagement-desc">Helped structure and present an transformation programme for equity partners at a global law firm.</p>
+      <div class="engagement-rule"></div>
+    </div>
+
+    <div class="engagement-card">
+      <div class="engagement-sector">Aviation / Infrastructure</div>
+      <div class="engagement-title">Airport systems upgrade presentation</div>
+      <p class="engagement-desc">Created a successful presentation for a complex air traffic control systems upgrade at a UK airport.</p>
+      <div class="engagement-rule"></div>
+    </div>
+
+    <div class="engagement-card">
+      <div class="engagement-sector">Energy / Government</div>
+      <div class="engagement-title">Sector workforce strategy document</div>
+      <p class="engagement-desc">Produced a UK workforce strategy document for a government-linked energy and utilities audience.</p>
+      <div class="engagement-rule"></div>
+    </div>
+
+    <div class="engagement-card">
+      <div class="engagement-sector">Education / Devolved government</div>
+      <div class="engagement-title">Assessment data reporting</div>
+      <p class="engagement-desc">Designed and maintained a suite of stakeholder reports presenting standardised assessment data for a devolved government education programme.</p>
+      <div class="engagement-rule"></div>
+    </div>
+
+
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner fade-in">
+    <div class="contact-left">
+      <h2>Bring us in before the presentation becomes a last-minute design problem.</h2>
+      <p>We structure the story, design the visuals and produce the final presentation, report or resource. We can work from notes, drafts, data, interviews or existing documents.</p>
+      <div class="contact-links">
+        <a href="tel:+441962840362">Telephone <span>(+44) 1962 840362</span></a>
+        <a href="mailto:studio@mindfizz.com">Email <span>studio@mindfizz.com</span></a>
+        <a href="https://mindfizz.com" target="_blank">Web <span>mindfizz.com</span></a>
       </div>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-inner fade-in">
-      <div class="contact-left">
-        <h2>Bring us in before the presentation becomes a last-minute design problem.</h2>
-        <p>We structure the story, design the visuals and produce the final presentation, report or resource. We can work from notes, drafts, data, interviews or existing documents.</p>
-        <div class="contact-links">
-          <a href="tel:+441962840362">
-            Telephone
-            <span>(+44) 1962 840362</span>
-          </a>
-          <a href="mailto:studio@mindfizz.com">
-            Email
-            <span>studio@mindfizz.com</span>
-          </a>
-          <a href="https://mindfizz.com" target="_blank">
-            Web
-            <span>mindfizz.com</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="clients-list">
-        <h3>Selected clients</h3>
-        <ul>
-          <li>AON</li>
-          <li>BASF</li>
-          <li>Cardinal Health</li>
-          <li>Dentons</li>
-          <li>FAIST</li>
-          <li>Nationwide</li>
-          <li>NHS</li>
-          <li>John Lewis</li>
-          <li>Summix</li>
-          <li>Selex</li>
-        </ul>
-      </div>
+    <div class="clients-list">
+      <h3>Selected clients</h3>
+      <ul>
+        <li>AON</li>
+        <li>BASF</li>
+        <li>Cardinal Health</li>
+        <li>Dentons</li>
+        <li>FAIST</li>
+        <li>Nationwide</li>
+        <li>NHS</li>
+        <li>John Lewis</li>
+        <li>Summix</li>
+        <li>Selex</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div><span class="logo">mindfizz<span>.</span></span></div>
-    <div class="footer-mid">Clarity for better decisions.</div>
-    <div class="footer-right">© 2026 mindfizz</div>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <div><span class="logo">mindfizz<span style="color:var(--red)">.</span></span></div>
+  <div class="footer-mid">Clarity for better decisions.</div>
+  <div class="footer-right">© 2026 mindfizz</div>
+</footer>
 
-  <script>
-    // SLIDERS
-    document.querySelectorAll('.slider-wrap').forEach(wrap => {
-      const track = wrap.querySelector('.slider-track');
-      const slides = wrap.querySelectorAll('.slide');
-      const dotsEl = wrap.querySelector('.slider-dots');
-      const counter = wrap.querySelector('.slide-counter');
-      const prev = wrap.querySelector('.prev');
-      const next = wrap.querySelector('.next');
-      let current = 0;
-      const total = slides.length;
+<script>
+  // SLIDERS
+  document.querySelectorAll('.slider-wrap').forEach(wrap => {
+    const track = wrap.querySelector('.slider-track');
+    const slides = wrap.querySelectorAll('.slide');
+    const dotsEl = wrap.querySelector('.slider-dots');
+    const counter = wrap.querySelector('.slide-counter');
+    const prev = wrap.querySelector('.prev');
+    const next = wrap.querySelector('.next');
+    let current = 0;
+    const total = slides.length;
 
-      // Build dots
-      slides.forEach((_, i) => {
-        const d = document.createElement('div');
-        d.className = 'dot' + (i === 0 ? ' active' : '');
-        d.addEventListener('click', () => goTo(i));
-        dotsEl.appendChild(d);
-      });
-
-      function goTo(n) {
-        current = (n + total) % total;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        wrap.querySelectorAll('.dot').forEach((d, i) => {
-          d.classList.toggle('active', i === current);
-        });
-        counter.textContent = `${current + 1} / ${total}`;
-      }
-
-      prev.addEventListener('click', () => goTo(current - 1));
-      next.addEventListener('click', () => goTo(current + 1));
-
-      // Keyboard
-      wrap.addEventListener('keydown', e => {
-        if (e.key === 'ArrowLeft') goTo(current - 1);
-        if (e.key === 'ArrowRight') goTo(current + 1);
-      });
-
-      // Touch swipe
-      let startX = 0;
-      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener('touchend', e => {
-        const dx = e.changedTouches[0].clientX - startX;
-        if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
-      });
-
-      goTo(0);
+    slides.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(d);
     });
 
-    // FADE IN ON SCROLL
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    function goTo(n) {
+      current = (n + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      wrap.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+      counter.textContent = `${current + 1} / ${total}`;
+    }
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
+    prev.addEventListener('click', () => goTo(current - 1));
+    next.addEventListener('click', () => goTo(current + 1));
+
+    wrap.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+    });
+
+    goTo(0);
+  });
+
+  // FADE IN
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
-
 </html>
