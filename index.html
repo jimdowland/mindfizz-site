@@ -932,25 +932,47 @@
   perlin.init();
 
   // --- ARROW BACKDROP ENGINE ---
+  // --- ARROW BACKDROP ENGINE ---
   const canvas = document.getElementById('hero-canvas');
   const ctx = canvas.getContext('2d');
 
   let width, height;
-  const spacing = 80;      
-  const arrowLength = 55;  
+  
+  // 1. Declare these variables globally without hardcoded values
+  let spacing;      
+  let arrowLength;  
+  let headSize;
+
   let time = 0;            
-
   const timeSpeed = 0.002;      
-  const scaleSpeed = 0.015;     
+  const scaleSpeed = 0.007;     
 
-  const minNoiseScale = 0.0008; 
-  const maxNoiseScale = 0.010;  
+  const minNoiseScale = 0.0015; 
+  const maxNoiseScale = 0.015;  
 
   function resize() {
-      // Find exact wrapper size safely
       const parent = canvas.parentElement;
       width = canvas.width = parent.clientWidth;
       height = canvas.height = parent.clientHeight;
+
+      // 2. Dynamically calculate sizes based on screen width
+      // This ensures a beautiful balance between mobile and desktop sizes.
+      if (width < 600) {
+          // Mobile settings: smaller arrows packed slightly tighter
+          spacing = 30;
+          arrowLength = 18;
+          headSize = 5;
+      } else if (width < 1200) {
+          // Tablet settings: mid-range sizes
+          spacing = 40;
+          arrowLength = 26;
+          headSize = 8;
+      } else {
+          // Desktop settings: larger, spacious arrows
+          spacing = 60;
+          arrowLength = 40;
+          headSize = 10; // Scaled up proportionally so the arrowhead matches the long stem
+      }
   }
   window.addEventListener('resize', resize);
   resize();
@@ -962,22 +984,19 @@
 
       ctx.beginPath();
       
-      // Stem
+      // Stem (uses dynamic arrowLength)
       ctx.moveTo(-arrowLength / 2, 0);
       ctx.lineTo(arrowLength / 2, 0);
 
-      // Open Arrowhead parameters 
-      const headSize = 7; 
+      // Open Arrowhead (uses dynamic headSize)
+      ctx.moveTo(arrowLength / 2, 0);
+      ctx.lineTo(arrowLength / 2 - headSize, -headSize * 0.7); // 0.7 keeps the arrow wings sleek
       
       ctx.moveTo(arrowLength / 2, 0);
-      ctx.lineTo(arrowLength / 2 - headSize, -headSize);
-      
-      ctx.moveTo(arrowLength / 2, 0);
-      ctx.lineTo(arrowLength / 2 - headSize, headSize);
+      ctx.lineTo(arrowLength / 2 - headSize, headSize * 0.7);
 
-      // Color linked smoothly to the design '--muted' token variable
-      ctx.strokeStyle = 'rgba(122, 120, 112, 0.25)'; 
-      ctx.lineWidth = 1.0; 
+      ctx.strokeStyle = 'rgba(122, 120, 112, 0.12)'; 
+      ctx.lineWidth = width < 600 ? 1.2 : 1.8; // Slightly thinner lines on mobile for clarity
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       
@@ -1002,7 +1021,6 @@
       requestAnimationFrame(animateCanvas);
   }
   
-  // Kickstart canvas animation pipeline
   animateCanvas();
 
 
