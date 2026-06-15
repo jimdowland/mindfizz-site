@@ -936,15 +936,15 @@
   const ctx = canvas.getContext('2d');
 
   let width, height;
-  const spacing = 60;      
-  const arrowLength = 32;  
+  const spacing = 80;      
+  const arrowLength = 55;  
   let time = 0;            
 
   const timeSpeed = 0.002;      
   const scaleSpeed = 0.015;     
 
   const minNoiseScale = 0.0008; 
-  const maxNoiseScale = 0.008;  
+  const maxNoiseScale = 0.010;  
 
   function resize() {
       // Find exact wrapper size safely
@@ -976,7 +976,7 @@
       ctx.lineTo(arrowLength / 2 - headSize, headSize);
 
       // Color linked smoothly to the design '--muted' token variable
-      ctx.strokeStyle = 'rgba(122, 120, 112, 0.2)'; 
+      ctx.strokeStyle = 'rgba(122, 120, 112, 0.25)'; 
       ctx.lineWidth = 1.0; 
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
