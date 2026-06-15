@@ -113,7 +113,7 @@
     overflow: hidden;
   }
 
-  .hero-text { position: relative; z-index: 2; }
+  .hero-text { position: relative; z-index: 2; pointer-events: none; }
 
   .hero h1 {
     font-family: var(--serif);
@@ -127,11 +127,14 @@
 
   .hero-sub { font-size: 16px; color: var(--muted); letter-spacing: 0.01em; }
 
-  .hero-wave {
+  /* Interactive Arrow Field Canvas styling */
+  #hero-canvas {
     position: absolute;
-    top: 0; right: -5%;
-    width: 70%; height: 100%;
-    z-index: 1; opacity: 0.9;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
   }
 
   .red-stop { color: var(--red); }
@@ -563,7 +566,6 @@
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .hero { grid-template-columns: 1fr; padding: 100px 24px 64px; min-height: auto; }
-    .hero-wave { width: 100%; opacity: 0.3; top: 50%; }
     .section-header { grid-template-columns: 1fr; padding: 0 24px; gap: 16px; }
     section { padding: 64px 24px; }
     .about-body { grid-template-columns: 1fr; gap: 48px; }
@@ -599,7 +601,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-left">
     <a href="#top" class="logo-link" aria-label="Mindfizz home">
@@ -613,17 +614,15 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" style="border-top: none; padding-top: 120px;">
+  <canvas id="hero-canvas"></canvas>
+  
   <div class="hero-text">
     <h1>Decision-ready presentations and reports<span class="red-stop">.</span></h1>
     <p class="hero-sub">We turn ideas, evidence and insight into clear presentations, visual reports and decision tools.</p>
   </div>
-
-
 </section>
 
-<!-- WHAT WE DO -->
 <section id="about">
   <p class="about-headline fade-in">We help teams turn what they know into communication that others can understand and use.</p>
 
@@ -660,14 +659,12 @@
   </div>
 </section>
 
-<!-- CASE STUDIES -->
 <section id="work">
   <div class="case-studies-intro fade-in">
     <h2>Selected work</h2>
     <p>Examples of how we turn unclear or unstructured content into presentations, visual reports and decision tools.</p>
   </div>
 
-  <!-- LINEA -->
   <div class="case-study-block fade-in">
     <div class="case-study-meta">
       <div>
@@ -706,7 +703,6 @@
     </div>
   </div>
 
-  <!-- THRESHOLD -->
   <div class="case-study-block fade-in">
     <div class="case-study-meta">
       <div>
@@ -746,7 +742,6 @@
     </div>
   </div>
 
-  <!-- DAAG -->
   <div class="case-study-block fade-in">
     <div class="case-study-meta">
       <div>
@@ -788,7 +783,6 @@
   </div>
 </section>
 
-<!-- OUTPUTS -->
 <section id="outputs">
   <div class="outputs-header fade-in">
     <h2 class="section-heading">We shape the output around what you need to explain.</h2>
@@ -813,7 +807,6 @@
   </div>
 </section>
 
-<!-- ENGAGEMENTS -->
 <section id="engagements">
   <div class="engagements-intro fade-in">
     <h2>Examples of how we have helped</h2>
@@ -839,7 +832,7 @@
     <div class="engagement-card">
       <div class="engagement-sector">Legal / Professional services</div>
       <div class="engagement-title">Transformation presentation</div>
-      <p class="engagement-desc">Helped structure and present an transformation programme for equity partners at a global law firm.</p>
+      <p class="engagement-desc">Helped structure and present a transformation programme for equity partners at a global law firm.</p>
       <div class="engagement-rule"></div>
     </div>
 
@@ -853,7 +846,7 @@
     <div class="engagement-card">
       <div class="engagement-sector">Energy / Government</div>
       <div class="engagement-title">Sector workforce strategy document</div>
-      <p class="engagement-desc">Produced a UK workforce strategy document for a government-linked energy and utilities audience.</p>
+      <p class="engagement-desc">Produced a UK workforce strategy document for a government / energy and utilities audience.</p>
       <div class="engagement-rule"></div>
     </div>
 
@@ -864,12 +857,9 @@
       <div class="engagement-rule"></div>
     </div>
 
-
-
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner fade-in">
     <div class="contact-left">
@@ -899,7 +889,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div><span class="logo">mindfizz<span style="color:var(--red)">.</span></span></div>
   <div class="footer-mid">Clarity for better decisions.</div>
@@ -907,7 +896,117 @@
 </footer>
 
 <script>
-  // SLIDERS
+  // --- SIMPLE PERLIN NOISE IMPLEMENTATION ---
+  const perlin = {
+      rand_next: function() { return this.random(); },
+      random: Math.random,
+      permutation: new Array(512),
+      p: new Array(256),
+      init: function() {
+          for (let i = 0; i < 256; i++) this.p[i] = Math.floor(this.random() * 256);
+          for (let i = 0; i < 512; i++) this.permutation[i] = this.p[i & 255];
+      },
+      fade: function(t) { return t * t * t * (t * (t * 6 - 15) + 10); },
+      lerp: function(t, a, b) { return a + t * (b - a); },
+      grad: function(hash, x, y, z) {
+          var h = hash & 15;
+          var u = h < 8 ? x : y, v = h < 4 ? y : h == 12 || h == 14 ? x : z;
+          return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
+      },
+      noise: function(x, y, z) {
+          var X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
+          x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
+          var u = this.fade(x), v = this.fade(y), w = this.fade(z);
+          var A = this.permutation[X] + Y, AA = this.permutation[A] + Z, AB = this.permutation[A + 1] + Z;
+          var B = this.permutation[X + 1] + Y, BA = this.permutation[B] + Z, BB = this.permutation[B + 1] + Z;
+          return this.lerp(w, this.lerp(v, this.lerp(u, this.grad(this.permutation[AA], x, y, z),
+                                                         this.grad(this.permutation[BA], x - 1, y, z)),
+                                         this.lerp(u, this.grad(this.permutation[AB], x, y - 1, z),
+                                                         this.grad(this.permutation[BB], x - 1, y - 1, z))),
+                                 this.lerp(v, this.lerp(u, this.grad(this.permutation[AA + 1], x, y, z - 1),
+                                                         this.grad(this.permutation[BA + 1], x - 1, y, z - 1)),
+                                         this.lerp(u, this.grad(this.permutation[AB + 1], x, y - 1, z - 1),
+                                                         this.grad(this.permutation[BB + 1], x - 1, y - 1, z - 1))));
+      }
+  };
+  perlin.init();
+
+  // --- ARROW BACKDROP ENGINE ---
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+
+  let width, height;
+  const spacing = 60;      
+  const arrowLength = 32;  
+  let time = 0;            
+
+  const timeSpeed = 0.002;      
+  const scaleSpeed = 0.015;     
+
+  const minNoiseScale = 0.0008; 
+  const maxNoiseScale = 0.008;  
+
+  function resize() {
+      // Find exact wrapper size safely
+      const parent = canvas.parentElement;
+      width = canvas.width = parent.clientWidth;
+      height = canvas.height = parent.clientHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function drawArrow(x, y, angle) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+
+      ctx.beginPath();
+      
+      // Stem
+      ctx.moveTo(-arrowLength / 2, 0);
+      ctx.lineTo(arrowLength / 2, 0);
+
+      // Open Arrowhead parameters 
+      const headSize = 7; 
+      
+      ctx.moveTo(arrowLength / 2, 0);
+      ctx.lineTo(arrowLength / 2 - headSize, -headSize);
+      
+      ctx.moveTo(arrowLength / 2, 0);
+      ctx.lineTo(arrowLength / 2 - headSize, headSize);
+
+      // Color linked smoothly to the design '--muted' token variable
+      ctx.strokeStyle = 'rgba(122, 120, 112, 0.2)'; 
+      ctx.lineWidth = 1.0; 
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      
+      ctx.stroke();
+      ctx.restore();
+  }
+
+  function animateCanvas() {
+      ctx.clearRect(0, 0, width, height);
+      time += timeSpeed;
+
+      const cycleProgress = (Math.sin(time * scaleSpeed * 100) + 1) / 2;
+      const currentNoiseScale = minNoiseScale + (maxNoiseScale - minNoiseScale) * cycleProgress;
+
+      for (let x = spacing / 2; x < width; x += spacing) {
+          for (let y = spacing / 2; y < height; y += spacing) {
+              const n = perlin.noise(x * currentNoiseScale, y * currentNoiseScale, time);
+              const angle = n * Math.PI * 2;
+              drawArrow(x, y, angle);
+          }
+      }
+      requestAnimationFrame(animateCanvas);
+  }
+  
+  // Kickstart canvas animation pipeline
+  animateCanvas();
+
+
+  // --- SLIDERS ---
   document.querySelectorAll('.slider-wrap').forEach(wrap => {
     const track = wrap.querySelector('.slider-track');
     const slides = wrap.querySelectorAll('.slide');
@@ -950,7 +1049,7 @@
     goTo(0);
   });
 
-  // FADE IN
+  // --- FADE IN OBSERVER ---
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
