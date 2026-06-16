@@ -39,43 +39,67 @@
 </script>
 
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  /* =========================================================
+     0. Reset, tokens and base
+     ========================================================= */
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
   :root {
     --bg: #0e0e0c;
     --bg2: #141412;
     --text: #f0ede6;
-    --muted: #7a7870;
-    --rule: #2a2a26;
+    --muted: #dbdbdb;
+    --rule: #9f9f96;
     --yellow: #FFAA19;
     --red: #e8322a;
     --serif: 'Playfair Display', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
   }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
     background: var(--bg);
     color: var(--text);
     font-family: var(--sans);
-    font-weight: 300;
     font-size: 16px;
+    font-weight: 300;
     line-height: 1.65;
     overflow-x: hidden;
   }
 
-  /* NAV */
+  section {
+    padding: 96px 48px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .red-stop {
+    color: var(--red);
+  }
+
+  /* =========================================================
+     1. Navigation
+     ========================================================= */
+
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    inset: 0 0 auto 0;
     z-index: 100;
-    background: var(--bg);
-    border-bottom: 1px solid var(--rule);
     display: grid;
     grid-template-columns: auto 1fr;
-    padding: 14px 48px;
     align-items: center;
+    padding: 14px 48px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
   }
 
   .logo-link {
@@ -84,7 +108,11 @@
     text-decoration: none;
   }
 
-  .wordmark { display: block; width: 160px; height: auto; }
+  .wordmark {
+    display: block;
+    width: 160px;
+    height: auto;
+  }
 
   nav .nav-right {
     display: flex;
@@ -93,53 +121,70 @@
   }
 
   nav .nav-right a {
-    font-size: 13px;
     color: var(--muted);
+    font-size: 13px;
     text-decoration: none;
     transition: color 0.2s;
   }
 
-  nav .nav-right a:hover { color: var(--red); }
+  nav .nav-right a:hover {
+    color: var(--red);
+  }
 
-  /* HERO */
+  /* =========================================================
+     2. Hero
+     ========================================================= */
+
   .hero {
-    min-height: 85vh;
-    padding: 120px 48px 80px;
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: end;
+    min-height: 85vh;
+    padding: 120px 48px 80px;
     gap: 48px;
-    position: relative;
     overflow: hidden;
   }
 
-  .hero-text { position: relative; z-index: 2; pointer-events: none; }
+  .hero--home {
+    border-top: none;
+    padding-top: 120px;
+  }
+
+  .hero-text {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+  }
 
   .hero h1 {
+    margin-bottom: 28px;
+    color: var(--text);
     font-family: var(--serif);
     font-size: clamp(52px, 7vw, 96px);
     font-weight: 400;
-    line-height: 1.0;
-    color: var(--text);
+    line-height: 1;
     letter-spacing: -0.02em;
-    margin-bottom: 28px;
   }
 
-  .hero-sub { font-size: 16px; color: var(--muted); letter-spacing: 0.01em; }
+  .hero-sub {
+    color: var(--muted);
+    font-size: 16px;
+    letter-spacing: 0.01em;
+  }
 
-  /* Interactive Arrow Field Canvas styling */
   #hero-canvas {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+    z-index: 1;
     width: 100%;
     height: 100%;
-    z-index: 1;
   }
 
-  .red-stop { color: var(--red); }
+  /* =========================================================
+     3. Reusable section heading pattern
+     ========================================================= */
 
-  /* SECTION HEADER BAR */
   .section-header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -149,58 +194,197 @@
   }
 
   .section-header-col {
-    border-top: 1px solid var(--rule);
     padding-top: 16px;
+    border-top: 1px solid var(--rule);
   }
 
   .section-header-col .label {
-    font-size: 12px;
     color: var(--muted);
+    font-size: 12px;
     letter-spacing: 0.03em;
   }
 
   .section-heading {
+    margin: 0;
+    color: var(--text);
     font-family: var(--serif);
     font-size: clamp(32px, 4vw, 56px);
     font-weight: 400;
     line-height: 1.08;
-    color: var(--text);
-    margin: 0;
   }
 
-  /* SECTIONS */
-  section {
-    padding: 96px 48px;
+  /* =========================================================
+     4. Who we are
+     ========================================================= */
+
+  .who-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .who-label,
+  .who-content {
+    padding-top: 16px;
     border-top: 1px solid var(--rule);
   }
 
-  /* ABOUT */
+  .who-label {
+    color: var(--muted);
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .who-heading {
+    margin-bottom: 40px;
+    font-family: var(--serif);
+    font-size: clamp(26px, 3.2vw, 42px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .who-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+  }
+
+  .who-copy {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .who-copy--ruled {
+    padding-left: 48px;
+    border-left: 1px solid var(--rule);
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 0;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .stat {
+    flex: 1;
+  }
+
+  .stat--ruled {
+    margin-right: 32px;
+    padding-right: 32px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .stat-number {
+    margin-bottom: 6px;
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .stat-label {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* =========================================================
+     5. Connected experience
+     ========================================================= */
+
+  .experience-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .experience-label,
+  .experience-content {
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .experience-label {
+    color: var(--muted);
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .experience-heading {
+    max-width: 720px;
+    margin-bottom: 40px;
+    font-family: var(--serif);
+    font-size: clamp(26px, 3.2vw, 42px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-bottom: 40px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .experience-item {
+    min-height: 112px;
+    padding: 24px 22px;
+    background: var(--bg);
+  }
+
+  .experience-item h3 {
+    margin-bottom: 8px;
+    color: var(--text);
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .experience-item p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .experience-summary {
+    max-width: 680px;
+    color: var(--text);
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  /* =========================================================
+     6. About / services
+     ========================================================= */
+
   .about-headline {
+    max-width: 900px;
+    margin-bottom: 64px;
     font-family: var(--serif);
     font-size: clamp(28px, 4vw, 52px);
     font-weight: 400;
     line-height: 1.1;
-    margin-bottom: 64px;
-    max-width: 900px;
   }
 
   .about-body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0;
-  }
-
-  .about-right {
-    padding-left: 48px;
-    border-left: 1px solid var(--rule);
-  }
-
-  .about-right p {
-    font-family: var(--serif);
-    font-size: clamp(17px, 1.8vw, 22px);
-    font-weight: 400;
-    color: var(--text);
-    line-height: 1.5;
   }
 
   .about-services {
@@ -210,34 +394,51 @@
     gap: 0 48px;
   }
 
-  .service-item { padding-bottom: 40px; margin-bottom: 8px; }
+  .service-item {
+    padding-bottom: 40px;
+    margin-bottom: 8px;
+  }
 
   .service-item h3 {
+    margin-bottom: 16px;
+    color: var(--text);
     font-family: var(--serif);
     font-size: clamp(20px, 2vw, 28px);
     font-weight: 400;
-    color: var(--text);
-    margin-bottom: 16px;
     line-height: 1.2;
   }
 
   .service-item h3::before {
     content: '›';
-    color: var(--red);
     margin-right: 6px;
+    color: var(--red);
   }
 
   .service-item p {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.65;
     max-width: 320px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.65;
   }
 
   .service-item .service-rule {
-    width: 32px; height: 2px;
-    background: var(--red);
+    width: 32px;
+    height: 2px;
     margin-top: 20px;
+    background: var(--red);
+  }
+
+  .about-right {
+    padding-left: 48px;
+    border-left: 1px solid var(--rule);
+  }
+
+  .about-right p {
+    color: var(--text);
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.8vw, 22px);
+    font-weight: 400;
+    line-height: 1.5;
   }
 
   .pdf-link {
@@ -246,51 +447,72 @@
     gap: 12px;
     margin-top: 28px;
     color: var(--text);
-    text-decoration: none;
     font-size: 14px;
     font-weight: 400;
+    text-decoration: none;
     transition: color 0.2s;
   }
 
   .pdf-link-icon {
-    width: 34px; height: 34px;
-    border: 1px solid var(--red);
-    border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--red);
+    border-radius: 50%;
     font-size: 24px;
     line-height: 1;
     transition: background 0.2s, color 0.2s;
   }
 
-  .pdf-link:hover { color: var(--red); }
-  .pdf-link:hover .pdf-link-icon { background: var(--red); color: var(--bg); }
+  .pdf-link:hover {
+    color: var(--red);
+  }
 
-  /* CASE STUDIES */
-  .case-studies-intro { margin-bottom: 64px; }
+  .pdf-link:hover .pdf-link-icon {
+    background: var(--red);
+    color: var(--bg);
+  }
+
+  /* =========================================================
+     6. Case studies
+     ========================================================= */
+
+  .case-studies-intro {
+    margin-bottom: 64px;
+  }
 
   .case-studies-intro h2 {
+    margin-bottom: 16px;
     font-family: var(--serif);
     font-size: clamp(32px, 4vw, 52px);
     font-weight: 400;
     line-height: 1.1;
-    margin-bottom: 16px;
   }
 
-  .case-studies-intro p { font-size: 16px; color: var(--muted); max-width: 480px; }
+  .case-studies-intro p {
+    max-width: 480px;
+    color: var(--muted);
+    font-size: 16px;
+  }
 
-  .case-study-block { margin-bottom: 80px; }
-  .case-study-block:last-child { margin-bottom: 0; }
+  .case-study-block {
+    margin-bottom: 80px;
+  }
+
+  .case-study-block:last-child {
+    margin-bottom: 0;
+  }
 
   .case-study-meta {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    align-items: end;
     gap: 32px;
     margin-bottom: 28px;
     padding-bottom: 20px;
     border-bottom: 1px solid var(--rule);
-    align-items: end;
   }
 
   .cs-name {
@@ -300,30 +522,45 @@
     line-height: 1.1;
   }
 
-  .cs-descriptor { font-size: 15px; color: var(--muted); }
+  .cs-descriptor {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 15px;
+  }
 
-  .cs-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cs-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
 
   .cs-tag {
-    font-size: 11px;
-    color: var(--muted);
-    border: 1px solid var(--rule);
     padding: 3px 8px;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 11px;
     letter-spacing: 0.04em;
   }
 
-  .cs-link { text-align: right; }
+  .cs-link {
+    text-align: right;
+  }
 
   .cs-link a {
-    font-size: 14px;
     color: var(--text);
+    font-size: 14px;
     text-decoration: none;
     transition: color 0.2s;
   }
 
-  .cs-link a:hover { color: var(--red); }
+  .cs-link a:hover {
+    color: var(--red);
+  }
 
-  /* SLIDER */
+  /* =========================================================
+     7. Slider component
+     ========================================================= */
+
   .slider-wrap {
     position: relative;
     overflow: hidden;
@@ -337,16 +574,21 @@
   }
 
   .slide {
-    flex: 0 0 100%;
-    aspect-ratio: 16/9;
+    position: relative;
     display: flex;
+    flex: 0 0 100%;
     align-items: center;
     justify-content: center;
-    position: relative;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
   }
 
-  .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   .slider-controls {
     display: flex;
@@ -356,39 +598,64 @@
     border-top: 1px solid var(--rule);
   }
 
-  .slider-dots { display: flex; gap: 8px; align-items: center; }
+  .slider-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
   .dot {
-    width: 20px; height: 2px;
+    width: 20px;
+    height: 2px;
     background: var(--rule);
     cursor: pointer;
     transition: background 0.2s, width 0.2s;
   }
 
-  .dot.active { background: var(--yellow); width: 32px; }
+  .dot.active {
+    width: 32px;
+    background: var(--yellow);
+  }
 
-  .slider-btns { display: flex; gap: 8px; }
+  .slider-btns {
+    display: flex;
+    gap: 8px;
+  }
 
   .slider-btn {
-    width: 32px; height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
     border: 1px solid var(--rule);
     background: none;
     color: var(--muted);
     cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color 0.2s, color 0.2s;
     font-family: var(--sans);
+    font-size: 16px;
+    transition: border-color 0.2s, color 0.2s;
   }
 
-  .slider-btn:hover { border-color: var(--yellow); color: var(--yellow); }
+  .slider-btn:hover {
+    border-color: var(--yellow);
+    color: var(--yellow);
+  }
 
-  .slide-counter { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+  .slide-counter {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
 
-  /* OUTPUTS */
-  .outputs-header { max-width: 720px; margin-bottom: 48px; }
+  /* =========================================================
+     8. Outputs
+     ========================================================= */
+
+  .outputs-header {
+    max-width: 720px;
+    margin-bottom: 48px;
+  }
 
   .outputs-grid {
     display: grid;
@@ -398,23 +665,33 @@
     border: 1px solid var(--rule);
   }
 
-  .output-item { background: var(--bg); padding: 34px 28px; }
+  .output-item {
+    padding: 34px 28px;
+    background: var(--bg);
+  }
 
   .output-item h3 {
+    margin-bottom: 10px;
     font-family: var(--serif);
     font-size: 18px;
     font-weight: 400;
-    margin-bottom: 10px;
   }
 
-  .output-item p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .output-item p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
 
-  /* ── ENGAGEMENTS SECTION ── */
+  /* =========================================================
+     9. Engagements
+     ========================================================= */
+
   .engagements-intro {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
     align-items: end;
+    gap: 48px;
     margin-bottom: 56px;
   }
 
@@ -426,10 +703,10 @@
   }
 
   .engagements-intro p {
-    font-size: 15px;
-    color: var(--muted);
-    max-width: 400px;
     align-self: end;
+    max-width: 400px;
+    color: var(--muted);
+    font-size: 15px;
   }
 
   .engagements-grid {
@@ -441,162 +718,303 @@
   }
 
   .engagement-card {
-    background: var(--bg);
-    padding: 32px 28px 36px;
     display: flex;
     flex-direction: column;
     gap: 0;
+    padding: 32px 28px 36px;
+    background: var(--bg);
     transition: background 0.25s;
   }
 
-  .engagement-card:hover { background: var(--bg2); }
+  .engagement-card:hover {
+    background: var(--bg2);
+  }
 
   .engagement-sector {
+    margin-bottom: 14px;
+    color: var(--red);
     font-size: 10px;
+    font-weight: 400;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 14px;
-    font-weight: 400;
   }
 
   .engagement-title {
+    margin-bottom: 16px;
+    color: var(--text);
     font-family: var(--serif);
     font-size: clamp(16px, 1.5vw, 20px);
     font-weight: 400;
     line-height: 1.25;
-    color: var(--text);
-    margin-bottom: 16px;
   }
 
   .engagement-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.65;
     flex: 1;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.65;
   }
 
   .engagement-rule {
-    width: 24px; height: 1px;
-    background: var(--rule);
+    width: 24px;
+    height: 1px;
     margin-top: 24px;
+    background: var(--rule);
     transition: background 0.25s, width 0.25s;
   }
 
   .engagement-card:hover .engagement-rule {
-    background: var(--red);
     width: 40px;
+    background: var(--red);
   }
 
-  /* CONTACT */
+  /* =========================================================
+     10. Contact
+     ========================================================= */
+
   .contact-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 96px;
     align-items: start;
+    gap: 96px;
   }
 
   .contact-left h2 {
+    margin-bottom: 28px;
     font-family: var(--serif);
     font-size: clamp(28px, 3.5vw, 48px);
     font-weight: 400;
     line-height: 1.1;
-    margin-bottom: 28px;
   }
 
   .contact-left p {
-    font-size: 15px;
-    color: var(--muted);
-    margin-bottom: 32px;
     max-width: 420px;
+    margin-bottom: 32px;
+    color: var(--muted);
+    font-size: 15px;
   }
 
-  .contact-links { display: flex; flex-direction: column; }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+  }
 
   .contact-links a {
-    font-size: 15px;
-    color: var(--text);
-    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 12px 0;
     border-bottom: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    color: var(--text);
+    font-size: 15px;
+    text-decoration: none;
     transition: color 0.2s;
   }
 
-  .contact-links a:first-child { border-top: 1px solid var(--rule); }
-  .contact-links a:hover { color: var(--yellow); }
-  .contact-links a span { color: var(--muted); font-size: 13px; }
+  .contact-links a:first-child {
+    border-top: 1px solid var(--rule);
+  }
 
-  .clients-list { padding-top: 8px; }
+  .contact-links a:hover {
+    color: var(--yellow);
+  }
+
+  .contact-links a span {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .clients-list {
+    padding-top: 8px;
+  }
 
   .clients-list h3 {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
     margin-bottom: 20px;
-    border-top: 1px solid var(--rule);
     padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.06em;
   }
 
-  .clients-list ul { list-style: none; columns: 2; }
+  .clients-list ul {
+    columns: 2;
+    list-style: none;
+  }
 
   .clients-list ul li {
-    font-size: 14px;
-    color: var(--muted);
     padding: 6px 0;
     border-bottom: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 14px;
   }
 
-  /* FOOTER */
+  /* =========================================================
+     11. Footer
+     ========================================================= */
+
   footer {
-    padding: 32px 48px;
-    border-top: 1px solid var(--rule);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
+    padding: 32px 48px;
+    border-top: 1px solid var(--rule);
   }
 
-  footer .logo { font-size: 14px; }
-  footer .footer-mid { text-align: center; font-size: 12px; color: var(--muted); }
-  footer .footer-right { text-align: right; font-size: 12px; color: var(--muted); }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
-    .hero { grid-template-columns: 1fr; padding: 100px 24px 64px; min-height: auto; }
-    .section-header { grid-template-columns: 1fr; padding: 0 24px; gap: 16px; }
-    section { padding: 64px 24px; }
-    .about-body { grid-template-columns: 1fr; gap: 48px; }
-    .about-services { grid-column: 1; grid-template-columns: 1fr; }
-    .about-right { padding-left: 0; border-left: none; border-top: 1px solid var(--rule); padding-top: 32px; }
-    .case-study-meta { grid-template-columns: 1fr 1fr; gap: 16px; }
-    .cs-tags { display: none; }
-    .outputs-grid { grid-template-columns: 1fr 1fr; }
-    .engagements-intro { grid-template-columns: 1fr; gap: 16px; }
-    .engagements-grid { grid-template-columns: 1fr 1fr; }
-    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-    footer { grid-template-columns: 1fr 1fr; gap: 8px; }
-    footer .footer-mid { display: none; }
+  footer .logo {
+    font-size: 14px;
   }
 
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 44px; }
-    .outputs-grid { grid-template-columns: 1fr; }
-    .engagements-grid { grid-template-columns: 1fr; }
-    .case-study-meta { grid-template-columns: 1fr; }
-    .cs-link { text-align: left; }
+  footer .footer-mid {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
   }
 
-  /* ANIMATIONS */
+  footer .footer-right {
+    color: var(--muted);
+    font-size: 12px;
+    text-align: right;
+  }
+
+  /* =========================================================
+     12. Animation helpers
+     ========================================================= */
+
   .fade-in {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
 
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* =========================================================
+     13. Responsive rules
+     ========================================================= */
+
+  @media (max-width: 900px) {
+    nav {
+      padding: 16px 24px;
+    }
+
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding: 100px 24px 64px;
+    }
+
+    .section-header {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 64px 24px;
+    }
+
+    .who-layout,
+    .who-columns,
+    .experience-layout,
+    .about-body,
+    .engagements-intro,
+    .contact-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .who-layout,
+    .experience-layout,
+    .about-body,
+    .contact-inner {
+      gap: 48px;
+    }
+
+    .who-columns {
+      gap: 24px;
+    }
+
+    .who-copy--ruled {
+      padding-left: 0;
+      border-left: none;
+    }
+
+    .experience-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .stats-row {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .stat--ruled {
+      margin-right: 0;
+      padding-right: 0;
+      padding-bottom: 24px;
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .about-services {
+      grid-column: 1;
+      grid-template-columns: 1fr;
+    }
+
+    .about-right {
+      padding-top: 32px;
+      padding-left: 0;
+      border-top: 1px solid var(--rule);
+      border-left: none;
+    }
+
+    .case-study-meta {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .cs-tags {
+      display: none;
+    }
+
+    .outputs-grid,
+    .engagements-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .engagements-intro {
+      gap: 16px;
+    }
+
+    footer {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    footer .footer-mid {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 {
+      font-size: 44px;
+    }
+
+    .outputs-grid,
+    .experience-grid,
+    .engagements-grid,
+    .case-study-meta {
+      grid-template-columns: 1fr;
+    }
+
+    .cs-link {
+      text-align: left;
+    }
+  }
 </style>
 </head>
 <body>
@@ -614,12 +1032,88 @@
   </div>
 </nav>
 
-<section class="hero" style="border-top: none; padding-top: 120px;">
+<section id="top" class="hero hero--home">
   <canvas id="hero-canvas"></canvas>
   
   <div class="hero-text">
-    <h1>Decision-ready presentations and reports<span class="red-stop">.</span></h1>
-    <p class="hero-sub">We turn ideas, evidence and insight into clear presentations, visual reports and decision tools.</p>
+    <h1>Clearer thinking for better reports & presentations<span class="red-stop">.</span></h1>
+    <p class="hero-sub">We work with clients throughout the process to turn ideas, evidence and insight into clear presentations, visual reports and decision tools</p>
+  </div>
+</section>
+
+<section id="who">
+  <div class="who-layout">
+    <div class="who-label">Who we are</div>
+
+    <div class="who-content">
+      <h2 class="who-heading">Twenty-five years of turning complex material into communication that works.</h2>
+
+      <div class="who-columns">
+        <p class="who-copy">Mindfizz is a small communication design studio with 25 years' experience helping organisations turn unclear or complex material into structured presentations, reports and visual resources.</p>
+        <p class="who-copy who-copy--ruled">Our role is often to help teams clarify what needs to be communicated. We then shape the material into communication that can be easily understood.</p>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat stat--ruled">
+          <div class="stat-number">25<span class="red-stop">+</span></div>
+          <div class="stat-label">Years in communication design</div>
+        </div>
+
+        <div class="stat stat--ruled">
+          <div class="stat-number">12<span class="red-stop">+</span></div>
+          <div class="stat-label">Sectors including government, charities, energy and professional services</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-number">35<span class="red-stop">+</span></div>
+          <div class="stat-label">Clients including NHS, AON, BASF and Nationwide</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="experience-layout fade-in">
+    <div class="experience-label">Experience</div>
+
+    <div class="experience-content">
+      <h2 class="experience-heading">Our experience covers a variety of areas.</h2>
+
+      <div class="experience-grid">
+        <div class="experience-item">
+          <h3>Visual design</h3>
+          <p>Clear layouts, information hierarchy, diagrams and presentation systems.</p>
+        </div>
+
+        <div class="experience-item">
+          <h3>Communication</h3>
+          <p>Structuring material so the right message reaches the right audience.</p>
+        </div>
+
+        <div class="experience-item">
+          <h3>Business development</h3>
+          <p>Supporting pitches, proposals, prospect meetings and stakeholder materials.</p>
+        </div>
+
+        <div class="experience-item">
+          <h3>Report writing</h3>
+          <p>Shaping complex information into readable reports, summaries and briefings.</p>
+        </div>
+
+        <div class="experience-item">
+          <h3>Data analysis and statistical interpretation</h3>
+          <p>Understanding evidence, patterns and quantitative information before designing the output.</p>
+        </div>
+
+        <div class="experience-item">
+          <h3>Project management</h3>
+          <p>Managing inputs, deadlines, review stages and final delivery.</p>
+        </div>
+      </div>
+
+      <p class="experience-summary">This gives us a rounded understanding of your needs, your material and your audience — and helps us decide how best to communicate clearly.</p>
+    </div>
   </div>
 </section>
 
@@ -669,7 +1163,7 @@
     <div class="case-study-meta">
       <div>
         <div class="cs-name">LINEA</div>
-        <div class="cs-descriptor" style="margin-top:6px;">Turning a service crisis into an executive visual report. Systems thinking tools adapted into a clear report for senior decision-makers.</div>
+        <div class="cs-descriptor">Turning a service crisis into an executive visual report. Systems thinking tools adapted into a clear report for senior decision-makers.</div>
       </div>
       <div class="cs-tags">
         <span class="cs-tag">Systems mapping</span>
@@ -707,7 +1201,7 @@
     <div class="case-study-meta">
       <div>
         <div class="cs-name">Threshold</div>
-        <div class="cs-descriptor" style="margin-top:6px;">Structuring a housing policy argument as a visual report</div>
+        <div class="cs-descriptor">Structuring a housing policy argument as a visual report</div>
       </div>
       <div class="cs-tags">
         <span class="cs-tag">Process modelling</span>
@@ -746,7 +1240,7 @@
     <div class="case-study-meta">
       <div>
         <div class="cs-name">Digital Access Advisory Group</div>
-        <div class="cs-descriptor" style="margin-top:6px;">Turning access risks into clear frameworks for decision-making and action</div>
+        <div class="cs-descriptor">Turning access risks into clear frameworks for decision-making and action</div>
       </div>
       <div class="cs-tags">
         <span class="cs-tag">Risk mapping</span>
@@ -818,14 +1312,14 @@
     <div class="engagement-card">
       <div class="engagement-sector">Charity / Third sector</div>
       <div class="engagement-title">Board-level transformation plan</div>
-      <p class="engagement-desc">Turned a few pages of consultant notes into a structured review and actionable transformation plan for the board of a major UK charity.</p>
+      <p class="engagement-desc">Turned fragmented consultant notes into an evidence based, structured review and transformation plan, enabling the board to assess whether moving from a relationship management model to a stakeholder management approach was the right strategic direction for their enterprise division.</p>
       <div class="engagement-rule"></div>
     </div>
 
     <div class="engagement-card">
       <div class="engagement-sector">Energy / Technical</div>
       <div class="engagement-title">Technical pitch for a global energy audience</div>
-      <p class="engagement-desc">Reshaped a highly technical presentation about seabed data analysis into a clear value story for senior decision-makers, while retaining enough technical depth for specialists in the room.</p>
+      <p class="engagement-desc">Restructured a highly technical presentation on legacy seismic data analysis into a clear value story, helping senior leaders understand the benefits while retaining sufficient technical detail for specialist audiences.</p>
       <div class="engagement-rule"></div>
     </div>
 
@@ -846,7 +1340,7 @@
     <div class="engagement-card">
       <div class="engagement-sector">Energy / Government</div>
       <div class="engagement-title">Sector workforce strategy document</div>
-      <p class="engagement-desc">Produced a UK workforce strategy document for a government / energy and utilities audience.</p>
+      <p class="engagement-desc">Produced a workforce strategy document for a government and energy sector audience, showing skills shortages and workforce challenges. The document brought together evidence, priorities and recommendations for sector workforce planning.</p>
       <div class="engagement-rule"></div>
     </div>
 
@@ -890,121 +1384,176 @@
 </section>
 
 <footer>
-  <div><span class="logo">mindfizz<span style="color:var(--red)">.</span></span></div>
+  <div><span class="logo">mindfizz<span class="red-stop">.</span></span></div>
   <div class="footer-mid">Clarity for better decisions.</div>
   <div class="footer-right">© 2026 mindfizz</div>
 </footer>
 
 <script>
-  // --- SIMPLE PERLIN NOISE IMPLEMENTATION ---
+  /* =========================================================
+     Perlin noise utility
+     ========================================================= */
+
   const perlin = {
-      rand_next: function() { return this.random(); },
-      random: Math.random,
-      permutation: new Array(512),
-      p: new Array(256),
-      init: function() {
-          for (let i = 0; i < 256; i++) this.p[i] = Math.floor(this.random() * 256);
-          for (let i = 0; i < 512; i++) this.permutation[i] = this.p[i & 255];
-      },
-      fade: function(t) { return t * t * t * (t * (t * 6 - 15) + 10); },
-      lerp: function(t, a, b) { return a + t * (b - a); },
-      grad: function(hash, x, y, z) {
-          var h = hash & 15;
-          var u = h < 8 ? x : y, v = h < 4 ? y : h == 12 || h == 14 ? x : z;
-          return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
-      },
-      noise: function(x, y, z) {
-          var X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
-          x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
-          var u = this.fade(x), v = this.fade(y), w = this.fade(z);
-          var A = this.permutation[X] + Y, AA = this.permutation[A] + Z, AB = this.permutation[A + 1] + Z;
-          var B = this.permutation[X + 1] + Y, BA = this.permutation[B] + Z, BB = this.permutation[B + 1] + Z;
-          return this.lerp(w, this.lerp(v, this.lerp(u, this.grad(this.permutation[AA], x, y, z),
-                                                         this.grad(this.permutation[BA], x - 1, y, z)),
-                                         this.lerp(u, this.grad(this.permutation[AB], x, y - 1, z),
-                                                         this.grad(this.permutation[BB], x - 1, y - 1, z))),
-                                 this.lerp(v, this.lerp(u, this.grad(this.permutation[AA + 1], x, y, z - 1),
-                                                         this.grad(this.permutation[BA + 1], x - 1, y, z - 1)),
-                                         this.lerp(u, this.grad(this.permutation[AB + 1], x, y - 1, z - 1),
-                                                         this.grad(this.permutation[BB + 1], x - 1, y - 1, z - 1))));
+    random: Math.random,
+    permutation: new Array(512),
+    p: new Array(256),
+
+    rand_next() {
+      return this.random();
+    },
+
+    init() {
+      for (let i = 0; i < 256; i++) {
+        this.p[i] = Math.floor(this.random() * 256);
       }
+
+      for (let i = 0; i < 512; i++) {
+        this.permutation[i] = this.p[i & 255];
+      }
+    },
+
+    fade(t) {
+      return t * t * t * (t * (t * 6 - 15) + 10);
+    },
+
+    lerp(t, a, b) {
+      return a + t * (b - a);
+    },
+
+    grad(hash, x, y, z) {
+      const h = hash & 15;
+      const u = h < 8 ? x : y;
+      const v = h < 4 ? y : h === 12 || h === 14 ? x : z;
+
+      return ((h & 1) === 0 ? u : -u) + ((h & 2) === 0 ? v : -v);
+    },
+
+    noise(x, y, z) {
+      const X = Math.floor(x) & 255;
+      const Y = Math.floor(y) & 255;
+      const Z = Math.floor(z) & 255;
+
+      x -= Math.floor(x);
+      y -= Math.floor(y);
+      z -= Math.floor(z);
+
+      const u = this.fade(x);
+      const v = this.fade(y);
+      const w = this.fade(z);
+
+      const A = this.permutation[X] + Y;
+      const AA = this.permutation[A] + Z;
+      const AB = this.permutation[A + 1] + Z;
+      const B = this.permutation[X + 1] + Y;
+      const BA = this.permutation[B] + Z;
+      const BB = this.permutation[B + 1] + Z;
+
+      return this.lerp(
+        w,
+        this.lerp(
+          v,
+          this.lerp(
+            u,
+            this.grad(this.permutation[AA], x, y, z),
+            this.grad(this.permutation[BA], x - 1, y, z)
+          ),
+          this.lerp(
+            u,
+            this.grad(this.permutation[AB], x, y - 1, z),
+            this.grad(this.permutation[BB], x - 1, y - 1, z)
+          )
+        ),
+        this.lerp(
+          v,
+          this.lerp(
+            u,
+            this.grad(this.permutation[AA + 1], x, y, z - 1),
+            this.grad(this.permutation[BA + 1], x - 1, y, z - 1)
+          ),
+          this.lerp(
+            u,
+            this.grad(this.permutation[AB + 1], x, y - 1, z - 1),
+            this.grad(this.permutation[BB + 1], x - 1, y - 1, z - 1)
+          )
+        )
+      );
+    }
   };
-  perlin.init();
 
-  // --- ARROW BACKDROP ENGINE ---
-  // --- ARROW BACKDROP ENGINE ---
-  const canvas = document.getElementById('hero-canvas');
-  const ctx = canvas.getContext('2d');
+  /* =========================================================
+     Hero arrow field
+     ========================================================= */
 
-  let width, height;
-  
-  // 1. Declare these variables globally without hardcoded values
-  let spacing;      
-  let arrowLength;  
-  let headSize;
+  function initHeroCanvas() {
+    const canvas = document.getElementById('hero-canvas');
 
-  let time = 0;            
-  const timeSpeed = 0.002;      
-  const scaleSpeed = 0.007;     
+    if (!canvas) {
+      return;
+    }
 
-  const minNoiseScale = 0.0015; 
-  const maxNoiseScale = 0.015;  
+    const ctx = canvas.getContext('2d');
 
-  function resize() {
+    let width;
+    let height;
+    let spacing;
+    let arrowLength;
+    let headSize;
+    let time = 0;
+
+    const timeSpeed = 0.002;
+    const scaleSpeed = 0.007;
+    const minNoiseScale = 0.0015;
+    const maxNoiseScale = 0.015;
+
+    function resize() {
       const parent = canvas.parentElement;
+
       width = canvas.width = parent.clientWidth;
       height = canvas.height = parent.clientHeight;
 
-      // 2. Dynamically calculate sizes based on screen width
-      // This ensures a beautiful balance between mobile and desktop sizes.
       if (width < 600) {
-          // Mobile settings: smaller arrows packed slightly tighter
-          spacing = 30;
-          arrowLength = 18;
-          headSize = 5;
+        spacing = 30;
+        arrowLength = 18;
+        headSize = 5;
       } else if (width < 1200) {
-          // Tablet settings: mid-range sizes
-          spacing = 40;
-          arrowLength = 26;
-          headSize = 8;
+        spacing = 40;
+        arrowLength = 26;
+        headSize = 8;
       } else {
-          // Desktop settings: larger, spacious arrows
-          spacing = 60;
-          arrowLength = 40;
-          headSize = 10; // Scaled up proportionally so the arrowhead matches the long stem
+        spacing = 60;
+        arrowLength = 40;
+        headSize = 10;
       }
-  }
-  window.addEventListener('resize', resize);
-  resize();
+    }
 
-  function drawArrow(x, y, angle) {
+    function drawArrow(x, y, angle) {
       ctx.save();
       ctx.translate(x, y);
       ctx.rotate(angle);
 
       ctx.beginPath();
-      
-      // Stem (uses dynamic arrowLength)
+
+      // Stem
       ctx.moveTo(-arrowLength / 2, 0);
       ctx.lineTo(arrowLength / 2, 0);
 
-      // Open Arrowhead (uses dynamic headSize)
+      // Open arrowhead
       ctx.moveTo(arrowLength / 2, 0);
-      ctx.lineTo(arrowLength / 2 - headSize, -headSize * 0.7); // 0.7 keeps the arrow wings sleek
-      
+      ctx.lineTo(arrowLength / 2 - headSize, -headSize * 0.7);
       ctx.moveTo(arrowLength / 2, 0);
       ctx.lineTo(arrowLength / 2 - headSize, headSize * 0.7);
 
-      ctx.strokeStyle = 'rgba(122, 120, 112, 0.12)'; 
-      ctx.lineWidth = width < 600 ? 1.2 : 1.8; // Slightly thinner lines on mobile for clarity
+      ctx.strokeStyle = 'rgba(122, 120, 112, 0.12)';
+      ctx.lineWidth = width < 600 ? 1.0 : 1.4;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
-      
+
       ctx.stroke();
       ctx.restore();
-  }
+    }
 
-  function animateCanvas() {
+    function animateCanvas() {
       ctx.clearRect(0, 0, width, height);
       time += timeSpeed;
 
@@ -1012,69 +1561,107 @@
       const currentNoiseScale = minNoiseScale + (maxNoiseScale - minNoiseScale) * cycleProgress;
 
       for (let x = spacing / 2; x < width; x += spacing) {
-          for (let y = spacing / 2; y < height; y += spacing) {
-              const n = perlin.noise(x * currentNoiseScale, y * currentNoiseScale, time);
-              const angle = n * Math.PI * 2;
-              drawArrow(x, y, angle);
-          }
+        for (let y = spacing / 2; y < height; y += spacing) {
+          const n = perlin.noise(x * currentNoiseScale, y * currentNoiseScale, time);
+          const angle = n * Math.PI * 2;
+          drawArrow(x, y, angle);
+        }
       }
+
       requestAnimationFrame(animateCanvas);
-  }
-  
-  animateCanvas();
-
-
-  // --- SLIDERS ---
-  document.querySelectorAll('.slider-wrap').forEach(wrap => {
-    const track = wrap.querySelector('.slider-track');
-    const slides = wrap.querySelectorAll('.slide');
-    const dotsEl = wrap.querySelector('.slider-dots');
-    const counter = wrap.querySelector('.slide-counter');
-    const prev = wrap.querySelector('.prev');
-    const next = wrap.querySelector('.next');
-    let current = 0;
-    const total = slides.length;
-
-    slides.forEach((_, i) => {
-      const d = document.createElement('div');
-      d.className = 'dot' + (i === 0 ? ' active' : '');
-      d.addEventListener('click', () => goTo(i));
-      dotsEl.appendChild(d);
-    });
-
-    function goTo(n) {
-      current = (n + total) % total;
-      track.style.transform = `translateX(-${current * 100}%)`;
-      wrap.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
-      counter.textContent = `${current + 1} / ${total}`;
     }
 
-    prev.addEventListener('click', () => goTo(current - 1));
-    next.addEventListener('click', () => goTo(current + 1));
+    window.addEventListener('resize', resize);
+    resize();
+    animateCanvas();
+  }
 
-    wrap.addEventListener('keydown', e => {
-      if (e.key === 'ArrowLeft') goTo(current - 1);
-      if (e.key === 'ArrowRight') goTo(current + 1);
+  /* =========================================================
+     Case study sliders
+     ========================================================= */
+
+  function initSliders() {
+    document.querySelectorAll('.slider-wrap').forEach(wrap => {
+      const track = wrap.querySelector('.slider-track');
+      const slides = wrap.querySelectorAll('.slide');
+      const dotsEl = wrap.querySelector('.slider-dots');
+      const counter = wrap.querySelector('.slide-counter');
+      const prev = wrap.querySelector('.prev');
+      const next = wrap.querySelector('.next');
+
+      let current = 0;
+      const total = slides.length;
+
+      function goTo(n) {
+        current = (n + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        counter.textContent = `${current + 1} / ${total}`;
+
+        wrap.querySelectorAll('.dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === current);
+        });
+      }
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(dot);
+      });
+
+      prev.addEventListener('click', () => goTo(current - 1));
+      next.addEventListener('click', () => goTo(current + 1));
+
+      wrap.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') goTo(current - 1);
+        if (e.key === 'ArrowRight') goTo(current + 1);
+      });
+
+      let startX = 0;
+
+      track.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      track.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - startX;
+
+        if (Math.abs(dx) > 40) {
+          goTo(current + (dx < 0 ? 1 : -1));
+        }
+      });
+
+      goTo(0);
     });
+  }
 
-    let startX = 0;
-    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', e => {
-      const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+  /* =========================================================
+     Fade-in observer
+     ========================================================= */
+
+  function initFadeInObserver() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
     });
+  }
 
-    goTo(0);
-  });
+  /* =========================================================
+     Initialise
+     ========================================================= */
 
-  // --- FADE IN OBSERVER ---
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  perlin.init();
+  initHeroCanvas();
+  initSliders();
+  initFadeInObserver();
 </script>
 </body>
 </html>
