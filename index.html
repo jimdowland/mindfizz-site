@@ -390,7 +390,7 @@
      ========================================================= */
 
   .about-headline {
-    max-width: 900px;
+    max-width: 1200px;
     margin-bottom: 64px;
     font-family: var(--serif);
     font-size: clamp(28px, 4vw, 52px);
@@ -491,6 +491,16 @@
     background: var(--red);
     color: var(--bg);
   }
+
+  .about-section-label {
+  margin-bottom: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 24px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
   /* =========================================================
      6. Case studies
@@ -831,7 +841,7 @@
      ========================================================= */
 
   .outputs-header {
-    max-width: 720px;
+    max-width: 1200px;
     margin-bottom: 48px;
   }
 
@@ -1257,11 +1267,11 @@
     <div class="who-label">Who we are</div>
 
     <div class="who-content">
-      <h2 class="who-heading">Twenty-five years helping organisations turn unclear material into clear presentations, reports and visual resources.</h2>
+      <h2 class="who-heading">Mindfizz is a small presentation design studio with over 25 years' experience helping organisations communicate with clear presentations, reports and visual resources.</h2>
 
       <div class="who-columns">
-        <p class="who-copy">Mindfizz is a small presentation design studio with 25 years' experience helping organisations communicate with clear presentations, reports and visual resources.</p>
-        <p class="who-copy who-copy--ruled">Our role is often to help teams clarify what needs to be communicated. We then shape the material into resources that can be easily understood.</p>
+        <p class="who-copy">We are different from other agencies as we focus on collaborating with clients from the start of the development process to help them clarify what needs to be communicated. </p>
+        <p class="who-copy who-copy--ruled">We then shape the material into effective resources that communicate clearly.</p>
       </div>
 
       <div class="stats-row">
@@ -1276,8 +1286,8 @@
         </div>
 
         <div class="stat">
-          <div class="stat-number">35<span class="red-stop">+</span></div>
-          <div class="stat-label">Clients including NHS, AON, BASF and Nationwide</div>
+          <div class="stat-number">50<span class="red-stop">+</span></div>
+          <div class="stat-label">Clients including NHS, AON, BASF, John Lewis and Nationwide working in the UK and internationally</div>
         </div>
       </div>
     </div>
@@ -1289,7 +1299,7 @@
     <div class="experience-label">Experience</div>
 
     <div class="experience-content">
-      <h2 class="experience-heading">Our experience covers a variety of areas.</h2>
+      <h2 class="experience-heading">Our experience covers a variety of areas. This gives us a unique understanding of your needs and how best to work with you to communicate to your audience.</h2>
 
       <div class="experience-grid">
         <div class="experience-item">
@@ -1323,13 +1333,13 @@
         </div>
       </div>
 
-      <p class="experience-summary">Our experience gives us a rounded understanding of your needs, your material and your audience; and helps us decide how best to communicate clearly.</p>
     </div>
   </div>
 </section>
 
 <section id="about">
-  <p class="about-headline fade-in">We help teams turn what they know into communication that others can understand and use.</p>
+  <div class="about-section-label fade-in">How we work</div>
+  <p class="about-headline fade-in">We function as a critical friend to ensure your expertise and knowledge is presented effectively so your client, stakeholders and wider audience fully understand, and can act on, your communications.</p>
 
   <div class="about-body fade-in">
     <div class="about-services">
@@ -1358,7 +1368,7 @@
       <p>See examples of how we structure information, design visuals and create decision-ready materials.</p>
       <a href="img/pdf/mindfizz_portfolio2026.pdf" class="pdf-link" target="_blank" rel="noopener">
         <span class="pdf-link-icon">›</span>
-        <span>Download our PDF portfolio</span>
+        <span>Download our overview (pdf)</span>
       </a>
     </div>
   </div>
@@ -1367,7 +1377,7 @@
 
 <section id="outputs">
   <div class="outputs-header fade-in">
-    <h2 class="section-heading">We shape the output around what you need to explain.</h2>
+    <h2 class="section-heading">We advise on the format and output based on the dtat and information you need to explain.</h2>
   </div>
   <div class="outputs-grid fade-in">
     <div class="output-item">
@@ -1392,7 +1402,7 @@
 <section id="engagements">
   <div class="engagements-intro fade-in">
     <h2>Examples of how we have helped</h2>
-    <p>A selection of projects where we were brought in early to shape the structure and narrative.</p>
+    <p>A selection of projects where we were brought in early to shape the structure and narrative. Note – the majority of our work is commercially sensitive,</p>
   </div>
 
   <div class="engagements-grid fade-in">
@@ -1854,12 +1864,12 @@
         arrowLength = 8;
         headSize = 3;
       } else if (width < 1200) {
-        spacing = 30;
-        arrowLength = 13;
+        spacing = 60;
+        arrowLength = 26;
         headSize = 4;
       } else {
-        spacing = 30;
-        arrowLength = 20;
+        spacing = 50;
+        arrowLength = 40;
         headSize = 5;
       }
     }
@@ -1882,7 +1892,7 @@
       ctx.lineTo(arrowLength / 2 - headSize, headSize * 0.7);
 
       ctx.strokeStyle = 'rgba(90, 80, 90, 0.18)';
-      ctx.lineWidth = width < 600 ? 1.0 : 1.4;
+      ctx.lineWidth = width < 600 ? 0.5 : 1.0;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
 
