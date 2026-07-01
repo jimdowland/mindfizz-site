@@ -73,7 +73,7 @@
 --text: #11110f;
 --muted: #625e58;
 --rule: #cac4ba;
-    --yellow: #FFAA19;
+    --yellow: #e8322a;
     --red: #e8322a;
     --serif: 'Playfair Display', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
@@ -154,7 +154,7 @@
   .hero {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(680px, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 34vw);
     align-items: center;
     min-height: 85vh;
     padding: 120px 48px 80px;
@@ -201,7 +201,8 @@
     z-index: 2;
     justify-self: end;
     align-self: center;
-    width: clamp(320px, 34vw, 600px);
+    width: 100%;
+    max-width: 600px;
     min-width: 0;
     aspect-ratio: 1 / 1;
   }
@@ -1328,24 +1329,49 @@
      13. Responsive rules
      ========================================================= */
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1180px) {
     .hero {
-      gap: clamp(36px, 5vw, 64px);
+      grid-template-columns: 1fr;
+      align-items: start;
+      min-height: auto;
+      gap: 0;
+    }
+
+    .hero-text {
+      max-width: 900px;
     }
 
     .hero h1 {
-      max-width: 640px;
-      font-size: clamp(50px, 5vw, 72px);
+      max-width: 900px;
+      font-size: clamp(56px, 8vw, 92px);
+      line-height: 1.05;
+    }
+
+    .hero-title-phrase {
+      white-space: normal;
     }
 
     .hero-visual {
-      width: clamp(300px, 34vw, 460px);
+      display: none;
     }
   }
 
   @media (max-width: 900px) {
     nav {
       padding: 16px 24px;
+    }
+
+    .hero {
+      padding: 108px 24px 72px;
+    }
+
+    .hero h1 {
+      font-size: clamp(46px, 10vw, 72px);
+      line-height: 1.04;
+    }
+
+    .hero-sub {
+      max-width: 620px;
     }
 
     .section-header {
