@@ -1482,9 +1482,67 @@
   }
 
   @media (max-width: 600px) {
+    nav .nav-right {
+      gap: 12px;
+    }
+
+    nav .nav-right a {
+      white-space: nowrap;
+    }
+
+    .slider-wrap {
+      width: 100%;
+    }
+
+    .slider-controls {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px 12px;
+      padding: 12px;
+    }
+
+    .slider-dots {
+      grid-column: 1 / -1;
+      display: flex;
+      width: 100%;
+      min-width: 0;
+      gap: 6px;
+    }
+
+    .dot {
+      flex: 1 1 0;
+      width: auto;
+      min-width: 0;
+      height: 28px;
+      padding: 0;
+    }
+
+    .dot::before,
+    .dot.active::before {
+      width: 100%;
+      max-width: 28px;
+    }
+
+    .slide-counter {
+      align-self: center;
+    }
+
+    .slider-btns {
+      justify-self: end;
+    }
+
+    .slider-btn {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
+    }
+
     .slide-notes-toggle {
       top: 12px;
       right: 12px;
+      bottom: auto;
+      min-height: 0;
       padding: 7px 10px;
       font-size: 11px;
     }
@@ -1551,7 +1609,7 @@
     <div class="who-label">Who we are</div>
 
     <div class="who-content">
-      <h2 class="who-heading">Mindfizz is a small presentation design studio with over 25 years' experience helping organisations communicate with clear presentations, reports and visual resources.</h2>
+      <h2 class="who-heading">Mindfizz is a two person presentation design studio with over 25 years' experience helping organisations communicate with clear presentations, reports and visual resources.</h2>
 
       <div class="who-columns">
         <p class="who-copy">We are different from other agencies as we focus on collaborating with clients from the start of the development process to help them clarify what needs to be communicated. </p>
