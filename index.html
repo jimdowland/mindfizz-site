@@ -401,6 +401,39 @@
     line-height: 1.7;
   }
 
+  .team-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .team-link::after {
+    content: '↗';
+    color: var(--red);
+    font-size: 13px;
+    line-height: 1;
+    transition: transform 0.2s;
+  }
+
+  .team-link:hover,
+  .team-link:focus-visible {
+    color: var(--red);
+  }
+
+  .team-link:hover::after,
+  .team-link:focus-visible::after {
+    transform: translate(2px, -2px);
+  }
+
   /* =========================================================
      5. Connected experience
      ========================================================= */
@@ -1629,7 +1662,7 @@
 
         <div class="stat">
           <div class="stat-number">50<span class="red-stop">+</span></div>
-          <div class="stat-label">Clients including NHS, AON, BASF, John Lewis and Nationwide working in the UK and internationally</div>
+          <div class="stat-label">Clients including NHS, AON, Department for Education, John Lewis, Energy & Utility Skills and Nationwide working in the UK and internationally</div>
         </div>
       </div>
     </div>
@@ -1648,12 +1681,14 @@
           <h3>Clare Dowland MSc.</h3>
           <p class="team-role">Client liaison and concept development</p>
           <p>Clare leads client liaison and concept development. She is the main point of contact for our clients, helping shape the brief, develop the direction and keep projects aligned with client needs.</p>
+          <a class="team-link" href="#" target="_blank" rel="noopener" aria-label="View Clare Dowland on LinkedIn">View Clare on LinkedIn</a>
         </article>
 
         <article class="team-member">
           <h3>James Dowland MSc.</h3>
           <p class="team-role">Creative and technical lead</p>
           <p>James leads the creative and technical development of the work. He is responsible for the graphics, visual systems and visual elements across our presentations, reports and digital resources.</p>
+          <a class="team-link" href="#" target="_blank" rel="noopener" aria-label="View James Dowland on LinkedIn">View James on LinkedIn</a>
         </article>
       </div>
     </div>
