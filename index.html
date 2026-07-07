@@ -710,13 +710,15 @@
      7. Slider component
      ========================================================= */
 
-  .slider-wrap {
-    position: relative;
-    overflow: hidden;
-    background: var(--bg2);
-    border: 1px solid var(--rule);
-  }
-
+ .slider-wrap {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  max-width: min(100%, 1280px);
+  margin-left: auto;
+  margin-right: auto;
+}
   .slider-track {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -790,7 +792,7 @@
     height: 32px;
     border: 1px solid var(--rule);
     background: none;
-    color: var(--muted);
+    color: var(--text);
     cursor: pointer;
     font-family: var(--sans);
     font-size: 16px;
@@ -821,7 +823,7 @@
   }
 
   .slide-counter {
-    color: var(--muted);
+    color: var(--text);
     font-size: 12px;
     letter-spacing: 0.06em;
   }
@@ -1861,17 +1863,92 @@
     <p>Rather than showing finished client work, we have developed these examples ourselves, built around real problems, using the tools and approaches we bring to projects. They show how we think, not what we have delivered. We find that is a more useful starting point for a conversation than a polished case study with the sensitive information removed.</p>
   </div>
 
+
   <div class="case-study-block fade-in">
     <div class="case-study-meta">
       <div>
-        <div class="cs-name">LINEA</div>
-        <div class="cs-descriptor">This example shows how different tools can be layered to build a progressively deeper picture of the same situation. The slides move from an annotated performance timeline, accessible to any audience, through a decision and action diagram, to a causal loop map that shows how the parts of the system interacted. Each tool answers a different question about the same problem.</div>
+        <div class="cs-name">Threshold</div>
+        <div class="cs-descriptor">This example shows how we approach advocacy communication, where the job is not just to inform but to build a case. </div>
       </div>
       <div class="cs-tags">
         <span class="cs-tag">Systems mapping</span>
         <span class="cs-tag">Causal loops</span>
         <span class="cs-tag">Timeline design</span>
         <span class="cs-tag">Decision mapping</span>
+      </div>
+    </div>
+
+       <div class="slider-wrap" data-slider="threshold">
+      <div class="slider-track">
+        <div class="slide"><img src="img/Threshold/policy-report-title-slide-housing-advocacy.webp" width="1920" height="1080" loading="lazy" alt="A bold advocacy presentation title slide for Threshold titled 'THE HOUSING FAILURE: Why Britain builds the wrong homes, in the wrong places, for the wrong people' over a muted orange aerial neighborhood background."></div>
+        <div class="slide"><img src="img/Threshold/problem-statement-narrative-framework-presentation-slide.webp" width="1920" height="1080" loading="lazy" alt="A clean, professional advocacy presentation slide titled 'The problem we need to solve' featuring a two-column narrative layout that highlights key structural issues in the planning system with a bold orange takeaway statement: 'The incentive is to wait, not to build.">
+                 </div>
+        <div class="slide"><img src="img/Threshold/executive-quote-testimonial-presentation-slide-layout.webp" width="1920" height="1080" loading="lazy" alt="A professional quote presentation slide for Threshold featuring an orange-tinted headshot of Dame Kate Barker alongside a clean layout displaying a prominent policy quote on housing supply failure.">
+</div>
+        <div class="slide"><img src="img/Threshold/advocacy-data-comparison-infographic-presentation-slide.webp" width="1920" height="1080" loading="lazy" alt="A high-impact dark teal presentation slide featuring a dramatic geometric triangle infographic that visually scales the massive policy deficit between social housing built in 1980 versus 2024.">
+         <div class="slide-notes" hidden>
+            <h3>Triangle comparison (240k vs 9k)</h3>
+
+            <h4>What this shows</h4>
+            <p>A single comparison made impossible to dismiss. The triangle device encodes magnitude without requiring the reader to interpret a chart; the scale differential is visible before the numbers are read.</p>
+
+            <h4>Where this works well</h4>
+            <p>Opening or anchoring a policy argument where the scale of a problem needs to land immediately. Useful when the audience already knows the situation but hasn't felt its weight. Effective with non-specialist audiences, media-facing materials and funder briefings where attention is short.</p>
+
+            <h4>Limitations to be aware of</h4>
+            <p>A device this stark invites challenge — the figures need to be defensible and sourced. It communicates scale but not cause, so it needs to be followed by something that explains why the gap exists. Used in isolation, it can feel polemical rather than analytical.</p>
+          </div></div>
+        <div class="slide"><img src="img/Threshold/policy-recommendations-three-column-presentation-slide.webp" width="1920" height="1080" loading="lazy" alt="A high-impact dark teal presentation slide titled 'The three things that would change everything' featuring a clean three-column layout outlining key strategic policy recommendations and actionable solutions.">
+                                        <div class="slide-notes" hidden>
+            <h3>Problem framing</h3>
+
+            <h4>What this shows</h4>
+            <p>A structured argument built from short statements, each one advancing the case and the final one a conclusion. No charts, no diagrams. The visual device is the sequence.</p>
+
+            <h4>Where this works well</h4>
+            <p>Setting up the terms of a debate before evidence is introduced. Useful when the audience holds a view that needs to be reframed. Works well as a standalone slide in a live presentation where the speaker controls the pace. Each statement can be held on-screen before the next appears.</p>
+
+            <h4>Limitations to be aware of</h4>
+            <p>Depends entirely on the quality of the writing. Takes a clear position, which is appropriate in advocacy contexts but needs to be appropriate to the audience and setting. Does not work as a leave-behind without supporting material.</p>
+          </div></div>
+        <div class="slide"><img src="img/Threshold/regional-demographic-data-table-presentation-slide.webp" width="1920" height="1080" loading="lazy" alt="A clean white presentation slide titled 'Who is affected and where' displaying a regional demographic data table for London, Midlands, and the North of England next to an abstract, geometric triangle map graphic of Great Britain."></div>
+        <div class="slide"><img src="img/Threshold/policy-data-area-chart-presentation-slide-layout.webp" width="1920" height="1080" loading="lazy" alt="A clean white presentation chart layout titled 'Permissions granted vs homes completed' featuring a dual-layered area graph with a custom housing silhouette overlay that visualizes a longitudinal data gap alongside a structured explanation column.">
+                                  <div class="slide-notes" hidden>
+            <h3>Permissions granted vs homes completed</h3>
+
+            <h4>What this shows</h4>
+            <p>The gap between planning permission and actual construction, and the reasons that gap persists. The area chart makes the structural divergence visible over time; the explanatory panel on the right explains what the gap means.</p>
+
+            <h4>Where this works well</h4>
+            <p>Policy and advocacy contexts where a common assumption, in this case, that planning is the barrier to housebuilding, needs to be tested against evidence. Useful when the audience includes people with competing explanations for the same problem. </p>
+
+            <h4>Limitations to be aware of</h4>
+            <p>Requires reliable longitudinal data from a credible source. The chart is only as strong as the figures behind it. The slide takes a position rather than simply presenting data. That is sometimes what is needed.</p>
+          </div></div>
+        <div class="slide"><img src="img/Threshold/circular-development-model-infographic-presentation-slide.webp" width="1920" height="1080" loading="lazy" alt="A detailed presentation layout titled 'An alternative development model' featuring an intricate circular process infographic mapping activity, ownership, and value retention for locally led development."></div>
+        <div class="slide"><img src="img/Threshold/presentation-closing-slide-branding-back-cover.webp" width="1920" height="1080" loading="lazy" alt="A professional corporate presentation closing slide for Threshold featuring a centered brand logo superimposed over a muted orange aerial view of a residential neighborhood."></div>
+      </div>
+      <div class="slider-controls">
+        <div class="slider-dots"></div>
+        <div class="slide-counter"></div>
+        <div class="slider-btns">
+          <button class="slider-btn prev" aria-label="Previous slide">←</button>
+          <button class="slider-btn next" aria-label="Next slide">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="case-study-block fade-in">
+    <div class="case-study-meta">
+      <div>
+        <div class="cs-name">LINEA</div>
+        <div class="cs-descriptor">This example shows how different tools can be layered to build a progressively deeper picture of the same situation. The slides move from an annotated performance timeline, accessible to any audience, through a decision and action diagram, to a causal loop map that shows how the parts of the system interacted. Each tool answers a different question about the same problem.</div>
+      </div>
+      <div class="cs-tags">
+        <span class="cs-tag">Process modelling</span>
+        <span class="cs-tag">Policy communication</span>
+        <span class="cs-tag">Value-flow diagrams</span>
+        <span class="cs-tag">Strategic narratives</span>
       </div>
     </div>
     <div class="slider-wrap" data-slider="linea">
@@ -1951,79 +2028,8 @@
     </div>
   </div>
 
-  <div class="case-study-block fade-in">
-    <div class="case-study-meta">
-      <div>
-        <div class="cs-name">Threshold</div>
-        <div class="cs-descriptor">This example shows how we approach advocacy communication, where the job is not just to inform but to build a case. </div>
-      </div>
-      <div class="cs-tags">
-        <span class="cs-tag">Process modelling</span>
-        <span class="cs-tag">Policy communication</span>
-        <span class="cs-tag">Value-flow diagrams</span>
-        <span class="cs-tag">Strategic narratives</span>
-      </div>
-    </div>
-    <div class="slider-wrap" data-slider="threshold">
-      <div class="slider-track">
-        <div class="slide"><img src="img/Threshold/policy-report-title-slide-housing-advocacy.webp" width="1920" height="1080" loading="lazy" alt="A bold advocacy presentation title slide for Threshold titled 'THE HOUSING FAILURE: Why Britain builds the wrong homes, in the wrong places, for the wrong people' over a muted orange aerial neighborhood background."></div>
-        <div class="slide"><img src="img/Threshold/problem-statement-narrative-framework-presentation-slide.webp" width="1920" height="1080" loading="lazy" alt="A clean, professional advocacy presentation slide titled 'The problem we need to solve' featuring a two-column narrative layout that highlights key structural issues in the planning system with a bold orange takeaway statement: 'The incentive is to wait, not to build.">
-                 </div>
-        <div class="slide"><img src="img/Threshold/executive-quote-testimonial-presentation-slide-layout.webp" width="1920" height="1080" loading="lazy" alt="A professional quote presentation slide for Threshold featuring an orange-tinted headshot of Dame Kate Barker alongside a clean layout displaying a prominent policy quote on housing supply failure.">
-</div>
-        <div class="slide"><img src="img/Threshold/advocacy-data-comparison-infographic-presentation-slide.webp" width="1920" height="1080" loading="lazy" alt="A high-impact dark teal presentation slide featuring a dramatic geometric triangle infographic that visually scales the massive policy deficit between social housing built in 1980 versus 2024.">
-         <div class="slide-notes" hidden>
-            <h3>Triangle comparison (240k vs 9k)</h3>
 
-            <h4>What this shows</h4>
-            <p>A single comparison made impossible to dismiss. The triangle device encodes magnitude without requiring the reader to interpret a chart; the scale differential is visible before the numbers are read.</p>
-
-            <h4>Where this works well</h4>
-            <p>Opening or anchoring a policy argument where the scale of a problem needs to land immediately. Useful when the audience already knows the situation but hasn't felt its weight. Effective with non-specialist audiences, media-facing materials and funder briefings where attention is short.</p>
-
-            <h4>Limitations to be aware of</h4>
-            <p>A device this stark invites challenge — the figures need to be defensible and sourced. It communicates scale but not cause, so it needs to be followed by something that explains why the gap exists. Used in isolation, it can feel polemical rather than analytical.</p>
-          </div></div>
-        <div class="slide"><img src="img/Threshold/policy-recommendations-three-column-presentation-slide.webp" width="1920" height="1080" loading="lazy" alt="A high-impact dark teal presentation slide titled 'The three things that would change everything' featuring a clean three-column layout outlining key strategic policy recommendations and actionable solutions.">
-                                        <div class="slide-notes" hidden>
-            <h3>Problem framing</h3>
-
-            <h4>What this shows</h4>
-            <p>A structured argument built from short statements, each one advancing the case and the final one a conclusion. No charts, no diagrams. The visual device is the sequence.</p>
-
-            <h4>Where this works well</h4>
-            <p>Setting up the terms of a debate before evidence is introduced. Useful when the audience holds a view that needs to be reframed. Works well as a standalone slide in a live presentation where the speaker controls the pace. Each statement can be held on-screen before the next appears.</p>
-
-            <h4>Limitations to be aware of</h4>
-            <p>Depends entirely on the quality of the writing. Takes a clear position, which is appropriate in advocacy contexts but needs to be appropriate to the audience and setting. Does not work as a leave-behind without supporting material.</p>
-          </div></div>
-        <div class="slide"><img src="img/Threshold/regional-demographic-data-table-presentation-slide.webp" width="1920" height="1080" loading="lazy" alt="A clean white presentation slide titled 'Who is affected and where' displaying a regional demographic data table for London, Midlands, and the North of England next to an abstract, geometric triangle map graphic of Great Britain."></div>
-        <div class="slide"><img src="img/Threshold/policy-data-area-chart-presentation-slide-layout.webp" width="1920" height="1080" loading="lazy" alt="A clean white presentation chart layout titled 'Permissions granted vs homes completed' featuring a dual-layered area graph with a custom housing silhouette overlay that visualizes a longitudinal data gap alongside a structured explanation column.">
-                                  <div class="slide-notes" hidden>
-            <h3>Permissions granted vs homes completed</h3>
-
-            <h4>What this shows</h4>
-            <p>The gap between planning permission and actual construction, and the reasons that gap persists. The area chart makes the structural divergence visible over time; the explanatory panel on the right explains what the gap means.</p>
-
-            <h4>Where this works well</h4>
-            <p>Policy and advocacy contexts where a common assumption, in this case, that planning is the barrier to housebuilding, needs to be tested against evidence. Useful when the audience includes people with competing explanations for the same problem. </p>
-
-            <h4>Limitations to be aware of</h4>
-            <p>Requires reliable longitudinal data from a credible source. The chart is only as strong as the figures behind it. The slide takes a position rather than simply presenting data. That is sometimes what is needed.</p>
-          </div></div>
-        <div class="slide"><img src="img/Threshold/circular-development-model-infographic-presentation-slide.webp" width="1920" height="1080" loading="lazy" alt="A detailed presentation layout titled 'An alternative development model' featuring an intricate circular process infographic mapping activity, ownership, and value retention for locally led development."></div>
-        <div class="slide"><img src="img/Threshold/presentation-closing-slide-branding-back-cover.webp" width="1920" height="1080" loading="lazy" alt="A professional corporate presentation closing slide for Threshold featuring a centered brand logo superimposed over a muted orange aerial view of a residential neighborhood."></div>
-      </div>
-      <div class="slider-controls">
-        <div class="slider-dots"></div>
-        <div class="slide-counter"></div>
-        <div class="slider-btns">
-          <button class="slider-btn prev" aria-label="Previous slide">←</button>
-          <button class="slider-btn next" aria-label="Next slide">→</button>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
 
   <div class="case-study-block fade-in">
     <div class="case-study-meta">
@@ -2104,7 +2110,7 @@
 <section id="contact">
   <div class="contact-inner fade-in">
     <div class="contact-left">
-      <h2>Bring us in before the presentation becomes a last-minute design problem.</h2>
+      <h2>Contact us to see how we can help throughout your project.</h2>
       <p>We structure the story, design the visuals and produce the final presentation, report or resource. We can work from notes, drafts, data, interviews or existing documents.</p>
       <div class="contact-links">
         <a href="tel:+447809690319">Telephone <span>(+44) 7809 690319</span></a>
