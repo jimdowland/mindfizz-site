@@ -132,19 +132,37 @@
 
   nav .nav-right {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     gap: 18px;
   }
 
   nav .nav-right a {
+    display: inline-flex;
+    align-items: center;
     color: var(--muted);
     font-size: 13px;
+    line-height: 1;
     text-decoration: none;
     transition: color 0.2s;
   }
 
   nav .nav-right a:hover {
     color: var(--red);
+  }
+
+  nav .nav-right .nav-cta {
+    margin-left: 4px;
+    padding: 7px 12px;
+    border: 1px solid var(--red);
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  nav .nav-right .nav-cta:hover,
+  nav .nav-right .nav-cta:focus-visible {
+    background: var(--red);
+    color: var(--bg);
   }
 
   /* =========================================================
@@ -194,6 +212,49 @@
     color: var(--muted);
     font-size: 18px;
     letter-spacing: 0.01em;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 22px;
+    margin-top: 32px;
+  }
+
+  .primary-cta,
+  .secondary-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .primary-cta {
+    gap: 14px;
+    padding: 11px 18px;
+    border: 1px solid var(--red);
+    background: var(--red);
+    color: var(--bg);
+  }
+
+  .primary-cta:hover,
+  .primary-cta:focus-visible {
+    background: var(--text);
+    border-color: var(--text);
+  }
+
+  .secondary-cta {
+    color: var(--text);
+    border-bottom: 1px solid var(--text);
+  }
+
+  .hero-proof {
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: 13px;
   }
 
   .hero-visual {
@@ -1622,7 +1683,7 @@
   <div class="nav-right">
     <a href="#about">What we do</a>
     <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Discuss a project</a>
   </div>
 </nav>
 
@@ -1630,8 +1691,13 @@
 
 <section id="top" class="hero hero--home">
   <div class="hero-text">
-    <h1>Beyond Design<span class="red-stop">.</span> <br/> Clearer Thinking<span class="red-stop">.</span></h1>
+    <h1>Beyond Design.<br/> Clearer Thinking<span class="red-stop">.</span></h1>
     <p class="hero-sub">We help you structure, design and deliver highly effective reports, presentations and visual resources.</p>
+    <div class="hero-actions">
+      <a class="primary-cta" href="#contact">Discuss your project <span aria-hidden="true">›</span></a>
+      <a class="secondary-cta" href="#work">See how we approach the work</a>
+    </div>
+    <p class="hero-proof">25+ years’ experience · Work directly with our senior team · UK and international clients</p>
   </div>
 
   <div class="hero-visual" aria-hidden="true">
@@ -1753,12 +1819,12 @@
       </div>
       <div class="service-item">
         <h3>Structure and flow</h3>
-        <p>Organising the content and plan the sequence of your presentation, report or resource.</p>
+        <p>Organising the content and planning the sequence of your presentation, report or resource.</p>
         <div class="service-rule"></div>
       </div>
       <div class="service-item">
         <h3>Message and hierarchy</h3>
-        <p>Identifying what matters most and create a clear order of information.</p>
+        <p>Identifying what matters most and creating a clear order of information.</p>
         <div class="service-rule"></div>
       </div>
       <div class="service-item">
@@ -2110,8 +2176,8 @@
 <section id="contact">
   <div class="contact-inner fade-in">
     <div class="contact-left">
-      <h2>Contact us to see how we can help throughout your project.</h2>
-      <p>We structure the story, design the visuals and produce the final presentation, report or resource. We can work from notes, drafts, data, interviews or existing documents.</p>
+      <h2>Have a complex story to communicate?</h2>
+      <p>Tell us what you are working on, who needs to understand it and where you are in the process. We can start with notes, drafts, data, interviews or existing documents.</p>
       <div class="contact-links">
         <a href="tel:+447809690319">Telephone <span>(+44) 7809 690319</span></a>
         <a href="mailto:studio@mindfizz.com">Email <span>studio@mindfizz.com</span></a>
@@ -2120,11 +2186,11 @@
     </div>
 
     <div class="contact-right">
-      <form class="contact-form" action="contact.php" method="post" accept-charset="UTF-8">
-        <h3>Send a message</h3>
+      <form class="contact-form" action="mindfizz_contact.php" method="post" accept-charset="UTF-8">
+        <h3>Tell us about your project</h3>
 
         <div class="form-status form-status--success" data-form-success hidden>
-          Thanks — your message has been sent. We’ll get back to you as soon as we can.
+          Thanks. Your message has been sent. We’ll get back to you as soon as we can.
         </div>
 
         <div class="form-status form-status--error" data-form-error hidden>
@@ -2149,8 +2215,8 @@
         </div>
 
         <div class="form-field">
-          <label for="contact-message">How can we help?</label>
-          <textarea id="contact-message" name="message" maxlength="3000" required></textarea>
+          <label for="contact-message">What are you creating, and what do you need help with?</label>
+          <textarea id="contact-message" name="message" maxlength="3000" placeholder="For example: a board presentation in September, with an early draft ready for review…" required></textarea>
         </div>
 
         <div class="hp-field" aria-hidden="true">
@@ -2158,8 +2224,8 @@
           <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off">
         </div>
 
-        <button class="form-button" type="submit">Send message <span aria-hidden="true">›</span></button>
-        <p class="form-note">We’ll only use these details to respond to your enquiry. We won’t add you to a mailing list.</p>
+        <button class="form-button" type="submit">Discuss my project <span aria-hidden="true">›</span></button>
+        <p class="form-note">No obligation. Just a practical conversation about your project. We’ll only use these details to reply and won’t add you to a mailing list.</p>
       </form>
     </div>
   </div>

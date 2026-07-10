@@ -1,8 +1,7 @@
 <?php
 /*
   Mindfizz contact form handler
-  Upload this file as: contact.php
-  Place it in the same folder as your page containing the contact form.
+  Place this file in the same folder as the page containing the contact form.
 */
 
 $to = 'studio@mindfizz.com';
