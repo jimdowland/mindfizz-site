@@ -1,3 +1,8 @@
+# macOS metadata
+.DS_Store
+._*
+**/._*
+
 index_bu.html
 ._android-icon-192x192.png
 ._apple-icon-57x57.png
