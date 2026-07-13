@@ -1330,6 +1330,11 @@
     color: var(--bg);
   }
 
+  .form-button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+  }
+
   .form-note {
     max-width: 520px;
     margin-top: 18px;
@@ -2265,11 +2270,11 @@
       <form class="contact-form" action="mindfizz_contact.php" method="post" accept-charset="UTF-8">
         <h3>Tell us about your project</h3>
 
-        <div class="form-status form-status--success" data-form-success hidden>
+        <div class="form-status form-status--success" data-form-success role="status" tabindex="-1" hidden>
           Thanks. Your message has been sent. We’ll get back to you as soon as we can.
         </div>
 
-        <div class="form-status form-status--error" data-form-error hidden>
+        <div class="form-status form-status--error" data-form-error role="alert" tabindex="-1" hidden>
           Sorry, something went wrong. Please email studio@mindfizz.com instead.
         </div>
 
@@ -2829,6 +2834,57 @@
   }
 
   /* =========================================================
+     Contact form background submission
+     ========================================================= */
+
+  function initContactFormSubmission() {
+    const form = document.querySelector('.contact-form');
+
+    if (!form || !window.fetch || !window.FormData) {
+      return;
+    }
+
+    const button = form.querySelector('.form-button');
+    const successMessage = form.querySelector('[data-form-success]');
+    const errorMessage = form.querySelector('[data-form-error]');
+    const originalButtonContent = button.innerHTML;
+
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      successMessage.hidden = true;
+      errorMessage.hidden = true;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+
+      try {
+        const formData = new FormData(form);
+        formData.append('_ajax', '1');
+
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        });
+        const result = await response.json();
+
+        if (!result.success) {
+          throw new Error('The server could not send the message.');
+        }
+
+        form.reset();
+        successMessage.hidden = false;
+        successMessage.focus({ preventScroll: true });
+      } catch (error) {
+        errorMessage.hidden = false;
+        errorMessage.focus({ preventScroll: true });
+      } finally {
+        button.disabled = false;
+        button.innerHTML = originalButtonContent;
+      }
+    });
+  }
+
+  /* =========================================================
      Initialise
      ========================================================= */
 
@@ -2837,6 +2893,7 @@
   initSliders();
   initFadeInObserver();
   initContactFormStatus();
+  initContactFormSubmission();
 </script>
 </body>
 </html>
