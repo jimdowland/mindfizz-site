@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1584, initial-scale=1">
+  <title>Mindfizz LinkedIn banner</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 1584px;
+      height: 396px;
+      margin: 0;
+      overflow: hidden;
+      background: #f5edea;
+    }
+
+    .banner {
+      position: relative;
+      width: 1584px;
+      height: 396px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 88% 50%, rgba(202, 42, 35, 0.052) 0, rgba(202, 42, 35, 0.052) 164px, transparent 165px),
+        #f5edea;
+      color: #11110f;
+    }
+
+    .flow-field {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 780px;
+      height: 396px;
+      opacity: 0.44;
+      -webkit-mask-image: linear-gradient(to right, #000 0%, #000 58%, transparent 100%);
+      mask-image: linear-gradient(to right, #000 0%, #000 58%, transparent 100%);
+    }
+
+    .brand {
+      position: absolute;
+      top: 164px;
+      right: 88px;
+      width: 300px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <main class="banner" aria-label="Mindfizz LinkedIn banner">
+    <!-- The left side intentionally contains no essential content because LinkedIn overlays the profile photograph here. -->
+    <canvas class="flow-field" width="780" height="396" aria-hidden="true"></canvas>
+    <img class="brand" src="../brand/mindfizz-wordmark-tr.png" width="350" height="68" alt="Mindfizz">
+  </main>
+
+  <script>
+    const canvas = document.querySelector('.flow-field');
+    const context = canvas.getContext('2d');
+    const spacing = 31;
+
+    function arrowColour(angle) {
+      const grey = { r: 98, g: 94, b: 88 };
+      const red = { r: 202, g: 42, b: 35 };
+      const mix = (Math.sin(angle) + 1) / 2;
+      const channel = key => Math.round(grey[key] + (red[key] - grey[key]) * mix);
+      return `rgba(${channel('r')}, ${channel('g')}, ${channel('b')}, ${0.28 + mix * 0.28})`;
+    }
+
+    function drawArrow(x, y, angle) {
+      const length = 15;
+      const head = 4;
+
+      context.save();
+      context.translate(x, y);
+      context.rotate(angle);
+      context.beginPath();
+      context.moveTo(-length / 2, 0);
+      context.lineTo(length / 2, 0);
+      context.moveTo(length / 2, 0);
+      context.lineTo(length / 2 - head, -head * 0.72);
+      context.moveTo(length / 2, 0);
+      context.lineTo(length / 2 - head, head * 0.72);
+      context.strokeStyle = arrowColour(angle);
+      context.lineWidth = 1;
+      context.lineCap = 'round';
+      context.lineJoin = 'round';
+      context.stroke();
+      context.restore();
+    }
+
+    for (let x = 19; x < canvas.width; x += spacing) {
+      for (let y = 19; y < canvas.height; y += spacing) {
+        const angle = Math.sin(x * 0.014) * 1.7 + Math.cos(y * 0.017) * 1.15 + (x + y) * 0.0016;
+        drawArrow(x, y, angle);
+      }
+    }
+  </script>
+</body>
+</html>

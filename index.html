@@ -48,6 +48,15 @@
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#0e0e0c">
 
+<script
+  defer
+  src="https://cloud.umami.is/script.js"
+  data-website-id="6b133e1c-c86e-4a8e-a8de-294bbb34361e"
+  data-domains="mindfizz.com,www.mindfizz.com"
+  data-do-not-track="true"
+  data-exclude-search="true"
+  data-exclude-hash="true"></script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1425,13 +1434,26 @@
   }
 
   footer a,
+  footer button,
   .form-note a {
     color: inherit;
     text-underline-offset: 3px;
   }
 
+  footer button {
+    appearance: none;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
   footer a:hover,
   footer a:focus-visible,
+  footer button:hover,
+  footer button:focus-visible,
   .form-note a:hover,
   .form-note a:focus-visible {
     color: var(--red);
@@ -2343,7 +2365,7 @@
 <footer>
   <div><span class="logo">mindfizz<span class="red-stop">.</span></span></div>
   <div class="footer-mid">VAT registration 887 0350 05 Company registered in England number 5842619</div>
-  <div class="footer-right"><a href="privacy.html">Privacy</a> · © 2026 mindfizz</div>
+  <div class="footer-right"><a href="privacy.html">Privacy</a> · <button type="button" data-analytics-toggle>Disable analytics</button> · © 2026 mindfizz</div>
 </footer>
 
 <script>
@@ -2885,6 +2907,50 @@
   }
 
   /* =========================================================
+     Analytics preference
+     ========================================================= */
+
+  function initAnalyticsPreference() {
+    const toggles = document.querySelectorAll('[data-analytics-toggle]');
+
+    if (!toggles.length) {
+      return;
+    }
+
+    const isDisabled = () => {
+      try {
+        return localStorage.getItem('umami.disabled') === '1';
+      } catch (error) {
+        return false;
+      }
+    };
+
+    const updateToggles = () => {
+      const disabled = isDisabled();
+      toggles.forEach(toggle => {
+        toggle.textContent = disabled ? 'Enable analytics' : 'Disable analytics';
+      });
+    };
+
+    toggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        try {
+          if (isDisabled()) {
+            localStorage.removeItem('umami.disabled');
+          } else {
+            localStorage.setItem('umami.disabled', '1');
+          }
+          updateToggles();
+        } catch (error) {
+          // Leave the control unchanged if browser storage is unavailable.
+        }
+      });
+    });
+
+    updateToggles();
+  }
+
+  /* =========================================================
      Initialise
      ========================================================= */
 
@@ -2894,6 +2960,7 @@
   initFadeInObserver();
   initContactFormStatus();
   initContactFormSubmission();
+  initAnalyticsPreference();
 </script>
 </body>
 </html>

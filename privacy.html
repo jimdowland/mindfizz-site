@@ -9,6 +9,14 @@
 <link rel="canonical" href="https://mindfizz.com/privacy.html">
 <meta name="theme-color" content="#0e0e0c">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<script
+  defer
+  src="https://cloud.umami.is/script.js"
+  data-website-id="6b133e1c-c86e-4a8e-a8de-294bbb34361e"
+  data-domains="mindfizz.com,www.mindfizz.com"
+  data-do-not-track="true"
+  data-exclude-search="true"
+  data-exclude-hash="true"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
@@ -48,6 +56,17 @@
   .intro { max-width: 700px; color: var(--text); font-size: 20px; }
   ul { padding-left: 22px; }
   a { color: var(--text); }
+  .analytics-choice { margin-top: 20px; }
+  .analytics-toggle {
+    padding: 9px 14px;
+    border: 1px solid var(--text);
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+  }
+  .analytics-toggle:hover, .analytics-toggle:focus-visible { border-color: var(--red); color: var(--red); }
+  .analytics-status { margin-left: 10px; font-size: 14px; }
   footer { border-top: 1px solid var(--rule); color: var(--muted); font-size: 13px; }
   @media (max-width: 600px) {
     header, main, footer { padding-left: 24px; padding-right: 24px; }
@@ -59,35 +78,82 @@
 <header><a href="index.html">← Back to Mindfizz</a></header>
 <main>
   <h1>Privacy notice<span aria-hidden="true" style="color: var(--red)">.</span></h1>
-  <p class="intro">This notice explains how Mindfizz Ltd uses personal information submitted through this website.</p>
+  <p class="intro">This notice explains how Mindfizz Ltd uses information provided through this website and limited analytics information collected when you visit it.</p>
 
   <h2>Who we are</h2>
   <p>Mindfizz Ltd is the controller of the personal information covered by this notice. The company is registered in England and Wales under company number 5842619. You can contact us at <a href="mailto:studio@mindfizz.com">studio@mindfizz.com</a>.</p>
 
   <h2>Information we collect</h2>
-  <p>When you contact us, we collect the information you choose to provide, such as your name, email address, organisation and details of your enquiry. Our hosting provider may also record standard technical information in server logs for security and reliability.</p>
+  <p>When you contact us, we collect the information you choose to provide, such as your name, email address, organisation and details of your enquiry. We also collect limited, anonymous information about use of this website as described under “Website analytics and cookies” below. Our hosting provider may record standard technical information in server logs for security and reliability.</p>
 
   <h2>How we use it</h2>
-  <p>We use this information to respond to your enquiry, understand your requirements, prepare proposals and manage any subsequent working relationship. We do not add contact-form details to a marketing list.</p>
+  <p>We use contact information to respond to your enquiry, understand your requirements, prepare proposals and manage any subsequent working relationship. We use anonymous analytics information to understand how the website is used and improve its content and performance. We do not add contact-form details to a marketing list or use analytics information for advertising.</p>
 
   <h2>Our lawful basis</h2>
-  <p>We process enquiries because it is in our legitimate interests to respond to people who contact our business and, where applicable, to take steps at your request before entering into a contract.</p>
+  <p>We process enquiries because it is in our legitimate interests to respond to people who contact our business and, where applicable, to take steps at your request before entering into a contract. We process anonymous analytics information for our legitimate interest in understanding and improving this website. We use analytics solely for statistical purposes and provide a simple way to object below.</p>
 
   <h2>Who we share it with</h2>
-  <p>We may use trusted service providers for website hosting and email. They may process information only as needed to provide those services. We do not sell personal information. If a provider processes information outside the UK, we require an appropriate legal safeguard.</p>
+  <p>We use trusted service providers for website hosting, email and analytics. Analytics information is processed on our behalf by Umami Software, Inc. using Umami Cloud’s EU data region. Our providers may process information only as needed to provide their services. We do not sell personal information. If a provider accesses or otherwise processes personal information outside the UK, we require an appropriate legal safeguard.</p>
 
   <h2>How long we keep it</h2>
-  <p>We normally retain enquiry correspondence for up to two years so that we can follow up and maintain an appropriate business record. If an enquiry becomes a client project, relevant records may be retained for longer where required for contractual, tax or legal purposes.</p>
+  <p>We normally retain enquiry correspondence for up to two years so that we can follow up and maintain an appropriate business record. If an enquiry becomes a client project, relevant records may be retained for longer where required for contractual, tax or legal purposes. Analytics information is available in our Umami Cloud Hobby account for up to six months.</p>
 
   <h2>Your rights</h2>
   <p>Depending on the circumstances, you may have rights to access, correct or erase your information, restrict its use, or object to processing. To exercise a right, email <a href="mailto:studio@mindfizz.com">studio@mindfizz.com</a>. You can also complain to the <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">Information Commissioner’s Office</a>.</p>
 
-  <h2>Cookies</h2>
-  <p>This website does not currently use analytics or advertising cookies.</p>
+  <h2>Website analytics and cookies</h2>
+  <p>We use Umami Cloud to understand how visitors use this website and to help us improve it. Umami collects anonymous usage information such as pages viewed, referring website, browser, operating system, device type, screen size, browser language, approximate location and visit times.</p>
+  <p>Umami does not use analytics cookies, collect names or email addresses, or track visitors across different websites. IP addresses are used to produce approximate location and anonymous session information but are not stored. We do not use session replay, heatmaps or advertising analytics. We also configure Umami not to collect URL search parameters or page fragments and to respect your browser’s Do Not Track setting.</p>
+  <p class="analytics-choice"><button class="analytics-toggle" type="button" data-analytics-toggle>Disable analytics</button> <span class="analytics-status" data-analytics-status aria-live="polite"></span></p>
 
   <h2>Updates</h2>
-  <p>We may update this notice when our services or legal obligations change. This version was last updated on 13 July 2026.</p>
+  <p>We may update this notice when our services or legal obligations change. This version was last updated on 10 August 2026.</p>
 </main>
 <footer><a href="index.html">Mindfizz</a> · Privacy notice</footer>
+<script>
+  (() => {
+    const toggles = document.querySelectorAll('[data-analytics-toggle]');
+    const status = document.querySelector('[data-analytics-status]');
+
+    const isDisabled = () => {
+      try {
+        return localStorage.getItem('umami.disabled') === '1';
+      } catch (error) {
+        return false;
+      }
+    };
+
+    const updatePreference = () => {
+      const disabled = isDisabled();
+      toggles.forEach(toggle => {
+        toggle.textContent = disabled ? 'Enable analytics' : 'Disable analytics';
+      });
+      if (status) {
+        status.textContent = disabled
+          ? 'This browser has opted out of analytics.'
+          : 'This browser has not opted out of analytics.';
+      }
+    };
+
+    toggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        try {
+          if (isDisabled()) {
+            localStorage.removeItem('umami.disabled');
+          } else {
+            localStorage.setItem('umami.disabled', '1');
+          }
+          updatePreference();
+        } catch (error) {
+          if (status) {
+            status.textContent = 'Your analytics preference could not be saved in this browser.';
+          }
+        }
+      });
+    });
+
+    updatePreference();
+  })();
+</script>
 </body>
 </html>
