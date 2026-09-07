@@ -206,12 +206,10 @@
 
   .hero {
     position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 34vw);
+    display: flex;
     align-items: center;
     min-height: 85vh;
     padding: 120px 48px 80px;
-    gap: clamp(36px, 5vw, 80px);
     overflow: hidden;
   }
 
@@ -223,7 +221,7 @@
   .hero-text {
     position: relative;
     z-index: 2;
-    max-width: 980px;
+    max-width: 1120px;
   }
 
   .hero h1 {
@@ -290,25 +288,6 @@
     margin-top: 20px;
     color: var(--muted);
     font-size: 13px;
-  }
-
-  .hero-visual {
-    position: relative;
-    z-index: 2;
-    justify-self: end;
-    align-self: center;
-    width: 100%;
-    max-width: 600px;
-    min-width: 0;
-    aspect-ratio: 1 / 1;
-  }
-
-  #hero-canvas {
-    position: absolute;
-    inset: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
   }
 
   /* =========================================================
@@ -1516,9 +1495,6 @@
       white-space: normal;
     }
 
-    .hero-visual {
-      display: none;
-    }
   }
 
   @media (max-width: 900px) {
@@ -1803,9 +1779,6 @@
     <p class="hero-proof">25+ years’ experience · Work directly with our senior team · UK and international clients</p>
   </div>
 
-  <div class="hero-visual" aria-hidden="true">
-    <canvas id="hero-canvas"></canvas>
-  </div>
 </section>
 
 <section id="who">
@@ -2954,8 +2927,6 @@
      Initialise
      ========================================================= */
 
-  perlin.init();
-  initHeroCanvas();
   initSliders();
   initFadeInObserver();
   initContactFormStatus();
