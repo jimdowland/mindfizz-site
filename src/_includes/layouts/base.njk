@@ -39,6 +39,23 @@
     "areaServed": "Worldwide"
   }
   </script>
+  {% if serviceType %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "{{ serviceType }}",
+    "url": "{{ site.url }}{{ page.url }}",
+    "description": "{{ description }}",
+    "areaServed": "Worldwide",
+    "provider": {
+      "@type": "Organization",
+      "name": "Mindfizz",
+      "url": "{{ site.url }}"
+    }
+  }
+  </script>
+  {% endif %}
 
   <script defer src="https://cloud.umami.is/script.js"
     data-website-id="6b133e1c-c86e-4a8e-a8de-294bbb34361e"
@@ -57,7 +74,19 @@
     </button>
     <nav class="site-nav" id="site-navigation" aria-label="Primary" data-site-nav>
       {% for item in site.navigation %}
-        <a href="{{ item.url }}"{% if navKey == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {% if item.key == 'services' %}
+        <div class="site-nav-group">
+          <a href="{{ item.url }}"{% if navKey == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a>
+          <div class="site-subnav">
+            <a href="/services/presentation-design/">Presentation design</a>
+            <a href="/services/report-design/">Visual report design</a>
+            <a href="/services/information-design/">Information design</a>
+            <a href="/services/digital-resources/">Digital resources</a>
+          </div>
+        </div>
+        {% else %}
+          <a href="{{ item.url }}"{% if navKey == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {% endif %}
       {% endfor %}
       <a href="/contact/" class="nav-cta"{% if navKey == 'contact' %} aria-current="page"{% endif %}>Discuss a project</a>
     </nav>

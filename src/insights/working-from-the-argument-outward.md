@@ -22,3 +22,5 @@ The visual form follows that reasoning. Charts, diagrams, maps and frameworks ar
 The finished resource also has a job after it leaves the studio. A board presentation must work in the room. A report must help a reader find a path through long-form evidence. A PowerPoint file may need to remain editable and reliable inside a client’s brand system.
 
 That is why our process moves through four connected stages: understand, structure, explain and deliver. The aim is not simply a polished artefact. It is communication that an audience can understand and use.
+
+This approach shapes both our [presentation design](/services/presentation-design/) and [visual report design](/services/report-design/) work: the form changes, but the argument still comes first.
