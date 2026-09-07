@@ -3,6 +3,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({ img: "img" });
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy({ "video/threshold-case-study.mp4": "video/threshold-case-study.mp4" });
   eleventyConfig.addPassthroughCopy("legacy.html");
   eleventyConfig.addPassthroughCopy("mindfizz_contact.php");
 
@@ -45,7 +46,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("path-prefix", function (content) {
     if (this.page.outputPath?.endsWith(".html") && pathPrefix !== "/") {
       const prefix = `/${pathPrefix.replace(/^\/+|\/+$/g, "")}/`;
-      return content.replace(/\b(href|src|action)="\/(?!\/)/g, `$1="${prefix}`);
+      return content.replace(/\b(href|src|poster|action)="\/(?!\/)/g, `$1="${prefix}`);
     }
     return content;
   });
