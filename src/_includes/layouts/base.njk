@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} | Mindfizz</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{ canonical or site.url ~ page.url }}">
+
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:site_name" content="Mindfizz">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="{{ title }} | Mindfizz">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ canonical or site.url ~ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/img/social/mindfizz-og-image.png">
+  <meta property="og:image:alt" content="Beyond design. Clearer thinking. Mindfizz.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f5edea">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Mindfizz",
+    "url": "{{ site.url }}",
+    "description": "{{ site.description }}",
+    "email": "{{ site.email }}",
+    "telephone": "{{ site.phone }}",
+    "areaServed": "Worldwide"
+  }
+  </script>
+
+  <script defer src="https://cloud.umami.is/script.js"
+    data-website-id="6b133e1c-c86e-4a8e-a8de-294bbb34361e"
+    data-domains="mindfizz.com,www.mindfizz.com"
+    data-do-not-track="true" data-exclude-search="true" data-exclude-hash="true"></script>
+</head>
+<body class="{{ bodyClass or '' }}">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" data-site-header>
+    <a href="/" class="logo-link" aria-label="Mindfizz home">
+      <img src="/img/brand/mindfizz-wordmark-tr.png" width="350" height="68" alt="Mindfizz" class="wordmark">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-nav-toggle>
+      <span>Menu</span><span class="nav-toggle-mark" aria-hidden="true">+</span>
+    </button>
+    <nav class="site-nav" id="site-navigation" aria-label="Primary" data-site-nav>
+      {% for item in site.navigation %}
+        <a href="{{ item.url }}"{% if navKey == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {% endfor %}
+      <a href="/contact/" class="nav-cta"{% if navKey == 'contact' %} aria-current="page"{% endif %}>Discuss a project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <a class="footer-brand" href="/">mindfizz<span class="red-stop">.</span></a>
+    <p>VAT registration 887 0350 05<br>Company registered in England number 5842619</p>
+    <div class="footer-links">
+      <a href="/privacy/">Privacy</a>
+      <button type="button" data-analytics-toggle>Disable analytics</button>
+      <span>© {% year %} Mindfizz</span>
+    </div>
+  </footer>
+
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+bodyClass: insight-page
+navKey: insights
+ogType: article
+---
+<article class="article-shell">
+  <header class="article-header">
+    <a class="eyebrow back-link" href="/insights/">Insights</a>
+    <h1>{{ title }}<span class="red-stop">.</span></h1>
+    <p class="article-deck">{{ description }}</p>
+    <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+  </header>
+  <div class="article-body prose">
+    {{ content | safe }}
+  </div>
+  <aside class="article-cta">
+    <p class="eyebrow">Have something complicated to explain?</p>
+    <h2>Bring us the difficult material.</h2>
+    <a class="text-link" href="/contact/">Discuss your project <span aria-hidden="true">↗</span></a>
+  </aside>
+</article>

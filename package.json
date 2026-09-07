@@ -1,0 +1,17 @@
+{
+  "name": "mindfizz-site",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Mindfizz multipage website built with Eleventy",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "debug": "DEBUG=Eleventy* eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6"
+  }
+}

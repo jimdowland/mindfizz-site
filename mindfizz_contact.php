@@ -8,8 +8,8 @@ $to = 'studio@mindfizz.com, jim@jamesdowland.co.uk';
 $from_email = 'studio@mindfizz.com';
 $from_name = 'Mindfizz website';
 
-$redirect_success = 'index.html?contact=success#contact';
-$redirect_error = 'index.html?contact=error#contact';
+$redirect_success = '/contact/?contact=success';
+$redirect_error = '/contact/?contact=error';
 $is_ajax = (isset($_POST['_ajax']) && $_POST['_ajax'] === '1')
     || (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
         && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest');

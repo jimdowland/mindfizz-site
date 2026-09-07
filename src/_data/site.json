@@ -1,0 +1,15 @@
+{
+  "name": "Mindfizz",
+  "url": "https://mindfizz.com",
+  "email": "studio@mindfizz.com",
+  "phone": "+44 7809 690319",
+  "phoneHref": "+447809690319",
+  "description": "Mindfizz helps research, strategy and specialist teams turn complex material into clear presentations, reports and decision tools.",
+  "navigation": [
+    { "label": "Work", "url": "/work/", "key": "work" },
+    { "label": "Services", "url": "/services/", "key": "services" },
+    { "label": "Approach", "url": "/approach/", "key": "approach" },
+    { "label": "Experience", "url": "/experience/", "key": "experience" },
+    { "label": "Insights", "url": "/insights/", "key": "insights" }
+  ]
+}

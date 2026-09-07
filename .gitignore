@@ -4,6 +4,9 @@
 **/._*
 
 index_bu.html
+node_modules/
+_site/
+tmp/
 ._android-icon-192x192.png
 ._apple-icon-57x57.png
 ._apple-icon-60x60.png
