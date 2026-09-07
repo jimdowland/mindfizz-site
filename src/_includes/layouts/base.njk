@@ -7,6 +7,7 @@
   <meta name="description" content="{{ description or site.description }}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{{ canonical or site.url ~ page.url }}">
+  {% if heroImage %}<link rel="preload" as="image" href="{{ heroImage }}" fetchpriority="high">{% endif %}
 
   <meta property="og:type" content="{{ ogType or 'website' }}">
   <meta property="og:site_name" content="Mindfizz">

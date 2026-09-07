@@ -71,11 +71,15 @@ main { padding-top: var(--header); }
 
 /* Homepage */
 .hero { min-height: calc(88vh - var(--header)); }
-.hero-home { display: flex; align-items: center; width: min(100%, var(--max)); margin: 0 auto; padding: clamp(70px, 9vw, 138px) var(--gutter); }
+.hero-home { position: relative; display: flex; align-items: center; width: min(100%, var(--max)); margin: 0 auto; padding: clamp(70px, 9vw, 138px) var(--gutter); overflow: hidden; background: #242321; color: var(--paper); isolation: isolate; }
+.hero-home::before { position: absolute; inset: 0; z-index: -2; background: url("../../img/brand/home-hero-collage.jpg") center / cover no-repeat; content: ""; }
+.hero-home::after { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(18, 17, 16, .89) 0%, rgba(18, 17, 16, .78) 45%, rgba(18, 17, 16, .38) 78%, rgba(18, 17, 16, .22) 100%); content: ""; }
 .hero-copy { position: relative; z-index: 2; max-width: 1120px; }
 .hero h1 { max-width: 980px; margin: 0; font-family: var(--serif); font-size: clamp(56px, 7.1vw, 112px); font-weight: 400; letter-spacing: -.035em; line-height: .98; text-wrap: balance; }
-.hero-lede { max-width: 680px; margin: 30px 0 0; color: var(--muted); font-size: clamp(18px, 1.6vw, 24px); line-height: 1.55; }
-.proof-line { margin: 30px 0 0; color: var(--muted); font-size: 12px; letter-spacing: .03em; }
+.hero-lede { max-width: 680px; margin: 30px 0 0; color: rgba(255, 250, 247, .82); font-size: clamp(18px, 1.6vw, 24px); line-height: 1.55; }
+.hero-home .button-secondary { border-color: rgba(255, 250, 247, .76); color: var(--paper); }
+.hero-home .button-secondary:hover, .hero-home .button-secondary:focus-visible { border-color: var(--paper); background: var(--paper); color: var(--ink); }
+.proof-line { margin: 30px 0 0; color: rgba(255, 250, 247, .72); font-size: 12px; letter-spacing: .03em; }
 
 .proof-strip { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--rule); }
 .proof-strip > div { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 25px; min-height: 190px; padding: 35px var(--gutter); }
@@ -333,6 +337,8 @@ main { padding-top: var(--header); }
   body { font-size: 16px; }
   .wordmark, .logo-link { width: 130px; }
   .hero-home { padding-top: 65px; }
+  .hero-home::before { background-position: 58% center; }
+  .hero-home::after { background: rgba(18, 17, 16, .77); }
   .hero h1 { font-size: clamp(50px, 14vw, 78px); }
   .proof-strip { grid-template-columns: 1fr; }
   .proof-strip > div { grid-template-columns: 120px 1fr; min-height: 130px; }
