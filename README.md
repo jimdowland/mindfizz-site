@@ -31,7 +31,7 @@ Pushes to `main` also run `.github/workflows/deploy-pages.yml`, which builds the
 
 ## Previous site
 
-The previous single-page site is preserved unchanged as `legacy.html` and is copied to `/legacy.html` in every build. The original root `index.html` is also retained in the repository as historical source; Eleventy uses `src/index.njk` for the new homepage.
+The previous single-page site is preserved unchanged as `legacy.html` but is not published. The original root `index.html` is also retained in the repository as historical source; Eleventy uses `src/index.njk` for the new homepage.
 
 ## Contact form
 

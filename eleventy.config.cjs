@@ -1,10 +1,11 @@
 module.exports = function (eleventyConfig) {
   const pathPrefix = process.env.ELEVENTY_PATH_PREFIX || "/";
 
-  eleventyConfig.addPassthroughCopy({ img: "img" });
+  eleventyConfig.addPassthroughCopy({ "img/brand": "img/brand" });
+  eleventyConfig.addPassthroughCopy({ "img/pdf": "img/pdf" });
+  eleventyConfig.addPassthroughCopy({ "img/portfolio": "img/portfolio" });
+  eleventyConfig.addPassthroughCopy({ "img/social": "img/social" });
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-  eleventyConfig.addPassthroughCopy({ "video/threshold-case-study.mp4": "video/threshold-case-study.mp4" });
-  eleventyConfig.addPassthroughCopy("legacy.html");
   eleventyConfig.addPassthroughCopy("mindfizz_contact.php");
 
   [
