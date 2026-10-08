@@ -5,6 +5,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "img/pdf": "img/pdf" });
   eleventyConfig.addPassthroughCopy({ "img/portfolio": "img/portfolio" });
   eleventyConfig.addPassthroughCopy({ "img/social": "img/social" });
+  eleventyConfig.addPassthroughCopy({ "video/portfolio": "video/portfolio" });
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy("mindfizz_contact.php");
 

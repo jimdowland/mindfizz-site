@@ -65,6 +65,38 @@
     });
   }
 
+  const videoDialogs = document.querySelectorAll('[data-video-dialog]');
+  document.querySelectorAll('[data-video-open]').forEach(launch => {
+    launch.addEventListener('click', event => {
+      const dialog = document.getElementById(launch.dataset.videoOpen);
+      if (!dialog || typeof dialog.showModal !== 'function') return;
+      event.preventDefault();
+      dialog.returnFocus = launch;
+      dialog.showModal();
+      document.body.classList.add('dialog-open');
+      const video = dialog.querySelector('video');
+      if (video) {
+        video.currentTime = 0;
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          const playback = video.play();
+          if (playback) playback.catch(() => {});
+        }
+      }
+    });
+  });
+
+  videoDialogs.forEach(dialog => {
+    const closeDialog = () => dialog.close();
+    dialog.querySelector('[data-video-close]')?.addEventListener('click', closeDialog);
+    dialog.addEventListener('click', event => { if (event.target === dialog) closeDialog(); });
+    dialog.addEventListener('close', () => {
+      const video = dialog.querySelector('video');
+      if (video) { video.pause(); video.currentTime = 0; }
+      document.body.classList.remove('dialog-open');
+      dialog.returnFocus?.focus();
+    });
+  });
+
   const analyticsToggles = document.querySelectorAll('[data-analytics-toggle]');
   const analyticsDisabled = () => {
     try { return localStorage.getItem('umami.disabled') === '1'; } catch (error) { return false; }
