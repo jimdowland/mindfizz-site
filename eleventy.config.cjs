@@ -29,6 +29,11 @@ module.exports = function (eleventyConfig) {
     "manifest.json"
   ].forEach((file) => eleventyConfig.addPassthroughCopy(file));
 
+  // Serialize JSON-LD safely, including content containing quotes or script tags.
+  eleventyConfig.addFilter("jsonLd", (value) =>
+    JSON.stringify(value).replace(/</g, "\\u003c")
+  );
+
   eleventyConfig.addFilter("readableDate", (date) =>
     new Intl.DateTimeFormat("en-GB", {
       day: "numeric",

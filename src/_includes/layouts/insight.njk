@@ -9,6 +9,7 @@ ogType: article
     <a class="eyebrow back-link" href="/insights/">Insights</a>
     <h1>{{ title }}<span class="red-stop">.</span></h1>
     <p class="article-deck">{{ description }}</p>
+    <p class="article-byline">By <a href="/experience/">{{ site.name }}</a></p>
     <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
   </header>
   <div class="article-body prose">

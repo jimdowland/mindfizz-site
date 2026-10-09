@@ -6,10 +6,44 @@
   "phoneHref": "+447809690319",
   "description": "Mindfizz helps research, strategy and specialist teams turn complex material into clear presentations, reports and decision tools.",
   "navigation": [
-    { "label": "Work", "url": "/work/", "key": "work" },
-    { "label": "Services", "url": "/services/", "key": "services" },
-    { "label": "Approach", "url": "/approach/", "key": "approach" },
-    { "label": "Experience", "url": "/experience/", "key": "experience" },
-    { "label": "Insights", "url": "/insights/", "key": "insights" }
+    {
+      "label": "Work",
+      "url": "/work/",
+      "key": "work"
+    },
+    {
+      "label": "Services",
+      "url": "/services/",
+      "key": "services"
+    },
+    {
+      "label": "Approach",
+      "url": "/approach/",
+      "key": "approach"
+    },
+    {
+      "label": "Experience",
+      "url": "/experience/",
+      "key": "experience"
+    },
+    {
+      "label": "Insights",
+      "url": "/insights/",
+      "key": "insights"
+    }
+  ],
+  "team": [
+    {
+      "id": "clare-dowland",
+      "name": "Clare Dowland",
+      "jobTitle": "Client liaison and concept development",
+      "profile": "https://www.linkedin.com/in/clare-dowland-65346325/"
+    },
+    {
+      "id": "james-dowland",
+      "name": "James Dowland",
+      "jobTitle": "Creative and technical lead",
+      "profile": "https://www.linkedin.com/in/james-dowland-109b99a/"
+    }
   ]
 }

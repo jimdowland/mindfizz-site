@@ -28,35 +28,7 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#f5edea">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Mindfizz",
-    "url": "{{ site.url }}",
-    "description": "{{ site.description }}",
-    "email": "{{ site.email }}",
-    "telephone": "{{ site.phone }}",
-    "areaServed": "Worldwide"
-  }
-  </script>
-  {% if serviceType %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "{{ serviceType }}",
-    "url": "{{ site.url }}{{ page.url }}",
-    "description": "{{ description }}",
-    "areaServed": "Worldwide",
-    "provider": {
-      "@type": "Organization",
-      "name": "Mindfizz",
-      "url": "{{ site.url }}"
-    }
-  }
-  </script>
-  {% endif %}
+  <script type="application/ld+json">{{ structuredData | jsonLd | safe }}</script>
 
   <script defer src="https://cloud.umami.is/script.js"
     data-website-id="6b133e1c-c86e-4a8e-a8de-294bbb34361e"
@@ -94,6 +66,11 @@
   </header>
 
   <main id="main">
+    {% if breadcrumbs %}
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>{% for crumb in breadcrumbs %}<li>{% if loop.last %}<span aria-current="page">{{ crumb.name }}</span>{% else %}<a href="{{ crumb.url }}">{{ crumb.name }}</a>{% endif %}</li>{% endfor %}</ol>
+    </nav>
+    {% endif %}
     {{ content | safe }}
   </main>
 

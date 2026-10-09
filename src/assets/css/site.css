@@ -445,3 +445,14 @@ a.portfolio-card:hover img, a.portfolio-card:focus-visible img { transform: tran
 .client-quote figcaption span { color: var(--muted); font-weight: 400; }
 .testimonial-section { padding-bottom: clamp(55px, 7vw, 100px); }
 .testimonial-section .client-quote { margin-top: 0; }
+
+/* Navigation context and practical service answers */
+.breadcrumbs { width: min(100%, var(--max)); margin: 0 auto; padding: 24px var(--gutter) 0; color: var(--muted); font-size: 13px; }
+.breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 8px 12px; margin: 0; padding: 0; list-style: none; }
+.breadcrumbs li + li::before { content: "/"; margin-right: 12px; color: var(--muted); }
+.breadcrumbs a { text-underline-offset: 4px; }
+.article-byline { margin: 20px 0 8px; color: var(--muted); font-size: 14px; }
+.service-questions h2 { margin: 0 0 32px; font-family: var(--serif); font-size: clamp(32px, 4vw, 54px); font-weight: 400; line-height: 1.15; }
+.service-questions dl { max-width: 900px; margin: 0; }
+.service-questions dt { margin-top: 28px; font-size: 20px; font-weight: 500; }
+.service-questions dd { margin: 10px 0 0; color: var(--muted); }
