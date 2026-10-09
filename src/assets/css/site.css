@@ -436,3 +436,12 @@ a.portfolio-card:hover img, a.portfolio-card:focus-visible img { transform: tran
   .client-cloud li { width: 100%; }
   .case-next { align-items: flex-start; flex-direction: column; gap: 15px; }
 }
+
+/* Client feedback */
+.client-quote { margin: 48px 0 0; padding: 32px 0 0; border-top: 1px solid var(--rule); }
+.client-quote blockquote { max-width: 900px; margin: 0; }
+.client-quote blockquote p { margin: 0; font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); line-height: 1.3; }
+.client-quote figcaption { margin-top: 20px; font-size: 14px; font-weight: 600; }
+.client-quote figcaption span { color: var(--muted); font-weight: 400; }
+.testimonial-section { padding-bottom: clamp(55px, 7vw, 100px); }
+.testimonial-section .client-quote { margin-top: 0; }
