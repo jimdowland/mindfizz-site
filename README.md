@@ -17,7 +17,27 @@ npm run build
 
 Deploy the contents of `_site/`, not the repository root.
 
-Pushes to `main` also run `.github/workflows/deploy-pages.yml`, which builds the site with the `/mindfizz-site/` path prefix and deploys it to GitHub Pages.
+Preview unpublished Insights drafts with:
+
+```sh
+npm run preview
+```
+
+This serves the site at `http://localhost:8125/` and builds into `_preview/`.
+Draft posts have `draft: true` in their front matter and appear in preview
+builds. Normal production builds exclude them. Preview pages
+are marked `noindex`, and draft articles are excluded from the sitemap and
+publication schema. `npm run build:preview` makes the same preview without
+starting the server.
+
+When a post is ready to publish, remove `draft: true` and set its publication
+`date` before running a normal build.
+
+Pushes to `main` also run `.github/workflows/deploy-pages.yml`, which builds
+the draft preview with the `/mindfizz-site/` path prefix and deploys `_preview/`
+to GitHub Pages. This review site includes the draft Insights posts so they can
+be shared with colleagues. All preview pages carry `noindex` metadata; the
+normal `npm run build` output remains suitable for a production launch.
 
 ## Editing content
 

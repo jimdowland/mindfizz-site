@@ -50,7 +50,7 @@ module.exports = {
       areaServed: 'Worldwide',
       provider: { '@id': businessId }
     });
-    if (Array.isArray(data.tags) && data.tags.includes('insights')) {
+    if (!data.draft && Array.isArray(data.tags) && data.tags.includes('insights')) {
       const article = {
         '@type': 'Article',
         '@id': `${url}#article`,

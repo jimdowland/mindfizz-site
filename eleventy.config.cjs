@@ -1,5 +1,10 @@
 module.exports = function (eleventyConfig) {
   const pathPrefix = process.env.ELEVENTY_PATH_PREFIX || "/";
+  const draftPreview = process.env.MINDFIZZ_PREVIEW === "1";
+  eleventyConfig.addGlobalData("draftPreview", draftPreview);
+  eleventyConfig.addPreprocessor("drafts", "md,njk", (data) => {
+    if (data.draft && !draftPreview) return false;
+  });
 
   eleventyConfig.addPassthroughCopy({ "img/brand": "img/brand" });
   eleventyConfig.addPassthroughCopy({ "img/pdf": "img/pdf" });
@@ -42,6 +47,8 @@ module.exports = function (eleventyConfig) {
       timeZone: "UTC"
     }).format(new Date(date))
   );
+
+  eleventyConfig.addFilter("terminalPunctuation", (value) => /[.!?]$/.test(value));
 
   eleventyConfig.addFilter("htmlDateString", (date) =>
     new Date(date).toISOString().slice(0, 10)

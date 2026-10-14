@@ -9,7 +9,9 @@
   "scripts": {
     "build": "eleventy",
     "start": "eleventy --serve",
-    "debug": "DEBUG=Eleventy* eleventy"
+    "debug": "DEBUG=Eleventy* eleventy",
+    "build:preview": "MINDFIZZ_PREVIEW=1 eleventy --output=_preview",
+    "preview": "MINDFIZZ_PREVIEW=1 eleventy --serve --output=_preview --port=8125"
   },
   "devDependencies": {
     "@11ty/eleventy": "3.1.6"

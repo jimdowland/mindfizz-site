@@ -6,6 +6,7 @@
 index_bu.html
 node_modules/
 _site/
+_preview/
 tmp/
 video/threshold_v6_inter.mp4
 

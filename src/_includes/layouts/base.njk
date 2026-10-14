@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }} | Mindfizz</title>
   <meta name="description" content="{{ description or site.description }}">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="{% if draftPreview or draft %}noindex, follow{% else %}index, follow{% endif %}">
   <link rel="canonical" href="{{ canonical or site.url ~ page.url }}">
   {% if heroImage %}<link rel="preload" as="image" href="{{ heroImage }}" fetchpriority="high">{% endif %}
 

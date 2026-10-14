@@ -7,11 +7,17 @@ ogType: article
 <article class="article-shell">
   <header class="article-header">
     <a class="eyebrow back-link" href="/insights/">Insights</a>
-    <h1>{{ title }}<span class="red-stop">.</span></h1>
+    <h1>{{ title }}{% if not (title | terminalPunctuation) %}<span class="red-stop">.</span>{% endif %}</h1>
     <p class="article-deck">{{ description }}</p>
     <p class="article-byline">By <a href="/experience/">{{ site.name }}</a></p>
-    <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+    {% if draft %}<p class="draft-label">Draft · Preview</p>{% else %}<time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>{% endif %}
   </header>
+  {% if leadImage %}
+  <figure class="article-lead">
+    <a href="{{ leadImage }}" target="_blank" rel="noopener" aria-label="Open diagram at full size"><img src="{{ leadImage }}" width="{{ leadImageWidth }}" height="{{ leadImageHeight }}" alt="{{ leadImageAlt }}" fetchpriority="high"></a>
+    <figcaption><a href="{{ leadImage }}" target="_blank" rel="noopener">View diagram at full size ↗</a></figcaption>
+  </figure>
+  {% endif %}
   <div class="article-body prose">
     {{ content | safe }}
   </div>
