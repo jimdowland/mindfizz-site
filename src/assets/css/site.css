@@ -72,7 +72,7 @@ main { padding-top: var(--header); }
 /* Homepage */
 .hero { min-height: calc(88vh - var(--header)); }
 .hero-home { position: relative; display: flex; align-items: center; width: min(100%, var(--max)); margin: 0 auto; padding: clamp(70px, 9vw, 138px) var(--gutter); overflow: hidden; background: #242321; color: var(--paper); isolation: isolate; }
-.hero-home::before { position: absolute; inset: 0; z-index: -2; background: url("../../img/portfolio/threshold-housing-policy-presentation-mockup.webp") center / cover no-repeat; content: ""; }
+.hero-home::before { position: absolute; inset: 0; z-index: -2; background: url("../../img/portfolio/faist-manufacturing-corporate-presentation-design.webp") center / cover no-repeat; content: ""; }
 .hero-home::after { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(18, 17, 16, .89) 0%, rgba(18, 17, 16, .78) 45%, rgba(18, 17, 16, .38) 78%, rgba(18, 17, 16, .22) 100%); content: ""; }
 .hero-copy { position: relative; z-index: 2; max-width: 1120px; }
 .hero h1 { max-width: 980px; margin: 0; font-family: var(--serif); font-size: clamp(56px, 7.1vw, 112px); font-weight: 400; letter-spacing: -.035em; line-height: .98; text-wrap: balance; }
@@ -456,3 +456,8 @@ a.portfolio-card:hover img, a.portfolio-card:focus-visible img { transform: tran
 .service-questions dl { max-width: 900px; margin: 0; }
 .service-questions dt { margin-top: 28px; font-size: 20px; font-weight: 500; }
 .service-questions dd { margin: 10px 0 0; color: var(--muted); }
+
+/* Supporting examples of the approach */
+.approach-studies { background: var(--bg-soft); }
+.approach-studies .split-heading h2 { font-size: clamp(32px, 4vw, 54px); }
+.approach-studies .portfolio-card-copy p:not(.eyebrow) { margin: 12px 0 18px; color: var(--muted); font-size: 15px; }
