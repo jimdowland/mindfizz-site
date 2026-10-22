@@ -11,6 +11,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "img/portfolio": "img/portfolio" });
   eleventyConfig.addPassthroughCopy({ "img/social": "img/social" });
   eleventyConfig.addPassthroughCopy({ "video/portfolio": "video/portfolio" });
+  eleventyConfig.addPassthroughCopy({ "video/hero": "video/hero" });
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy("mindfizz_contact.php");
 
@@ -60,7 +61,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("path-prefix", function (content) {
     if (this.page.outputPath?.endsWith(".html") && pathPrefix !== "/") {
       const prefix = `/${pathPrefix.replace(/^\/+|\/+$/g, "")}/`;
-      return content.replace(/\b(href|src|poster|action)="\/(?!\/)/g, `$1="${prefix}`);
+      return content.replace(/\b(href|src|poster|action|data-src)="\/(?!\/)/g, `$1="${prefix}`);
     }
     return content;
   });

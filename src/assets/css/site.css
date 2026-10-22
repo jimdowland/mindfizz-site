@@ -72,9 +72,14 @@ main { padding-top: var(--header); }
 /* Homepage */
 .hero { min-height: calc(88vh - var(--header)); }
 .hero-home { position: relative; display: flex; align-items: center; width: min(100%, var(--max)); margin: 0 auto; padding: clamp(70px, 9vw, 138px) var(--gutter); overflow: hidden; background: #242321; color: var(--paper); isolation: isolate; }
-.hero-home::before { position: absolute; inset: 0; z-index: -2; background: url("../../img/portfolio/faist-manufacturing-corporate-presentation-design.webp") center / cover no-repeat; content: ""; }
+.hero-home::before { position: absolute; inset: 0; z-index: -3; background: url("../../img/portfolio/faist-manufacturing-corporate-presentation-design.webp") center / cover no-repeat; content: ""; }
+.hero-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; opacity: 0; pointer-events: none; transition: opacity .4s ease; }
+.hero-video.is-ready { opacity: 1; }
 .hero-home::after { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(18, 17, 16, .89) 0%, rgba(18, 17, 16, .78) 45%, rgba(18, 17, 16, .38) 78%, rgba(18, 17, 16, .22) 100%); content: ""; }
 .hero-copy { position: relative; z-index: 2; max-width: 1120px; }
+.hero-motion-toggle { position: absolute; right: var(--gutter); bottom: 22px; z-index: 3; padding: 7px 12px; border: 1px solid rgba(255, 250, 247, .5); background: rgba(18, 17, 16, .6); color: var(--paper); font-size: 11px; cursor: pointer; }
+.hero-motion-toggle:hover, .hero-motion-toggle:focus-visible { border-color: var(--paper); background: rgba(18, 17, 16, .9); }
+@media (prefers-reduced-motion: reduce) { .hero-video, .hero-motion-toggle { display: none; } }
 .hero h1 { max-width: 980px; margin: 0; font-family: var(--serif); font-size: clamp(56px, 7.1vw, 112px); font-weight: 400; letter-spacing: -.035em; line-height: .98; text-wrap: balance; }
 .hero-lede { max-width: 680px; margin: 30px 0 0; color: rgba(255, 250, 247, .82); font-size: clamp(18px, 1.6vw, 24px); line-height: 1.55; }
 .hero-home .button-secondary { border-color: rgba(255, 250, 247, .76); color: var(--paper); }
@@ -379,6 +384,7 @@ a.portfolio-card:hover img, a.portfolio-card:focus-visible img { transform: tran
   .wordmark, .logo-link { width: 130px; }
   .hero-home { padding-top: 65px; }
   .hero-home::before { background-position: 58% center; }
+  .hero-video { object-position: 58% center; }
   .hero-home::after { background: rgba(18, 17, 16, .77); }
   .hero h1 { font-size: clamp(50px, 14vw, 78px); }
   .proof-strip { grid-template-columns: 1fr; }

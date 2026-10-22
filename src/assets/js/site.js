@@ -35,6 +35,66 @@
     fades.forEach(element => element.classList.add('visible'));
   }
 
+  const heroVideo = document.querySelector('[data-hero-video]');
+  const heroMotionToggle = document.querySelector('[data-hero-motion-toggle]');
+  if (heroVideo && heroMotionToggle) {
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const source = heroVideo.querySelector('source[data-src]');
+    let pageLoaded = document.readyState === 'complete';
+    let inView = true;
+    let userPaused = false;
+    let failed = false;
+    const updateToggle = () => {
+      heroMotionToggle.textContent = heroVideo.paused ? 'Play animation' : 'Pause animation';
+    };
+    const updatePlayback = () => {
+      const staticImage = motionPreference.matches || navigator.connection?.saveData || failed;
+      heroMotionToggle.hidden = Boolean(staticImage || !source?.src);
+      if (staticImage || !pageLoaded || !inView || document.hidden || userPaused) {
+        heroVideo.pause();
+        if (staticImage) heroVideo.classList.remove('is-ready');
+        updateToggle();
+        return;
+      }
+      if (!source.src) {
+        source.src = source.dataset.src;
+        heroVideo.muted = true;
+        heroVideo.load();
+        heroMotionToggle.hidden = false;
+      }
+      const playback = heroVideo.play();
+      if (playback) playback.catch(error => {
+        if (error.name === 'AbortError') return;
+        // A manual play button remains available if autoplay is blocked.
+        userPaused = true;
+        updateToggle();
+      });
+    };
+    heroVideo.addEventListener('playing', () => {
+      heroVideo.classList.add('is-ready');
+      updateToggle();
+    });
+    heroVideo.addEventListener('pause', updateToggle);
+    const useFallback = () => { failed = true; updatePlayback(); };
+    heroVideo.addEventListener('error', useFallback);
+    source?.addEventListener('error', useFallback);
+    heroMotionToggle.addEventListener('click', () => {
+      userPaused = !heroVideo.paused;
+      updatePlayback();
+    });
+    motionPreference.addEventListener('change', updatePlayback);
+    document.addEventListener('visibilitychange', updatePlayback);
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        inView = entries[0].isIntersecting;
+        updatePlayback();
+      });
+      observer.observe(heroVideo.closest('.hero-home'));
+    }
+    window.addEventListener('load', () => { pageLoaded = true; updatePlayback(); }, { once: true });
+    updatePlayback();
+  }
+
   const status = new URLSearchParams(window.location.search).get('contact');
   const successMessage = document.querySelector('[data-form-success]');
   const errorMessage = document.querySelector('[data-form-error]');
