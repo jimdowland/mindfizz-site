@@ -55,7 +55,45 @@ The purpose of the campaign is different from the actual report, while the repor
 
 ## What forms best represent the messages
 
-<div class="draft-copy-note"><p>Short video / reels -</p><span>Draft section to complete</span></div>
+### Short videos and reels
+
+A short video can give one finding or message its own space. Animated numbers establish the scale of a workforce challenge, while images and a clear call to action connect that evidence to recruitment. These four examples show how a consistent visual style can carry different messages across a campaign.
+
+<aside class="article-context-note" aria-label="About these examples">
+  <p>These examples draw on work we previously produced for a UK workforce development organisation, translating findings from a substantial research report into social media content for different audiences.</p>
+  <p>The animations have been newly created for this article using a fictional campaign identity. The figures and messages are illustrative and should not be interpreted as current sector statistics or forecasts.</p>
+</aside>
+
+<div class="article-figure article-video-grid">
+  <figure class="article-video">
+    <video controls playsinline preload="none" width="720" height="1280" poster="/assets/img/insights/transform/u24.jpg" aria-labelledby="campaign-u24-caption">
+      <source src="/video/insights/transform/u24.mp4" type="video/mp4">
+      <a href="/video/insights/transform/u24.mp4">Watch the workforce overview video</a>.
+    </video>
+    <figcaption id="campaign-u24-caption"><strong>Establishing the scale</strong>A workforce total becomes the focus of an animated circular graphic.</figcaption>
+  </figure>
+  <figure class="article-video">
+    <video controls playsinline preload="none" width="720" height="1280" poster="/assets/img/insights/transform/fill.jpg" aria-labelledby="campaign-fill-caption">
+      <source src="/video/insights/transform/fill.mp4" type="video/mp4">
+      <a href="/video/insights/transform/fill.mp4">Watch the vacancies video</a>.
+    </video>
+    <figcaption id="campaign-fill-caption"><strong>Making the need visible</strong>A vacancy figure and a deadline give the recruitment message a clear focus.</figcaption>
+  </figure>
+  <figure class="article-video">
+    <video controls playsinline preload="none" width="720" height="1280" poster="/assets/img/insights/transform/replace.jpg" aria-labelledby="campaign-replace-caption">
+      <source src="/video/insights/transform/replace.mp4" type="video/mp4">
+      <a href="/video/insights/transform/replace.mp4">Watch the future recruitment video</a>.
+    </video>
+    <figcaption id="campaign-replace-caption"><strong>Looking ahead</strong>An animated recruitment target leads into a message about future opportunities.</figcaption>
+  </figure>
+  <figure class="article-video">
+    <video controls playsinline preload="none" width="720" height="1280" poster="/assets/img/insights/transform/join.jpg" aria-labelledby="campaign-join-caption">
+      <source src="/video/insights/transform/join.mp4" type="video/mp4">
+      <a href="/video/insights/transform/join.mp4">Watch the careers video</a>.
+    </video>
+    <figcaption id="campaign-join-caption"><strong>Inviting action</strong>A careers message encourages the viewer to search for a role.</figcaption>
+  </figure>
+</div>
 
 <div class="draft-copy-note"><p>Linkedin carousels –</p><span>Draft section to complete</span></div>
 
